@@ -8,21 +8,29 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        museo: ['Museo', 'sans-serif'],
+        museo: ['MuseoModerno', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
-        mono: ['JetBrains Mono', 'monospace'],
       },
+      // On simplifie la structure des couleurs (plus de 'themeColors' imbriqué)
       colors: {
         primary: '#CFB586',
-        dark: '#050505',
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
+        
+        // Mode Clair (Light)
+        'light-bg': '#F8F8F5',       // Crème
+        'light-surface': '#FFFFFF',  // Blanc pur
+        'light-text': '#111111',     // Noir
+        'light-muted': '#4b5563',    // Gris foncé
+        'light-border': 'rgba(0,0,0,0.1)',
+
+        // Mode Sombre (Dark)
+        'dark-bg': '#050505',        // Noir profond
+        'dark-surface': '#0A0A0A',   // Noir un peu moins profond
+        'dark-text': '#EAEAE5',      // Blanc cassé
+        'dark-muted': '#9ca3af',     // Gris clair
+        'dark-border': 'rgba(255,255,255,0.1)',
       }
     }
   },
-  plugins: [require("tailwindcss-animate")],
+  // ⚠️ J'ai retiré le plugin qui faisait probablement planter ta config
+  plugins: [],
 }

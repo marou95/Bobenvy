@@ -6,25 +6,45 @@
   :root {
     --radius: 0.5rem;
   }
-  
+
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
+  /* CONFIGURATION GLOBALE DU BODY */
+  html,
   body {
-    transform: translateZ(0);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    /* CRITIQUE : 'clip' permet aux éléments sticky de fonctionner 
+       tout en cachant le débordement horizontal. */
+    overflow-x: clip;
+
+    /* THEME PAR DÉFAUT (LIGHT) */
+    @apply bg-light-bg text-light-text transition-colors duration-500;
+  }
+
+  /* SURCHARGE DARK MODE */
+  .dark body {
+    @apply bg-dark-bg text-dark-text;
+  }
+
+  /* Sélection de texte (Or sur Noir toujours) */
+  ::selection {
+    @apply bg-primary text-black;
+  }
+
+  #root {
+    min-height: 100vh;
   }
 }
 
-/* CRITICAL: ScrollStack optimizations */
-html {
-  scroll-behavior: auto !important;
-}
-
+/* --- UTILITAIRES --- */
 .scroll-stack-card {
   backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
   transform: translateZ(0) !important;
   perspective: 1000px !important;
   will-change: transform, filter !important;
