@@ -8,29 +8,28 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        museo: ['MuseoModerno', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        museo: ['MuseoModerno', 'cursive'], 
+        sans: ['Montserrat', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
       },
-      // On simplifie la structure des couleurs (plus de 'themeColors' imbriqué)
       colors: {
-        primary: '#CFB586',
+        primary: '#CFB586', // Or
         
-        // Mode Clair (Light)
+        // THÈME CLAIR
         'light-bg': '#F8F8F5',       // Crème
-        'light-surface': '#FFFFFF',  // Blanc pur
+        'light-surface': '#FFFFFF',  // Blanc
         'light-text': '#111111',     // Noir
         'light-muted': '#4b5563',    // Gris foncé
-        'light-border': 'rgba(0,0,0,0.1)',
+        'light-border': 'rgba(0,0,0,0.1)', // Bordures subtiles
 
-        // Mode Sombre (Dark)
-        'dark-bg': '#050505',        // Noir profond
-        'dark-surface': '#0A0A0A',   // Noir un peu moins profond
+        // THÈME SOMBRE
+        'dark-bg': '#050505',        // Noir
+        'dark-surface': '#0A0A0A',   // Noir plus clair
         'dark-text': '#EAEAE5',      // Blanc cassé
         'dark-muted': '#9ca3af',     // Gris clair
-        'dark-border': 'rgba(255,255,255,0.1)',
+        'dark-border': 'rgba(255,255,255,0.1)', // Bordures subtiles
       }
     }
   },
-  // ⚠️ J'ai retiré le plugin qui faisait probablement planter ta config
   plugins: [],
 }
