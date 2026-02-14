@@ -12,27 +12,21 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* CONFIGURATION GLOBALE DU BODY */
   html,
   body {
     margin: 0;
     padding: 0;
     width: 100%;
-
-    /* CRITIQUE : 'clip' permet aux éléments sticky de fonctionner 
-       tout en cachant le débordement horizontal. */
     overflow-x: clip;
 
-    /* THEME PAR DÉFAUT (LIGHT) */
-    @apply bg-light-bg text-light-text transition-colors duration-500;
+    /* Light par défaut  */
+    @apply bg-light-bg text-light-text transition-colors duration-300;
   }
 
-  /* SURCHARGE DARK MODE */
   .dark body {
     @apply bg-dark-bg text-dark-text;
   }
 
-  /* Sélection de texte (Or sur Noir toujours) */
   ::selection {
     @apply bg-primary text-black;
   }
@@ -42,12 +36,10 @@
   }
 }
 
-/* --- UTILITAIRES --- */
 .scroll-stack-card {
-  backface-visibility: hidden !important;
-  transform: translateZ(0) !important;
-  perspective: 1000px !important;
-  will-change: transform, filter !important;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .no-scrollbar::-webkit-scrollbar {
