@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { DrinkProject } from '../types';
 import { useTranslation } from 'react-i18next';
-import { urlFor } from '../services/sanity.client';
+import { urlFor } from '../lib/sanity.client';
 import { Droplets, Activity } from 'lucide-react';
 
 interface DrinkCardProps {

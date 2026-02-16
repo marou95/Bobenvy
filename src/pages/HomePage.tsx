@@ -2,8 +2,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowDownRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+// Components
 import ScrollStack from '../components/ScrollStack';
-import { cp } from 'fs';
+import AboutSection from '../components/AboutSection';
+import PortfolioPreview from '../components/PortfolioPreview'; // ✅ AJOUT
+import ResourcesPreview from '../components/ResourcesPreview'; // ✅ AJOUT
 
 const HomePage = () => {
     // Cursor config
@@ -55,25 +59,57 @@ const HomePage = () => {
 
             {/* HERO */}
             <section className="relative h-screen w-full overflow-hidden bg-dark-bg">
+                {/* VIDEO BACKGROUND */}
                 <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-70">
                     <source src="https://cdn.pixabay.com/video/2016/08/12/4382-178617337_large.mp4" type="video/mp4" />
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-light-bg dark:from-dark-bg via-transparent to-black/40 transition-colors duration-500"></div>
+
+                {/* GRADIENTS & OVERLAYS */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 md:bg-gradient-to-t md:from-light-bg md:dark:from-dark-bg md:via-transparent md:to-black/40 transition-colors duration-500"></div>
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
 
-                <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 z-10 flex flex-col justify-end h-full">
-                    <motion.div initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}>
-                        <h1 className="font-museo text-[12vw] leading-[0.8] font-bold tracking-tighter uppercase text-white mix-blend-overlay opacity-90">Bobenvy</h1>
-                        <div className="flex flex-col md:flex-row justify-between items-end mt-8 border-t border-white/20 pt-6">
-                            <p className="max-w-md text-xl md:text-2xl font-light leading-tight text-white/90">
+                {/* CONTENT CONTAINER */}
+                <div className="absolute inset-0 w-full h-full p-6 md:p-12 z-10 flex flex-col justify-center items-center text-center md:justify-end md:items-stretch md:text-left">
+
+                    <motion.div
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="w-full"
+                    >
+                        {/* TITRE PRINCIPAL */}
+                        <h1 className="font-museo text-[15vw] md:text-[12vw] leading-[0.85] md:leading-[0.8] font-bold tracking-tighter uppercase text-white mix-blend-overlay opacity-90 mb-6 md:mb-0">
+                            Bobenvy
+                        </h1>
+
+                        {/* CONTAINER SOUS-TITRE */}
+                        <div className="flex flex-col items-center md:flex-row md:justify-between md:items-end md:mt-8 md:border-t md:border-white/20 md:pt-6">
+                            <div className="w-[1px] h-8 bg-primary mb-6 md:hidden"></div>
+                            <p className="max-w-xs md:max-w-md text-lg md:text-2xl font-light leading-tight text-white/90">
                                 Agence de stratégie marketing. <br />
                                 <span className="text-primary italic font-serif">Révélateur de singularité.</span>
                             </p>
-                            <div className="hidden md:block animate-bounce mt-8 md:mt-0"><ArrowDownRight size={48} className="text-primary" /></div>
+                            <div className="hidden md:block animate-bounce mt-8 md:mt-0">
+                                <ArrowDownRight size={48} className="text-primary" />
+                            </div>
                         </div>
                     </motion.div>
+
+                    {/* SCROLL INDICATOR (Mobile Only) */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1, duration: 1 }}
+                        className="absolute bottom-8 left-1/2 -translate-x-1/2 md:hidden"
+                    >
+                        <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent opacity-50"></div>
+                    </motion.div>
+
                 </div>
             </section>
+
+            {/* ABOUT */}
+            <AboutSection />
 
             {/* MANIFESTO */}
             <section className="py-40 px-6 md:px-24 bg-light-bg dark:bg-dark-bg transition-colors duration-500 relative z-10">
@@ -96,7 +132,8 @@ const HomePage = () => {
             </section>
 
             {/* --- 3. SERVICES (TITRE + STACK) --- */}
-            <div className="relative bg-light-bg dark:bg-dark-bg transition-colors duration-500">
+            {/* ✅ IMPORTANT : Ajout de la ref={servicesRef} ici pour que le titre sticky fonctionne */}
+            <div ref={servicesRef} className="relative bg-light-bg dark:bg-dark-bg transition-colors duration-500">
 
                 {/* A. LE TITRE (Fixed quand dans la section) */}
                 <div
@@ -111,6 +148,9 @@ const HomePage = () => {
                 <div style={{ height: '10vh' }} />
 
             </div>
+
+            {/* ✅ 4. PORTFOLIO PREVIEW : Preuve sociale après les services */}
+            <PortfolioPreview />
 
             {/* METHODOLOGY */}
             <section className="relative z-30 py-32 overflow-hidden bg-light-bg dark:bg-dark-bg transition-colors duration-500">
@@ -135,6 +175,9 @@ const HomePage = () => {
                     ))}
                 </div>
             </section>
+
+            {/* ✅ 5. RESOURCES PREVIEW : Autorité avant le contact */}
+            <ResourcesPreview />
 
             {/* CTA */}
             <section className="py-40 bg-primary text-black flex justify-center items-center text-center overflow-hidden group cursor-pointer relative z-30">
