@@ -54,14 +54,7 @@ const ServicesStack = () => {
 
             {/* Le composant Stack */}
             <div className="px-4 md:px-12">
-                <ScrollStack
-                    itemDistance={50} // Distance de scroll avant la prochaine carte
-                    stackPosition="15%" // Position verticale où la pile se bloque
-                    scaleEndPosition="5%"
-                    itemScale={0.05} // Effet de profondeur
-                    itemStackDistance={35} // Espace visible entre les cartes empilées
-                    useWindowScroll={true} // IMPORTANT: utilise le scroll principal
-                >
+                <ScrollStack>
                     {services.map((service, index) => (
                         <ScrollStackItem key={service.id}>
 

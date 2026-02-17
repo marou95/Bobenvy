@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import ServiceModal, { ServiceDetail } from "./ServiceModal"; // Assurez-vous d'avoir créé ce fichier
+import ServiceModal, { ServiceDetail } from "./ServiceModal";
 
 const SCROLL_CONFIG = {
   MOBILE_FACTOR: 51,
@@ -15,12 +15,12 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 1,
     title: "Stratégie & Conseil",
-    bgVideo: "https://cdn.pixabay.com/video/2023/08/22/177227-857004303_large.mp4", // Architecture/Structure
+    bgVideo: "",
     subtitle: "ANALYSER & STRUCTURER",
     description: "Audit complet, business plan et feuille de route pour prioriser vos actions et sécuriser votre croissance.",
     tags: ["Audit", "Business Plan", "Workshops"],
     color: "#CFB586",
-    // Détails complets fournis
+
     catchphrase: "CONSTRUIRE DES FONDATIONS SOLIDES POUR UNE CROISSANCE DURABLE.",
     intro: "Toute performance commence par une stratégie claire. Bobenvy vous accompagne dans la définition et le pilotage de votre stratégie marketing globale. Nous vous aidons à prendre les bonnes décisions au bon moment avec une vision claire de votre marché, de vos clients et de vos leviers de croissance.",
     mission: "Transformer vos enjeux en un plan d’action et des résultats concrets, mesurables et rentables.",
@@ -45,12 +45,12 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 2,
     title: "Identité de Marque",
-    bgVideo: "https://cdn.pixabay.com/video/2021/03/08/67358-521707474_tiny.mp4", // Architecture/Structure
+    bgVideo: "",
     subtitle: "RÉVÉLER & INCARNER",
     description: "Plateforme de marque, naming, logo et territoire visuel pour rendre votre entreprise inoubliable.",
     tags: ["Branding", "Logo", "DA"],
     color: "#EAEAE5",
-    // Nouveau contenu détaillé
+
     catchphrase: "CRÉER DES MARQUES DURABLES QUI INSPIRENT.",
     intro: "Une marque forte est un actif stratégique. Nous construisons des identités cohérentes, différenciantes et mémorables. Bobenvy transforme votre marque en levier d’attraction et de préférence.",
     mission: "Un bon branding ne se contente pas d’être beau : il est stratégique, cohérent et impactant.",
@@ -74,14 +74,13 @@ const ITEMS: ServiceDetail[] = [
   },
 { 
     id: 3, 
-    title: "Marketing Digital", // J'ai ajusté le titre pour coller à votre texte
-    bgVideo: "https://cdn.pixabay.com/video/2023/08/22/177227-857004303_large.mp4", // Digital/Tech
+    title: "Marketing Digital",
+    bgVideo: "",
     subtitle: "ACTIVER & CONVERTIR", 
     description: "Site web, SEO/SEA et campagnes d'acquisition pour transformer votre visibilité en chiffre d'affaires.", 
     tags: ["Site Web", "SEO / SEA", "Lead Gen"], 
     color: "#CFB586",
     
-    // Contenu Modale
     catchphrase: "TRANSFORMEZ VOTRE VISIBILITÉ EN RÉSULTATS MESURABLES.",
     intro: "Nous activons les bons leviers pour générer de la visibilité, du trafic et de la conversion. Chaque action est pensée pour produire des résultats concrets. Chez Bobenvy, nous créons et pilotons des stratégies digitales orientées résultats : plus de visibilité, plus de leads, plus de ventes.",
     mission: "Transformer vos canaux digitaux en leviers de croissance via une stratégie d'activation et d'optimisation.",
@@ -106,7 +105,7 @@ const ITEMS: ServiceDetail[] = [
 { 
     id: 4, 
     title: "Communication & Influence",
-    bgVideo: "https://cdn.pixabay.com/video/2021/03/08/67358-521707474_tiny.mp4", // Communication/Influenc
+    bgVideo: "",
     subtitle: "DÉPLOYER & FÉDÉRER", 
     description: "Social media, influence et relations presse pour créer un lien durable et émotionnel avec votre audience.", 
     tags: ["Social Media", "Influence", "PR"], 
@@ -136,6 +135,14 @@ const ITEMS: ServiceDetail[] = [
   },
 ];
 
+export interface ScrollStackItemProps {
+  children: React.ReactNode;
+}
+
+export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({ children }) => {
+  return <>{children}</>;
+};
+
 interface CardProps {
   i: number;
   data: ServiceDetail; // On passe l'objet complet
@@ -143,7 +150,7 @@ interface CardProps {
   range: number[];
   targetScale: number;
   headerHeight: number;
-  onOpen: (service: ServiceDetail) => void; // Nouvelle prop
+  onOpen: (service: ServiceDetail) => void;
 }
 
 const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, headerHeight, onOpen }) => {
@@ -161,7 +168,6 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
     >
       <motion.div
         style={{ scale }}
-        // AJOUT : Clic pour ouvrir la modale
         onClick={() => onOpen(data)}
         className="relative w-[90vw] md:w-[70vw] h-[50vh] rounded-[1.5rem] md:rounded-[2rem] border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-6 md:p-12 flex flex-col justify-between shadow-xl origin-top transition-colors duration-500 will-change-transform cursor-pointer group hover:border-primary/50"
       >
@@ -205,7 +211,7 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
   );
 };
 
-const ScrollStack = ({ headerHeight = 30 }: { headerHeight?: number }) => {
+const ScrollStack = ({ headerHeight = 30, children }: { headerHeight?: number, children?: React.ReactNode }) => {
   const container = useRef<HTMLElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 

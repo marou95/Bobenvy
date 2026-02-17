@@ -37,7 +37,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="relative flex items-center justify-center w-10 h-10 rounded-full border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text hover:scale-105 transition-all shadow-sm overflow-hidden z-50 pointer-events-auto"
+      className="relative flex items-center justify-center w-10 h-10 rounded-full border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface bg-opacity-10 text-light-text dark:text-dark-text hover:scale-105 transition-all shadow-sm overflow-hidden z-50 pointer-events-auto"
       aria-label="Toggle Theme"
     >
       <motion.div
@@ -45,7 +45,7 @@ const ThemeToggle = () => {
         animate={{ y: isDark ? 30 : 0, opacity: isDark ? 0 : 1 }}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <Sun size={18} className="text-orange-500" />
+        <Sun size={18} className="text-orange-400" />
       </motion.div>
 
       <motion.div

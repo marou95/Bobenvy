@@ -1,6 +1,5 @@
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-
 // --- CONFIGURATION ---
 export const client = createClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'owylobqj',
@@ -75,14 +74,26 @@ export const getRecentProjects = async (): Promise<Project[]> => {
   `);
 };
 
-// 3. Récupérer un projet par son Slug (Page Détail Projet)
+// Récupérer un projet complet avec contenu riche
 export const getProjectBySlug = async (slug: string): Promise<Project> => {
   return await client.fetch(
-    `*[_type == "project" && slug.current == $slug][0]`,
+    `*[_type == "project" && slug.current == $slug][0] {
+      _id,
+      title,
+      subtitle,
+      mainImage,
+      themeColor,
+      tags,
+      description,
+      challenge, 
+      solution, 
+      gallery,
+      bgVideo,
+      "slug": slug.current
+    }`,
     { slug }
   );
 };
-
 
 // --- REQUÊTES RESSOURCES (Posts) ---
 
@@ -115,10 +126,19 @@ export const getRecentPosts = async (): Promise<Post[]> => {
   `);
 };
 
-// 3. Récupérer un article par son Slug (Page Détail Article)
 export const getPostBySlug = async (slug: string): Promise<Post> => {
   return await client.fetch(
-    `*[_type == "post" && slug.current == $slug][0]`,
+    `*[_type == "post" && slug.current == $slug][0] {
+      _id,
+      title,
+      mainImage,
+      category,
+      publishedAt,
+      excerpt,
+      body,
+      author,
+      "slug": slug.current
+    }`,
     { slug }
   );
 };
