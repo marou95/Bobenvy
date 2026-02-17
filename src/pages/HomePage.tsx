@@ -1,13 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowDownRight } from 'lucide-react';
+import { ArrowDownRight, ArrowRight, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Components
 import ScrollStack from '../components/ScrollStack';
 import AboutSection from '../components/AboutSection';
-import PortfolioPreview from '../components/PortfolioPreview'; // ✅ AJOUT
-import ResourcesPreview from '../components/ResourcesPreview'; // ✅ AJOUT
+import PortfolioPreview from '../components/PortfolioPreview';
+import ResourcesPreview from '../components/ResourcesPreview';
+import Navbar from '../components/Navbar';
 
 const HomePage = () => {
     // Cursor config
@@ -16,10 +17,11 @@ const HomePage = () => {
     const springConfig = { damping: 25, stiffness: 700 };
     const cursorXSpring = useSpring(cursorX, springConfig);
     const cursorYSpring = useSpring(cursorY, springConfig);
-    const TITLE_HEIGHT_VH = 10;
+    const [formStatus, setFormStatus] = useState<'IDLE' | 'SENDING' | 'SUCCESS' | 'ERROR'>('IDLE');
 
-    const servicesRef = useRef(null); // ref pour la section services
-    const [isTitleFixed, setIsTitleFixed] = useState(false);
+    const containerRef = useRef(null);
+    const [titleHeight, setTitleHeight] = useState(30);
+    const { scrollYProgress } = useScroll({ target: containerRef });
 
     useEffect(() => {
         const moveCursor = (e: MouseEvent) => {
@@ -30,27 +32,44 @@ const HomePage = () => {
         return () => window.removeEventListener('mousemove', moveCursor);
     }, []);
 
-    // Observer pour détecter quand on est dans la section services
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsTitleFixed(entry.isIntersecting);
-            },
-            { threshold: 0, rootMargin: '-1px' }
-        );
-
-        if (servicesRef.current) {
-            observer.observe(servicesRef.current);
-        }
-
-        return () => observer.disconnect();
+        const handleResize = () => {
+            setTitleHeight(window.innerWidth < 768 ? 20 : 28);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: containerRef });
+    const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setFormStatus('SENDING');
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        try {
+            // ⚠️ REMPLACE L'URL PAR TON ID FORMSPREE ICI (ex: https://formspree.io/f/ton_id)
+            const response = await fetch("https://formspree.io/f/xgooooda", {
+                method: "POST",
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                setFormStatus('SUCCESS');
+                form.reset();
+            } else {
+                setFormStatus('ERROR');
+            }
+        } catch (error) {
+            setFormStatus('ERROR');
+        }
+    };
 
     return (
         <div ref={containerRef} className="bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text font-sans selection:bg-primary selection:text-black transition-colors duration-500">
+            <Navbar />
 
             <motion.div
                 style={{ x: cursorXSpring, y: cursorYSpring }}
@@ -59,30 +78,22 @@ const HomePage = () => {
 
             {/* HERO */}
             <section className="relative h-screen w-full overflow-hidden bg-dark-bg">
-                {/* VIDEO BACKGROUND */}
                 <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-70">
                     <source src="https://cdn.pixabay.com/video/2016/08/12/4382-178617337_large.mp4" type="video/mp4" />
                 </video>
-
-                {/* GRADIENTS & OVERLAYS */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 md:bg-gradient-to-t md:from-light-bg md:dark:from-dark-bg md:via-transparent md:to-black/40 transition-colors duration-500"></div>
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
 
-                {/* CONTENT CONTAINER */}
                 <div className="absolute inset-0 w-full h-full p-6 md:p-12 z-10 flex flex-col justify-center items-center text-center md:justify-end md:items-stretch md:text-left">
-
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                         className="w-full"
                     >
-                        {/* TITRE PRINCIPAL */}
                         <h1 className="font-museo text-[15vw] md:text-[12vw] leading-[0.85] md:leading-[0.8] font-bold tracking-tighter uppercase text-white mix-blend-overlay opacity-90 mb-6 md:mb-0">
                             Bobenvy
                         </h1>
-
-                        {/* CONTAINER SOUS-TITRE */}
                         <div className="flex flex-col items-center md:flex-row md:justify-between md:items-end md:mt-8 md:border-t md:border-white/20 md:pt-6">
                             <div className="w-[1px] h-8 bg-primary mb-6 md:hidden"></div>
                             <p className="max-w-xs md:max-w-md text-lg md:text-2xl font-light leading-tight text-white/90">
@@ -94,8 +105,6 @@ const HomePage = () => {
                             </div>
                         </div>
                     </motion.div>
-
-                    {/* SCROLL INDICATOR (Mobile Only) */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -104,12 +113,13 @@ const HomePage = () => {
                     >
                         <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent opacity-50"></div>
                     </motion.div>
-
                 </div>
             </section>
 
-            {/* ABOUT */}
-            <AboutSection />
+            {/* ABOUT - AJOUT DE L'ANCRE ID="about" */}
+            <div id="about">
+                <AboutSection />
+            </div>
 
             {/* MANIFESTO */}
             <section className="py-40 px-6 md:px-24 bg-light-bg dark:bg-dark-bg transition-colors duration-500 relative z-10">
@@ -125,31 +135,36 @@ const HomePage = () => {
                             Bobenvy structure le chaos. Nous ne vendons pas de simples prestations, nous vendons de la clarté.
                         </p>
                         <div className="flex items-center">
-                            <Link to="/about" className="group flex items-center gap-4 text-light-text dark:text-dark-text uppercase tracking-widest hover:text-primary transition-colors">Découvrir l'agence <div className="w-12 h-[1px] bg-light-text dark:bg-white group-hover:bg-primary transition-colors"></div></Link>
+                            {/* Le lien pointe vers l'ancre #about */}
+                            <a href="#about" className="group flex items-center gap-4 text-light-text dark:text-dark-text uppercase tracking-widest hover:text-primary transition-colors cursor-pointer">
+                                Découvrir l'agence
+                                <div className="w-12 h-[1px] bg-light-text dark:bg-white group-hover:bg-primary transition-colors"></div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* --- 3. SERVICES (TITRE + STACK) --- */}
-            {/* ✅ IMPORTANT : Ajout de la ref={servicesRef} ici pour que le titre sticky fonctionne */}
-            <div ref={servicesRef} className="relative bg-light-bg dark:bg-dark-bg transition-colors duration-500">
+            <div id="services" className="relative bg-light-bg dark:bg-dark-bg transition-colors duration-500 min-h-screen">
 
-                {/* A. LE TITRE (Fixed quand dans la section) */}
+                {/* A. LE TITRE STICKY */}
                 <div
-                    className={`${isTitleFixed ? 'fixed' : 'absolute'} top-0 left-0 right-0 z-50 flex flex-col justify-end pb-8 px-6 md:px-12 bg-light-bg dark:bg-dark-bg transition-all duration-300 shadow-sm border-b border-light-border/10 dark:border-dark-border/10`}
-                    style={{ height: `${TITLE_HEIGHT_VH}vh` }}
-                >
+                    className="sticky top-0 left-0 right-0 z-40 flex flex-col justify-end pb-8 px-6 md:px-12 bg-light-bg dark:bg-dark-bg transition-all duration-300 shadow-sm border-b border-light-border/10 dark:border-dark-border/10"
+                    style={{ height: `${titleHeight}vh` }}                >
                     <span className="text-primary font-mono text-xs uppercase tracking-widest block mb-4">Domaines d'intervention</span>
                     <h3 className="font-museo text-5xl md:text-8xl text-light-text dark:text-dark-text transition-colors leading-none">EXPERTISES</h3>
                 </div>
-                <div style={{ height: '10vh' }} />
-                <ScrollStack headerHeight={TITLE_HEIGHT_VH} />
-                <div style={{ height: '10vh' }} />
+
+                {/* B. LA STACK */}
+                <div className="relative z-10 pb-20">
+                    <ScrollStack headerHeight={titleHeight} />
+                </div>
 
             </div>
 
-            {/* ✅ 4. PORTFOLIO PREVIEW : Preuve sociale après les services */}
+            {/* PORTFOLIO PREVIEW */}
+            <div id="portfolio" ></div>
             <PortfolioPreview />
 
             {/* METHODOLOGY */}
@@ -176,17 +191,105 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* ✅ 5. RESOURCES PREVIEW : Autorité avant le contact */}
-            <ResourcesPreview />
+            {/* RESOURCES PREVIEW */}
+            <div id="ressources" >
+                <ResourcesPreview />
+            </div>
 
-            {/* CTA */}
-            <section className="py-40 bg-primary text-black flex justify-center items-center text-center overflow-hidden group cursor-pointer relative z-30">
-                <Link to="/contact" className="relative z-10">
-                    <motion.h2 whileHover={{ scale: 1.05 }} className="font-museo text-[10vw] leading-none font-bold">START NOW</motion.h2>
-                    <p className="font-mono uppercase tracking-widest mt-4">Prendre rendez-vous</p>
-                </Link>
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-            </section>
+            {/* CONTACT FORM SECTION */}
+            <div id="contact" className="py-32 px-6 md:px-12 bg-light-surface dark:bg-dark-surface transition-colors duration-500 relative z-30">
+                <div className="max-w-4xl mx-auto">
+
+                    {/* Header Section */}
+                    <div className="text-center mb-16">
+                        <span className="text-primary font-mono text-xs uppercase tracking-widest block mb-4">Start Now</span>
+                        <h2 className="font-museo text-5xl md:text-7xl text-light-text dark:text-dark-text mb-6">PARLEZ-NOUS DE <br />VOTRE PROJET</h2>
+                        <p className="text-light-muted dark:text-dark-muted text-lg font-light">
+                            Une idée ? Un besoin de clarté ? Remplissez ce formulaire et construisons votre singularité.
+                        </p>
+                    </div>
+
+                    {/* Formulaire */}
+                    <div className="bg-light-bg dark:bg-dark-bg p-8 md:p-12 rounded-3xl border border-light-border dark:border-dark-border shadow-2xl relative overflow-hidden">
+
+                        {formStatus === 'SUCCESS' ? (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="text-center py-20"
+                            >
+                                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <Send size={32} className="text-black ml-1" />
+                                </div>
+                                <h3 className="font-museo text-3xl mb-2 text-light-text dark:text-dark-text">Message Reçu</h3>
+                                <p className="opacity-60 mb-8">Nous revenons vers vous sous 24h.</p>
+                                <button onClick={() => setFormStatus('IDLE')} className="text-xs font-bold uppercase tracking-widest border-b border-primary pb-1 hover:text-primary transition-colors">
+                                    Envoyer un autre message
+                                </button>
+                            </motion.div>
+                        ) : (
+                            <form onSubmit={handleContactSubmit} className="space-y-8 relative z-10">
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-mono uppercase tracking-widest opacity-50 ml-1">Nom</label>
+                                        <input
+                                            required
+                                            name="name"
+                                            type="text"
+                                            placeholder="Votre nom"
+                                            className="w-full bg-transparent border-b border-light-border dark:border-dark-border px-4 py-4 focus:outline-none focus:border-primary focus:bg-light-surface/50 dark:focus:bg-dark-surface/50 transition-all text-lg"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-mono uppercase tracking-widest opacity-50 ml-1">Email</label>
+                                        <input
+                                            required
+                                            name="email"
+                                            type="email"
+                                            placeholder="votre@email.com"
+                                            className="w-full bg-transparent border-b border-light-border dark:border-dark-border px-4 py-4 focus:outline-none focus:border-primary focus:bg-light-surface/50 dark:focus:bg-dark-surface/50 transition-all text-lg"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label className="text-xs font-mono uppercase tracking-widest opacity-50 ml-1">Message</label>
+                                    <textarea
+                                        required
+                                        name="message"
+                                        rows={4}
+                                        placeholder="Décrivez votre besoin..."
+                                        className="w-full bg-transparent border-b border-light-border dark:border-dark-border px-4 py-4 focus:outline-none focus:border-primary focus:bg-light-surface/50 dark:focus:bg-dark-surface/50 transition-all text-lg resize-none"
+                                    ></textarea>
+                                </div>
+
+                                <div className="pt-4 flex flex-col md:flex-row items-center justify-between gap-6">
+                                    <button
+                                        type="submit"
+                                        disabled={formStatus === 'SENDING'}
+                                        className="w-full md:w-auto bg-primary text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                                    >
+                                        {formStatus === 'SENDING' ? 'Envoi...' : <>Envoyer <ArrowRight size={18} /></>}
+                                    </button>
+
+                                    {formStatus === 'ERROR' && <p className="text-red-500 text-xs font-mono">Erreur lors de l'envoi. Réessayez.</p>}
+                                </div>
+                            </form>
+                        )}
+                    </div>
+
+                    {/* Email direct en bas */}
+                    <div className="mt-12 text-center">
+                        <p className="text-light-muted dark:text-dark-muted font-light">
+                            Ou écrivez nous directement à <br className="md:hidden" />
+                            <a href="mailto:contact@bobenvy.com" className="text-light-text dark:text-dark-text font-bold hover:text-primary transition-colors ml-1 border-b border-transparent hover:border-primary">
+                                contact@bobenvy.com
+                            </a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
 
             <footer className="bg-light-bg dark:bg-dark-bg py-12 px-6 flex justify-between items-end border-t border-light-border dark:border-dark-border text-xs font-mono text-light-muted dark:text-dark-muted uppercase relative z-30 transition-colors duration-500">
                 <div>© 2026 Bobenvy Strategy.</div>

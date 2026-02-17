@@ -2,21 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu as MenuIcon, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const currentLang = i18n.language || 'en';
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
   const toggleLang = () => {
@@ -24,26 +22,49 @@ const Navbar: React.FC = () => {
     i18n.changeLanguage(newLang);
   };
 
+  const navLinks = [
+    { name: t('nav.about') || "Agence", href: '/#about' },
+    { name: t('nav.services') || "Expertises", href: '/#services' },
+    { name: t('nav.portfolio') || "Projets", href: '/#portfolio' },
+    { name: t('nav.ressources') || "Ressources", href: '/#ressources' },
+    { name: t('nav.contact') || "Contact", href: '/#contact' },
+  ];
+
+  // ✅ NOUVELLE LOGIQUE DE SCROLL (Basée sur ton snippet)
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsOpen(false);
-    if (href.startsWith('#') && location.pathname === '/') {
+    
+    if (href.startsWith('/#')) {
       e.preventDefault();
-      const targetId = href.replace('#', '');
-      const element = document.getElementById(targetId);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 500);
+      const targetId = href.replace('/#', '');
+
+      // Fonction de scroll manuel avec calcul d'offset
+      const performSmoothScroll = () => {
+        const element = document.getElementById(targetId);
+        if (element) {
+            // Le calcul magique : Position élément + Scroll actuel - Offset (85px pour la navbar)
+            const offset = 85; 
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - offset;
+      
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+        }
+      };
+
+      if (location.pathname === '/') {
+        // Si on est déjà sur la home, on scroll après un mini délai (pour laisser le menu se fermer)
+        setTimeout(performSmoothScroll, 100);
+      } else {
+        // Si on est ailleurs, on va sur la home, puis on scroll
+        navigate('/');
+        // Délai plus long pour laisser le temps à la Home de se charger/monter
+        setTimeout(performSmoothScroll, 500);
       }
     }
   };
-
-  const navLinks = [
-    { name: t('nav.about') || "Agence", href: '#about' },
-    { name: t('nav.services') || "Expertises", href: '#services' },
-    { name: t('nav.portfolio') || "Projets", href: '#portfolio' },
-    { name: t('nav.contact') || "Contact", href: '#contact' },
-  ];
 
   const menuVariants = {
     hidden: { y: 50, opacity: 0 },
@@ -51,16 +72,12 @@ const Navbar: React.FC = () => {
     exit: { opacity: 0, y: -20 }
   };
 
-  // Classes communes pour assurer l'alignement parfait entre les deux couches
   const navContainerClasses = "fixed top-0 left-0 w-full px-6 py-6 md:px-12 md:py-8 flex justify-between items-center pointer-events-none";
 
   return (
     <>
-      {/* --- LAYER 1 : MIX-BLEND (Logo, Links, Menu) --- */}
-      {/* Cette couche gère l'effet d'inversion des couleurs. Le Toggle y est INVISIBLE. */}
-      <nav className={`${navContainerClasses} z-[90] mix-blend-difference text-white`}>
-        
-        {/* GAUCHE : Logo Visible */}
+      {/* LAYER 1 : MIX-BLEND */}
+      <nav className={`${navContainerClasses} z-[998] mix-blend-difference text-white`}>
         <div className="pointer-events-auto">
             <Link to="/" onClick={() => setIsOpen(false)} className="group relative block">
             <span className="font-museo text-2xl md:text-3xl font-bold tracking-tight">
@@ -69,11 +86,8 @@ const Navbar: React.FC = () => {
             </Link>
         </div>
 
-        {/* DROITE : Tout est visible SAUF le Toggle */}
         <div className="flex items-center gap-4 md:gap-8 pointer-events-auto">
-          
-          {/* Toggle INVISIBLE (Garde l'espace pour l'alignement) */}
-          <div className="invisible opacity-0">
+          <div className="invisible opacity-0 w-[52px]">
              <ThemeToggle />
           </div>
 
@@ -81,7 +95,10 @@ const Navbar: React.FC = () => {
             {currentLang === 'en' ? 'FR' : 'EN'}
           </button>
           
-          <Link to="/contact" className="hidden md:flex items-center gap-2 border border-white/30 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+          <Link 
+            to="/contact" // ou /#contact selon préférence
+            className="hidden md:flex items-center gap-2 border border-white/30 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
+          >
             Start Project
           </Link>
 
@@ -96,42 +113,22 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-
-      {/* --- LAYER 2 : NORMAL (Toggle Seul) --- */}
-      {/* Cette couche est normale. Tout est INVISIBLE sauf le Toggle. */}
-      <nav className={`${navContainerClasses} z-[91]`}>
-        
-        {/* GAUCHE : Logo Invisible */}
-        <div className="invisible">
-            <span className="font-museo text-2xl md:text-3xl font-bold tracking-tight">
-                BOBENVY<span className="text-primary">.</span>
-            </span>
+      {/* LAYER 2 : NORMAL (Toggle) */}
+      <nav className={`${navContainerClasses} z-[999]`}>
+        <div className="invisible pointer-events-none">
+            <span className="font-museo text-2xl md:text-3xl font-bold tracking-tight">BOBENVY<span className="text-primary">.</span></span>
         </div>
 
-        {/* DROITE : Seul le Toggle est visible */}
-        <div className="flex items-center gap-4 md:gap-8">
-          
-          {/* Toggle VISIBLE (et cliquable) */}
+        <div className="flex items-center gap-4 md:gap-8 pointer-events-none">
           <div className="pointer-events-auto">
              <ThemeToggle />
           </div>
-
-          {/* Les autres boutons sont INVISIBLES */}
-          <button className="hidden md:flex font-mono text-xs uppercase invisible">
-            {currentLang === 'en' ? 'FR' : 'EN'}
-          </button>
-          
-          <div className="hidden md:flex items-center gap-2 border border-white/30 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest invisible">
-            Start Project
-          </div>
-
+          {/* Espaces réservés invisibles */}
+          <button className="hidden md:flex font-mono text-xs uppercase invisible">{currentLang === 'en' ? 'FR' : 'EN'}</button>
+          <div className="hidden md:flex items-center gap-2 border border-white/30 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest invisible">Start Project</div>
           <div className="flex items-center gap-2 invisible">
-            <span className="hidden md:block font-mono text-xs uppercase tracking-widest">
-              {isOpen ? 'Close' : 'Menu'}
-            </span>
-            <div className="p-2 rounded-full border border-white/30">
-               <MenuIcon size={20} />
-            </div>
+            <span className="hidden md:block font-mono text-xs uppercase tracking-widest">{isOpen ? 'Close' : 'Menu'}</span>
+            <div className="p-2 rounded-full border border-white/30"><MenuIcon size={20} /></div>
           </div>
         </div>
       </nav>
@@ -149,12 +146,11 @@ const Navbar: React.FC = () => {
               onClick={() => setIsOpen(false)}
               className="absolute top-8 right-6 md:right-12 p-3 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors z-[101]"
             >
-              <X size={24} className="text-light-text dark:text-dark-text" />
+              {/* <X size={24} className="text-light-text dark:text-dark-text" /> */}
             </button>
              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
 
             <div className="max-w-7xl w-full mx-auto grid md:grid-cols-2 gap-12 h-full md:h-auto items-center pt-20 md:pt-0">
-              {/* Liens de navigation */}
               <div className="flex flex-col gap-2 md:gap-6">
                 <span className="text-primary font-mono text-xs uppercase tracking-widest mb-4 block">Navigation</span>
                 {navLinks.map((link, i) => (
@@ -172,7 +168,6 @@ const Navbar: React.FC = () => {
                 ))}
               </div>
 
-              {/* Infos Droite */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5, duration: 0.8 }}
                 className="flex flex-col gap-12 border-t md:border-t-0 md:border-l border-light-border dark:border-dark-border pt-8 md:pl-12"
@@ -180,15 +175,14 @@ const Navbar: React.FC = () => {
                 <div>
                   <h4 className="font-bold mb-4 uppercase tracking-widest text-sm">Follow Us</h4>
                   <div className="flex flex-col gap-2 font-mono text-sm opacity-60">
-                    <a href="#" className="hover:text-primary w-max">LinkedIn</a>
-                    <a href="#" className="hover:text-primary w-max">Instagram</a>
+                    <span className="w-max opacity-50 cursor-not-allowed">LinkedIn - coming soon</span>
+                    <span className="w-max opacity-50 cursor-not-allowed">Instagram - coming soon</span>
                   </div>
                 </div>
 
                 <div>
                   <h4 className="font-bold mb-4 uppercase tracking-widest text-sm">Contact</h4>
-                  <p className="opacity-60 text-lg mb-2">hello@bobenvy.com</p>
-                  <p className="opacity-60 font-mono text-xs">+33 1 23 45 67 89</p>
+                  <p className="opacity-60 text-lg mb-2">contact@bobenvy.com</p>
                 </div>
               </motion.div>
             </div>
@@ -201,7 +195,6 @@ const Navbar: React.FC = () => {
               <span>Paris — France</span>
               <span>© Bobenvy 2026</span>
             </motion.div>
-
           </motion.div>
         )}
       </AnimatePresence>

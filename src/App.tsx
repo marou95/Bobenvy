@@ -6,21 +6,24 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 // Pages
 import HomePage from './pages/HomePage';
-import PortfolioPage from './pages/PortfolioPage'; // ✅ Nouvelle page
-import ResourcesPage from './pages/RessourcePage'; // ✅ Nouvelle page
+import PortfolioPage from './pages/PortfolioPage';
+import ResourcesPage from './pages/RessourcePage';
+import ProjectDetail from './pages/ProjectDetail';
+import PostDetail from './pages/PostDetail';
 
 // Ce composant gère les routes et les animations
-// Il doit être à l'intérieur du <Router> pour utiliser useLocation()
 const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
     <AnimatePresence mode="wait">
-      <div key={location.pathname} className="w-full h-full">
+      <div key={location.pathname} className="w-full">
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/portfolio/:slug" element={<ProjectDetail />} />
           <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/resources/:slug" element={<PostDetail />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </div>
@@ -30,12 +33,9 @@ const AnimatedRoutes = () => {
 
 const App: React.FC = () => {
 
-  // Initialisation du thème au niveau de l'App pour éviter les flashs
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    // On applique la classe immédiatement
     if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
       document.documentElement.classList.add('dark');
     } else {
@@ -45,12 +45,9 @@ const App: React.FC = () => {
 
   return (
     <Router>
+      {/* <Navbar /> */}
       <div className="relative min-h-screen bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text transition-colors duration-500 font-sans overflow-x-clip">
-        <Navbar />
-        {/* Contenu des pages avec transitions */}
-        <div className="relative z-10">
-          <AnimatedRoutes />
-        </div>
+        <AnimatedRoutes />
       </div>
     </Router>
   );
