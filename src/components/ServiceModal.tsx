@@ -167,7 +167,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
                     
                     <div className="inline-block">
                         <PopupButton
-                          url="https://calendly.com/VOTRE_LIEN_ICI"
+                          url="https://calendly.com/contact-bobenvy/30min"
                           rootElement={document.getElementById("root")!}
                           text="Prendre rendez-vous"
                           className="bg-black text-white px-8 py-4 rounded-full font-mono uppercase tracking-widest text-xs hover:scale-105 transition-transform font-bold cursor-pointer"

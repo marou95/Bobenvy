@@ -36,7 +36,7 @@ if (posts.length === 0) {
 
         <div className="grid md:grid-cols-3 gap-8">
             {posts.map((post, i) => (
-                <Link to="/resources" key={post._id} className="group block h-full">
+                <Link to={`/resources/${post.slug.current}`} key={post._id} className="group block h-full">
                     <motion.article 
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
