@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Heart, Zap, ShieldCheck, Eye, Users, Fingerprint } from 'lucide-react';
+import { ArrowRight, Heart, Zap, ShieldCheck, Eye, Users, Fingerprint, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PopupModal } from 'react-calendly';
 
@@ -53,19 +53,19 @@ const TABS = [
         subtitle: "L'APPROCHE BUSINESS-FIRST",
         content: (
             <div className="space-y-6">
-                <ul className="space-y-4">
+                <div className="space-y-4">
                     {[
                         "Une vision globale : de la stratégie à l’exécution.",
                         "Des recommandations claires, concrètes et actionnables.",
                         "Un accompagnement humain, exigeant et transparent.",
                         "De la flexibilité pour des solutions sur mesure."
                     ].map((item, i) => (
-                        <li key={i} className="flex items-start gap-3">
+                        <div key={i} className="flex items-start gap-3">
                             <div className="min-w-[6px] h-[6px] rounded-full bg-primary mt-2"></div>
                             <span className="text-lg font-light opacity-90">{item}</span>
-                        </li>
+                        </div>
                     ))}
-                </ul>
+                </div>
                 <div className="pt-4">
                     <p className="font-museo text-2xl">"Nous ne cherchons pas à faire plus. <br />Nous cherchons à faire <span className="text-primary italic">mieux</span>."</p>
                 </div>
@@ -102,9 +102,9 @@ const AboutSection = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <section id="about" className="py-20 md:py-32 bg-light-bg dark:bg-dark-bg transition-colors duration-500 overflow-hidden">
+        <section id="about" className="py-20 md:py-32 bg-light-bg dark:bg-dark-bg transition-colors duration-500 overflow-hidden relative z-10">
 
-            {/* 1. TICKER (Bande défilante problèmes) */}
+            {/* TICKER (Bande défilante problèmes) */}
             <div className="w-full bg-light-surface dark:bg-dark-surface py-4 border-y border-light-border dark:border-dark-border mb-20 overflow-hidden relative rotate-[-1deg] scale-105">
                 <motion.div
                     className="flex whitespace-nowrap gap-12 md:gap-24 text-light-muted dark:text-dark-muted font-mono text-sm uppercase tracking-widest"
@@ -128,8 +128,8 @@ const AboutSection = () => {
 
             <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-                {/* 2. INTRO HEADER */}
-                <div className="mb-20 grid gap-12 items-end">
+                {/* INTRO HEADER */}
+                <div className="mb-12 md:mb-20 grid gap-8 md:gap-12 items-end">
                     <div>
                         <span className="text-primary font-mono text-xs uppercase tracking-widest block mb-4">À Propos</span>
                         <h2 className="font-museo text-4xl md:text-6xl leading-[1.1] text-light-text dark:text-dark-text">
@@ -145,33 +145,80 @@ const AboutSection = () => {
                     </div>
                 </div>
 
-                {/* 3. INTERACTIVE TABS */}
-                <div className="grid lg:grid-cols-12 gap-12 border-t border-light-border dark:border-dark-border pt-12">
+                {/* --- VERSION MOBILE : ACCORDÉON --- */}
+                <div className="lg:hidden flex flex-col gap-4 border-t border-light-border dark:border-dark-border pt-8">
+                    {TABS.map((tab, index) => (
+                        <div 
+                            key={`mobile-${tab.id}`} 
+                            className={`border rounded-2xl overflow-hidden transition-colors duration-300 ${activeTab === index ? 'border-primary bg-light-surface/50 dark:bg-dark-surface/50' : 'border-light-border dark:border-dark-border bg-transparent'}`}
+                        >
+                            <button
+                                onClick={() => setActiveTab(activeTab === index ? -1 : index)}
+                                className="w-full flex justify-between items-center p-6 text-left"
+                            >
+                                <div className="flex flex-col">
+                                    <span className="font-mono text-[10px] uppercase tracking-widest text-primary mb-1">0{index + 1}</span>
+                                    <span className="font-museo text-2xl text-light-text dark:text-dark-text">{tab.label}</span>
+                                </div>
+                                <motion.div animate={{ rotate: activeTab === index ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                                    <ChevronDown size={24} className="text-primary" />
+                                </motion.div>
+                            </button>
+                            
+                            <AnimatePresence>
+                                {activeTab === index && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: 'auto', opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="p-6 pt-0 border-t border-light-border/10 dark:border-dark-border/10 mt-2">
+                                            <span className="font-mono text-[10px] text-primary uppercase tracking-[0.3em] mb-6 block mt-4">
+                                                {tab.subtitle}
+                                            </span>
+                                            <div className="text-light-text dark:text-dark-text mb-8">
+                                                {tab.content}
+                                            </div>
+                                            <button
+                                                onClick={() => setIsOpen(true)}
+                                                className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors cursor-pointer"
+                                            >
+                                                Prendre rendez-vous <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+                                            </button>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                    ))}
+                </div>
 
+                {/* --- VERSION DESKTOP : ONGLETS --- */}
+                <div className="hidden lg:grid lg:grid-cols-12 gap-12 border-t border-light-border dark:border-dark-border pt-12">
+                    
                     {/* MENU GAUCHE */}
                     <div className="lg:col-span-4 flex flex-col gap-2">
                         {TABS.map((tab, index) => (
                             <button
-                                key={tab.id}
+                                key={`desktop-${tab.id}`}
                                 onClick={() => setActiveTab(index)}
                                 className={`text-left py-6 px-6 border-b border-light-border/20 dark:border-dark-border/20 transition-all duration-300 group relative overflow-hidden rounded-lg ${activeTab === index
                                         ? 'bg-light-surface dark:bg-dark-surface'
                                         : 'hover:bg-light-surface/50 dark:hover:bg-dark-surface/50'
                                     }`}
                             >
-                                {/* Barre active verticale */}
                                 {activeTab === index && (
                                     <motion.div
                                         layoutId="active-pill"
                                         className="absolute left-0 top-0 bottom-0 w-1 bg-primary"
                                     />
                                 )}
-
-                                <span className={`font-mono text-[10px] uppercase tracking-widest mb-1 block transition-colors ${activeTab === index ? 'text-primary' : 'text-light-muted dark:text-dark-muted'
-                                    }`}>0{index + 1}</span>
-
-                                <span className={`font-museo text-2xl transition-colors ${activeTab === index ? 'text-light-text dark:text-dark-text' : 'text-light-muted dark:text-dark-muted opacity-50 group-hover:opacity-100'
-                                    }`}>
+                                <span className={`font-mono text-[10px] uppercase tracking-widest mb-1 block transition-colors ${activeTab === index ? 'text-primary' : 'text-light-muted dark:text-dark-muted'}`}>
+                                    0{index + 1}
+                                </span>
+                                <span className={`font-museo text-2xl transition-colors ${activeTab === index ? 'text-light-text dark:text-dark-text' : 'text-light-muted dark:text-dark-muted opacity-50 group-hover:opacity-100'}`}>
                                     {tab.label}
                                 </span>
                             </button>
@@ -181,46 +228,45 @@ const AboutSection = () => {
                     {/* CONTENU DROITE */}
                     <div className="lg:col-span-8 relative min-h-[400px]">
                         <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeTab}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
-                                transition={{ duration: 0.4, ease: "easeOut" }}
-                                className="h-full flex flex-col justify-center p-6 md:p-12 rounded-3xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border relative overflow-hidden"
-                            >
-                                {/* Background Decoratif */}
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-[150px] opacity-10 pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
-
-                                <div className="relative z-10">
-                                    <span className="font-mono text-xs text-primary uppercase tracking-[0.3em] mb-6 block">
-                                        {TABS[activeTab].subtitle}
-                                    </span>
-
-                                    <div className="text-light-text dark:text-dark-text">
-                                        {TABS[activeTab].content}
+                            {/* Sur desktop, on s'assure qu'un onglet est toujours ouvert (pas de -1) */}
+                            {activeTab >= 0 && (
+                                <motion.div
+                                    key={activeTab}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.4, ease: "easeOut" }}
+                                    className="h-full flex flex-col justify-center p-12 rounded-3xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border relative overflow-hidden"
+                                >
+                                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-[150px] opacity-10 pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+                                    <div className="relative z-10">
+                                        <span className="font-mono text-xs text-primary uppercase tracking-[0.3em] mb-6 block">
+                                            {TABS[activeTab].subtitle}
+                                        </span>
+                                        <div className="text-light-text dark:text-dark-text">
+                                            {TABS[activeTab].content}
+                                        </div>
+                                        <div className="mt-12 pt-8 border-t border-light-border/20 dark:border-dark-border/20 flex gap-6">
+                                            <button
+                                                onClick={() => setIsOpen(true)}
+                                                className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors cursor-pointer"
+                                            >
+                                                Prendre rendez-vous <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+                                            </button>
+                                        </div>
                                     </div>
-
-                                    <div className="mt-12 pt-8 border-t border-light-border/20 dark:border-dark-border/20 flex gap-6">
-                                        <button
-                                            onClick={() => setIsOpen(true)}
-                                            className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors cursor-pointer"
-                                        >
-                                            Prendre rendez-vous <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
-                                        </button>
-                                    </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            )}
                         </AnimatePresence>
-                        <PopupModal
-                            url="https://calendly.com/contact-bobenvy/30min"
-                            onModalClose={() => setIsOpen(false)}
-                            open={isOpen}
-                            rootElement={document.getElementById("root")!}
-                        />
                     </div>
-
                 </div>
+
+                <PopupModal
+                    url="https://calendly.com/contact-bobenvy/30min"
+                    onModalClose={() => setIsOpen(false)}
+                    open={isOpen}
+                    rootElement={document.getElementById("root")!}
+                />
             </div>
         </section>
     );
