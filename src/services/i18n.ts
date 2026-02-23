@@ -1,7 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-// Define resources
 const resources = {
   en: {
     translation: {
@@ -16,24 +15,12 @@ const resources = {
         home: "Accueil",
         about: "A propos",
         services: "Services",
-        portfolio: "Realisation & Portfolio",
-        blog: "Blog & ressources",
+        portfolio: "Portfolio",
+        ressources: "Blog & ressources",
         contact: "Contact",
         back: "Go back"
-      },
-      blog: {
-        title: "Lab Journal",
-        read_more: "Read Analysis",
-        archiveIntro: "Complete technical archive of formulation reports and food engineering research."
-      },
-      contact: {
-        title: "Contact Me",
-        name: "Name",
-        email: "Email",
-        message: "Your Message",
-        send: "Transmit Request",
-        success: "Data transmitted successfully."
       }
+
     }
   },
   fr: {
@@ -48,24 +35,11 @@ const resources = {
         home: "Accueil",
         about: "A propos",
         services: "Services",
-        portfolio: "Realisation & Portfolio",
-        blog: "Blog & ressources",
+        portfolio: "Portfolio",
+        ressources: "Blog & ressources",
         contact: "Contact",
         back: "Retour"
       },
-      blog: {
-        title: "Journal de Labo",
-        read_more: "Lire l'Analyse",
-        archiveIntro: "Archive technique complète des rapports de formulation et de la recherche en ingénierie alimentaire."
-      },
-      contact: {
-        title: "Contactez-moi",
-        name: "Nom",
-        email: "Email",
-        message: "Votre Message",
-        send: "Transmettre la Demande",
-        success: "Données transmises avec succès."
-      }
     }
   }
 };
