@@ -10,8 +10,6 @@ export interface ServiceDetail {
   description: string;
   tags: string[];
   color: string;
-  bgVideo: string; 
-  
   catchphrase: string;
   intro: string;
   mission: string;
@@ -31,13 +29,13 @@ interface ServiceModalProps {
 }
 
 const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service }) => {
-  
+
   // GESTION DU SCROLL : Bloque le body (homepage), laisse la modale active
   useEffect(() => {
     if (isOpen) {
       // On bloque le scroll de la page principale
       document.body.style.overflow = 'hidden';
-      
+
       const handleEsc = (e: KeyboardEvent) => {
         if (e.key === 'Escape') onClose();
       };
@@ -75,40 +73,19 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
             // overflow-y-auto ICI permet de scroller DANS la modale alors que le body est bloqué
             className="fixed inset-0 z-[89] bg-light-bg dark:bg-dark-bg overflow-y-auto isolate"
           >
-            
-            {/* 1. HEADER VIDÉO */}
-            <div className="absolute top-0 left-0 w-full h-[80vh] z-0 overflow-hidden pointer-events-none">
-                <video
-                    key={service.bgVideo} 
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover opacity-30 dark:opacity-40"
-                >
-                    <source src={service.bgVideo} type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-b from-light-bg/20 via-light-bg/60 to-light-bg dark:from-dark-bg/20 dark:via-dark-bg/60 dark:to-dark-bg" />
-            </div>
-
-            {/* 2. BOUTON FERMER (CORRIGÉ DESKTOP & MOBILE) */}
-            {/* pt-28 : Mobile (pour passer sous le header mobile) */}
-            {/* md:pt-32 : Desktop (pour passer sous le header desktop plus large) */}
             <div className="sticky top-0 right-0 z-50 flex justify-end px-6 pt-28 pb-4 md:pt-32 md:pr-12 pointer-events-none">
-                <button 
-                  onClick={onClose}
-                  className="pointer-events-auto group flex items-center gap-3 bg-light-surface/80 dark:bg-dark-surface/80 backdrop-blur border border-light-border dark:border-dark-border px-4 py-2 rounded-full hover:bg-primary hover:text-black transition-colors shadow-lg"
-                >
-                  <span className="font-mono text-[10px] uppercase tracking-widest hidden md:block">Fermer (Esc)</span>
-                  <X size={20} />
-                </button>
+              <button
+                onClick={onClose}
+                className="pointer-events-auto group flex items-center gap-3 bg-light-surface/80 dark:bg-dark-surface/80 backdrop-blur border border-light-border dark:border-dark-border px-4 py-2 rounded-full hover:bg-primary hover:text-black transition-colors shadow-lg"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-widest hidden md:block">Fermer (Esc)</span>
+                <X size={20} />
+              </button>
             </div>
 
             {/* 3. CONTENU */}
-            {/* -mt-4 : Ajustement fin pour rapprocher le titre du bouton */}
             <div className="relative z-10 max-w-5xl mx-auto w-full px-6 md:px-10 pb-20 -mt-4">
-              
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
@@ -121,16 +98,15 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
                   {service.intro}
                 </p>
               </motion.div>
-
               {/* GRILLES ET TEXTES SUIVANTS */}
               <div className="grid md:grid-cols-2 gap-8 mb-20">
                 <div className="p-8 rounded-2xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border shadow-sm">
-                   <h4 className="font-bold text-lg mb-4 flex items-center gap-2"><ArrowRight className="text-primary" size={20}/> Notre Mission</h4>
-                   <p className="opacity-80 font-light">{service.mission}</p>
+                  <h4 className="font-bold text-lg mb-4 flex items-center gap-2"><ArrowRight className="text-primary" size={20} /> Notre Mission</h4>
+                  <p className="opacity-80 font-light">{service.mission}</p>
                 </div>
                 <div className="p-8 rounded-2xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border shadow-sm">
-                   <h4 className="font-bold text-lg mb-4 flex items-center gap-2"><ArrowRight className="text-primary" size={20}/> Objectif</h4>
-                   <p className="opacity-80 font-light">{service.objectif}</p>
+                  <h4 className="font-bold text-lg mb-4 flex items-center gap-2"><ArrowRight className="text-primary" size={20} /> Objectif</h4>
+                  <p className="opacity-80 font-light">{service.objectif}</p>
                 </div>
               </div>
 
@@ -152,7 +128,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {service.steps.map((step, i) => (
                     <div key={i} className="relative p-6 pt-12 border-t border-light-border dark:border-dark-border hover:bg-light-surface dark:hover:bg-dark-surface transition-colors rounded-lg group">
-                      <span className="absolute top-6 right-6 text-4xl font-museo text-light-border dark:text-dark-border group-hover:text-primary transition-colors opacity-30">0{i+1}</span>
+                      <span className="absolute top-6 right-6 text-4xl font-museo text-light-border dark:text-dark-border group-hover:text-primary transition-colors opacity-30">0{i + 1}</span>
                       <h4 className="font-bold text-lg mb-2">{step.title}</h4>
                       <p className="text-sm opacity-70 leading-relaxed">{step.desc}</p>
                     </div>
@@ -161,20 +137,20 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
               </div>
 
               <div className="bg-primary text-black rounded-[2rem] p-10 md:p-16 text-center relative overflow-hidden">
-                 <div className="relative z-10 max-w-2xl mx-auto">
-                    <h3 className="font-museo text-3xl md:text-5xl font-bold mb-6">Prêt à démarrer ?</h3>
-                    <p className="font-medium text-lg mb-8 opacity-90">{service.ctaText}</p>
-                    
-                    <div className="inline-block">
-                        <PopupButton
-                          url="https://calendly.com/contact-bobenvy/30min"
-                          rootElement={document.getElementById("root")!}
-                          text="Prendre rendez-vous"
-                          className="bg-black text-white px-8 py-4 rounded-full font-mono uppercase tracking-widest text-xs hover:scale-105 transition-transform font-bold cursor-pointer"
-                        />
-                    </div>
-                 </div>
-                 <div className="absolute inset-0 bg-white/10 mix-blend-overlay pointer-events-none"></div>
+                <div className="relative z-10 max-w-2xl mx-auto">
+                  <h3 className="font-museo text-3xl md:text-5xl font-bold mb-6">Prêt à démarrer ?</h3>
+                  <p className="font-medium text-lg mb-8 opacity-90">{service.ctaText}</p>
+
+                  <div className="inline-block">
+                    <PopupButton
+                      url="https://calendly.com/contact-bobenvy/30min"
+                      rootElement={document.getElementById("root")!}
+                      text="Prendre rendez-vous"
+                      className="bg-black text-white px-8 py-4 rounded-full font-mono uppercase tracking-widest text-xs hover:scale-105 transition-transform font-bold cursor-pointer"
+                    />
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-white/10 mix-blend-overlay pointer-events-none"></div>
               </div>
 
             </div>

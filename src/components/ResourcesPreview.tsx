@@ -27,7 +27,7 @@ if (posts.length === 0) {
         <div className="flex justify-between items-end mb-12">
             <div>
                 <span className="text-primary font-mono text-xs uppercase tracking-widest block mb-4">Veille & Stratégie</span>
-                <h2 className="font-museo text-4xl text-light-text dark:text-dark-text">INSIGHTS</h2>
+                <h2 className="font-museo text-4xl text-light-text dark:text-dark-text">ACTUALITÉS</h2>
             </div>
             <Link to="/resources" className="hidden md:flex items-center gap-2 group text-sm font-bold uppercase tracking-widest text-light-text dark:text-dark-text hover:text-primary transition-colors">
                 Tous les articles <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
@@ -68,7 +68,7 @@ if (posts.length === 0) {
         </div>
         
         <div className="mt-8 md:hidden flex justify-center">
-            <Link to="/resources" className="text-sm font-bold uppercase tracking-widest border border-light-border dark:border-dark-border text-light-text dark:text-dark-text px-6 py-3 rounded-full hover:bg-primary hover:text-black transition-colors">
+            <Link to="/ressources" className="text-sm font-bold uppercase tracking-widest border border-light-border dark:border-dark-border text-light-text dark:text-dark-text px-6 py-3 rounded-full hover:bg-primary hover:text-black transition-colors">
                 Toutes les ressources
             </Link>
         </div>

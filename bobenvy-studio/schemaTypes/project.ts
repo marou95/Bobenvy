@@ -30,13 +30,6 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
-      name: 'bgVideo',
-      title: 'Vidéo de fond (Modale)',
-      type: 'file',
-      options: { accept: 'video/*' },
-      description: 'Format MP4 recommandé, max 10Mo pour la perf.'
-    }),
-    defineField({
       name: 'themeColor',
       title: 'Couleur du thème (Hex)',
       type: 'string',

@@ -15,7 +15,6 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 1,
     title: "Stratégie & Conseil",
-    bgVideo: "",
     subtitle: "ANALYSER & STRUCTURER",
     description: "Audit complet, business plan et feuille de route pour prioriser vos actions et sécuriser votre croissance.",
     tags: ["Audit", "Business Plan", "Workshops"],
@@ -44,12 +43,53 @@ const ITEMS: ServiceDetail[] = [
   },
   {
     id: 2,
+    title: "Branding et image de marque",
+    subtitle: "CRÉER DES MARQUES DURABLES QUI INSPIRENT",
+    description: "Une marque forte est un actif stratégique. Nous construisons des identités cohérentes, différenciantes et mémorables.",
+    tags: ["Branding", "Identité Visuelle", "Positionnement"],
+    color: "#8FA396",
+
+    catchphrase: "TRANSFORMER VOTRE MARQUE EN LEVIER D’ATTRACTION ET DE PRÉFÉRENCE.",
+    intro: "Une marque forte est un actif stratégique. Nous construisons une identité de marque cohérente, différenciante et mémorable. Bobenvy transforme votre entreprise en une véritable évidence pour votre audience.",
+    mission: "Construire une marque claire, alignée et différenciante grâce à un positionnement stratégique précis.",
+    objectif: "Créer une connexion émotionnelle, améliorer la mémorisation et renforcer la confiance.",
+    whyTitle: "Pourquoi le branding est essentiel à votre succès",
+    whyText: "Dans un environnement saturé, un bon branding ne se contente pas d’être beau : il est stratégique. Une direction artistique pointue couplée à un univers graphique maîtrisé permet de se différencier clairement, de renforcer sa crédibilité et de soutenir directement vos performances marketing et commerciales.",
+    benefits: [
+      "Vous différencier clairement de vos concurrents",
+      "Créer une connexion émotionnelle avec votre audience",
+      "Renforcer la crédibilité et la confiance",
+      "Améliorer la mémorisation et la préférence de marque",
+      "Soutenir vos performances marketing et commerciales"
+    ],
+    steps: [
+      {
+        title: "Audit de marque & analyse",
+        desc: "Nous comprenons en profondeur votre ADN et votre environnement pour identifier les forces de votre marque et les axes d’amélioration."
+      },
+      {
+        title: "Plateforme de marque",
+        desc: "Nous définissons les fondations de votre marque : mission, vision, valeur et ton de voix pour un alignement parfait."
+      },
+      {
+        title: "Identité visuelle",
+        desc: "Nous traduisons votre stratégie en une image forte et mémorable, de la création du logo et déclinaison sur tous vos supports."
+      },
+      {
+        title: "Branding opérationnel",
+        desc: "Nous vous accompagnons dans le déploiement pour assurer une image de marque cohérente et performante dans le temps."
+      }
+    ],
+    conclusion: "Un bon branding est stratégique, cohérent et impactant.",
+    ctaText: "Prêt à construire une identité de marque inoubliable ? Discutons de votre vision et de vos ambitions."
+  },
+  {
+    id: 3,
     title: "Identité de Marque",
-    bgVideo: "",
     subtitle: "RÉVÉLER & INCARNER",
     description: "Plateforme de marque, naming, logo et territoire visuel pour rendre votre entreprise inoubliable.",
     tags: ["Branding", "Logo", "DA"],
-    color: "#EAEAE5",
+    color: "#CFB586",
 
     catchphrase: "CRÉER DES MARQUES DURABLES QUI INSPIRENT.",
     intro: "Une marque forte est un actif stratégique. Nous construisons des identités cohérentes, différenciantes et mémorables. Bobenvy transforme votre marque en levier d’attraction et de préférence.",
@@ -72,15 +112,14 @@ const ITEMS: ServiceDetail[] = [
     conclusion: "Révélez tout le potentiel de votre entreprise.",
     ctaText: "Vous avez un projet de création, de refonte ou d’évolution de votre image de marque ? Contactez-nous pour révéler votre potentiel."
   },
-{ 
-    id: 3, 
-    title: "Marketing Digital",
-    bgVideo: "",
-    subtitle: "ACTIVER & CONVERTIR", 
-    description: "Site web, SEO/SEA et campagnes d'acquisition pour transformer votre visibilité en chiffre d'affaires.", 
-    tags: ["Site Web", "SEO / SEA", "Lead Gen"], 
+  {
+    id: 4,
+    title: "Marketing Digita & performance",
+    subtitle: "ACTIVER & CONVERTIR",
+    description: "Site web, SEO/SEA et campagnes d'acquisition pour transformer votre visibilité en chiffre d'affaires.",
+    tags: ["Site Web", "SEO / SEA", "Lead Gen"],
     color: "#CFB586",
-    
+
     catchphrase: "TRANSFORMEZ VOTRE VISIBILITÉ EN RÉSULTATS MESURABLES.",
     intro: "Nous activons les bons leviers pour générer de la visibilité, du trafic et de la conversion. Chaque action est pensée pour produire des résultats concrets. Chez Bobenvy, nous créons et pilotons des stratégies digitales orientées résultats : plus de visibilité, plus de leads, plus de ventes.",
     mission: "Transformer vos canaux digitaux en leviers de croissance via une stratégie d'activation et d'optimisation.",
@@ -102,16 +141,56 @@ const ITEMS: ServiceDetail[] = [
     conclusion: "Passez d'une visibilité passive à une acquisition active.",
     ctaText: "Vous souhaitez générer plus de leads ou améliorer votre rentabilité ? Contactez-nous pour accélérer votre croissance."
   },
-{ 
-    id: 4, 
-    title: "Communication & Influence",
-    bgVideo: "",
-    subtitle: "DÉPLOYER & FÉDÉRER", 
-    description: "Social media, influence et relations presse pour créer un lien durable et émotionnel avec votre audience.", 
-    tags: ["Social Media", "Influence", "PR"], 
-    color: "#EAEAE5",
+  { 
+    id: 5, 
+    title: "Personal Branding",
+    subtitle: "FAITES DE VOTRE IMAGE UN LEVIER D’INFLUENCE", 
+    description: "Nous accompagnons dirigeants, entrepreneurs et experts dans la construction d’une image forte, cohérente et influente.", 
+    tags: ["Personal Branding", "Influence", "E-réputation"], 
+    color: "#BCA38F", 
     
-    // Contenu Modale
+    catchphrase: "VOTRE IMAGE PERSONNELLE EST UN ACTIF STRATÉGIQUE.",
+    intro: "Faire de votre voix une référence dans un monde où les personnes réalisent plus d’audience que les marques. Chez Bobenvy, nous accompagnons dirigeants, entrepreneurs, experts et talents dans la construction d’une marque personnelle forte, authentique et influente, au service de leurs objectifs professionnels.",
+    mission: "Rendre visible la bonne version de vous-même avec un message clair, crédible et différenciant, loin de la simple mise en avant.",
+    objectif: "Développer votre notoriété et vous positionner comme un véritable leader d'opinion.",
+    whyTitle: "Pourquoi le personal branding est incontournable",
+    whyText: "Nous construisons des marques personnelles alignées, stratégiques et durables, en combinant introspection, stratégie et communication. Une stratégie de personal branding bien construite vous permet d'inspirer confiance avant même le premier contact et de créer un lien authentique avec votre audience.",
+    benefits: [
+      "Développer votre notoriété et votre crédibilité",
+      "Vous positionner comme expert ou leader d’opinion",
+      "Créer des opportunités business, partenariats, clients et médias",
+      "Inspirer confiance avant même le premier contact",
+      "Vous différencier durablement dans votre écosystème"
+    ],
+    steps: [
+      { 
+          title: "Audit personnel & positionnement", 
+          desc: "Nous commençons par poser des bases solides en analysant votre environnement, vos objectifs et votre e-réputation pour définir un positionnement clair, crédible et différenciant." 
+      },
+      { 
+          title: "Plateforme de marque personnelle", 
+          desc: "Nous structurons votre identité pour construire une image cohérente et alignée avec qui vous êtes, en définissant votre proposition de valeur, votre ton de voix et votre posture." 
+      },
+      { 
+          title: "Image & expression", 
+          desc: "Nous traduisons votre positionnement en éléments concrets via un storytelling puissant et une ligne éditoriale sur-mesure pour rendre votre image professionnelle et mémorable." 
+      },
+      { 
+          title: "Déploiement & accompagnement", 
+          desc: "Nous vous accompagnons dans la durée pour installer votre marque personnelle dans le temps, optimiser vos réseaux sociaux (social media) et maîtriser vos prises de parole." 
+      }
+    ],
+    conclusion: "Prêt à révéler votre marque personnelle ?",
+    ctaText: "Vous souhaitez développer votre visibilité, structurer votre image ou renforcer votre influence professionnelle ? Contactez-nous pour un premier échange et découvrez comment transformer votre image en opportunités."
+  },
+  {
+    id: 6,
+    title: "Communication & Influence",
+    subtitle: "DÉPLOYER & FÉDÉRER",
+    description: "Social media, influence et relations presse pour créer un lien durable et émotionnel avec votre audience.",
+    tags: ["Social Media", "Influence", "PR"],
+    color: "#CFB586",
+
     catchphrase: "DÉPLOYER VOTRE MESSAGE SUR LES BONS CANAUX AU BON MOMENT.",
     intro: "Nous orchestrons votre communication pour renforcer votre notoriété et votre crédibilité. Bobenvy amplifie votre visibilité et votre impact. Être visible ne suffit plus : une marque doit porter un message clair, cohérent et influent pour exister durablement.",
     mission: "Transformer votre communication en levier d’influence et de préférence de marque.",
@@ -145,7 +224,7 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({ children }) =>
 
 interface CardProps {
   i: number;
-  data: ServiceDetail; // On passe l'objet complet
+  data: ServiceDetail;
   progress: MotionValue<number>;
   range: number[];
   targetScale: number;
@@ -190,13 +269,11 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
             ))}
           </div>
 
-          {/* REMPLACEMENT DU LINK PAR UNE DIV : On ne veut pas changer d'URL, juste ouvrir la modale */}
           <div className="flex items-center gap-2 text-light-text dark:text-dark-text group-hover:text-primary transition-colors uppercase tracking-widest text-[10px] md:text-xs font-bold">
             Découvrir <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={16} />
           </div>
         </div>
 
-        {/* Optimisation Mobile (votre code original) */}
         <div
           className="hidden md:block absolute top-[-50%] right-[-20%] w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none opacity-10 mix-blend-screen"
           style={{ backgroundColor: data.color }}
@@ -214,8 +291,6 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
 const ScrollStack = ({ headerHeight = 30, children }: { headerHeight?: number, children?: React.ReactNode }) => {
   const container = useRef<HTMLElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-
-  // NOUVEAU : État pour la modale
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
 
   useEffect(() => {
@@ -249,31 +324,31 @@ const ScrollStack = ({ headerHeight = 30, children }: { headerHeight?: number, c
         <div className="relative w-full">
           {ITEMS.map((item, i) => {
             const targetScale = 1 - (cardLength - i) * SCROLL_CONFIG.SCALE_STEP;
-            // On calcule range ici comme dans votre version optimisée
             const range = [i * (1 / cardLength), 1];
 
             return (
               <Card
                 key={item.id}
                 i={i}
-                data={item} // On passe l'objet data complet
+                data={item}
                 progress={scrollYProgress}
                 range={range}
                 targetScale={targetScale}
                 headerHeight={headerHeight}
-                onOpen={setSelectedService} // On passe la fonction d'ouverture
+                onOpen={setSelectedService}
               />
             );
           })}
         </div>
       </section>
 
-      {/* Rendu de la Modale en dehors de la section scroll */}
-      <ServiceModal
-        isOpen={!!selectedService}
-        onClose={() => setSelectedService(null)}
-        service={selectedService}
-      />
+      <div className="relative z-[90]">
+        <ServiceModal
+          isOpen={!!selectedService}
+          onClose={() => setSelectedService(null)}
+          service={selectedService}
+        />
+      </div>
     </>
   );
 };

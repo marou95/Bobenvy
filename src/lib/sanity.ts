@@ -23,7 +23,6 @@ export interface Project {
   themeColor?: string;
   tags?: string[];
   description?: string;
-  bgVideo?: any;
   challenge?: string;
   solution?: any[];
   gallery?: any[];
@@ -88,7 +87,6 @@ export const getProjectBySlug = async (slug: string): Promise<Project> => {
       challenge, 
       solution, 
       gallery,
-      bgVideo,
       "slug": slug.current
     }`,
     { slug }

@@ -49,7 +49,6 @@ const HomePage = () => {
         const formData = new FormData(form);
 
         try {
-            // ⚠️ REMPLACE L'URL PAR TON ID FORMSPREE ICI (ex: https://formspree.io/f/ton_id)
             const response = await fetch("https://formspree.io/f/xlgwnvrg", {
                 method: "POST",
                 body: formData,
