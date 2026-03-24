@@ -11,23 +11,23 @@ export default {
         museo: ['MuseoModerno', 'cursive'], 
         sans: ['Montserrat', 'sans-serif'],
         serif: ['Playfair Display', 'serif'],
+        vibes: ['"Great Vibes"', 'cursive'],
       },
       colors: {
-        primary: '#CFB586', // Or
+        primary: '#CFB586', 
+        secondary: '#A4B7A2',
         
-        // THÈME CLAIR
-        'light-bg': '#F8F8F5',       // Crème
-        'light-surface': '#FFFFFF',  // Blanc
-        'light-text': '#111111',     // Noir
-        'light-muted': '#4b5563',    // Gris foncé
-        'light-border': 'rgba(0,0,0,0.1)', // Bordures subtiles
+        'light-bg': '#F8F8F5',       
+        'light-surface': '#FFFFFF',  
+        'light-text': '#111111',     
+        'light-muted': '#4b5563',    
+        'light-border': 'rgba(0,0,0,0.1)', 
 
-        // THÈME SOMBRE
-        'dark-bg': '#050505',        // Noir
-        'dark-surface': '#0A0A0A',   // Noir plus clair
-        'dark-text': '#EAEAE5',      // Blanc cassé
-        'dark-muted': '#9ca3af',     // Gris clair
-        'dark-border': 'rgba(255,255,255,0.1)', // Bordures subtiles
+        'dark-bg': '#050505',        
+        'dark-surface': '#0A0A0A',   
+        'dark-text': '#EAEAE5',      
+        'dark-muted': '#9ca3af',     
+        'dark-border': 'rgba(255,255,255,0.1)', 
       }
     }
   },

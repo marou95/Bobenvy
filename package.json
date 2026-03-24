@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/great-vibes": "^5.2.8",
     "@portabletext/react": "^6.0.2",
     "@sanity/client": "6.15.6",
     "@sanity/image-url": "1.0.2",
@@ -22,6 +23,7 @@
     "react": "19.0.0",
     "react-calendly": "^4.4.0",
     "react-dom": "19.0.0",
+    "react-google-recaptcha": "^3.1.0",
     "react-i18next": "14.0.5",
     "react-router-dom": "^7.12.0",
     "tailwind-merge": "^3.4.0",
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.19.8",
+    "@types/react-google-recaptcha": "^2.1.9",
     "@vitejs/plugin-react": "^5.0.0",
     "autoprefixer": "^10.4.24",
     "postcss": "^8.5.6",
