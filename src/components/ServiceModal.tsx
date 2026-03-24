@@ -93,7 +93,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
               >
                 <span className="font-mono text-xs uppercase tracking-widest text-primary mb-4 block drop-shadow-md">Détail du service</span>
                 <h2 className="font-museo text-5xl md:text-7xl mb-6 text-light-text dark:text-dark-text drop-shadow-sm">{service.title}</h2>
-                <h3 className="font-mono text-sm md:text-base uppercase tracking-[0.2em] opacity-90 mb-8 border-l-2 pl-4" style={{ borderColor: service.color, color: service.color }}>{service.catchphrase}</h3>
+                <h3 className="font-vibes text-2xl md:text-2xl tracking-[0.2em] opacity-90 mb-8 border-l-2 pl-4" style={{ borderColor: service.color, color: service.color }}>{service.catchphrase}</h3>
                 <p className="text-xl md:text-2xl font-light leading-relaxed text-light-text dark:text-dark-text max-w-3xl drop-shadow-md">
                   {service.intro}
                 </p>
@@ -128,7 +128,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {service.steps.map((step, i) => (
                     <div key={i} className="relative p-6 pt-12 border-t border-light-border dark:border-dark-border hover:bg-light-surface dark:hover:bg-dark-surface transition-colors rounded-lg group">
-                      <span className="absolute top-6 right-6 text-4xl font-museo text-light-border dark:text-dark-border group-hover:text-primary transition-colors opacity-30">0{i + 1}</span>
+                      <span className="absolute top-2 right-6 text-4xl font-museo group-hover:text-primary transition-colors opacity-30">0{i + 1}</span>
                       <h4 className="font-bold text-lg mb-2">{step.title}</h4>
                       <p className="text-sm opacity-70 leading-relaxed">{step.desc}</p>
                     </div>

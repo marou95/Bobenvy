@@ -16,7 +16,7 @@ const resources = {
         about: "A propos",
         services: "Services",
         portfolio: "Portfolio",
-        ressources: "Blog & ressources",
+        ressources: "Ressources",
         contact: "Contact",
         back: "Go back"
       }
