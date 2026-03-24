@@ -17,15 +17,15 @@ const ITEMS: ServiceDetail[] = [
     title: "Stratégie & Conseil",
     subtitle: "ANALYSER & STRUCTURER",
     description: "Audit complet, business plan et feuille de route pour prioriser vos actions et sécuriser votre croissance.",
-    tags: ["Audit", "Business Plan", "Workshops"],
+    tags: ["Audit", "Business Plan", "Analyse concurrentielle", "Positionnement", "Étude de marché", "Étude qualitative et quantitative", "Indicateur de performance"],
     color: "#CFB586",
 
-    catchphrase: "CONSTRUIRE DES FONDATIONS SOLIDES POUR UNE CROISSANCE DURABLE.",
-    intro: "Toute performance commence par une stratégie claire. Bobenvy vous accompagne dans la définition et le pilotage de votre stratégie marketing globale. Nous vous aidons à prendre les bonnes décisions au bon moment avec une vision claire de votre marché, de vos clients et de vos leviers de croissance.",
+    catchphrase: "Construire des fondations solides pour une croissance durable.",
+    intro: "Toute performance commence par une stratégie claire. Bobenvy vous accompagne dans la définition et le pilotage de votre stratégie marketing globale pour prendre les bonnes décisions au bon moment grâce à une vision claire de votre marché, de vos clients et de vos leviers de croissance",
     mission: "Transformer vos enjeux en un plan d’action et des résultats concrets, mesurables et rentables.",
     objectif: "Aligner votre vision avec votre marque et vos leviers de croissance.",
     whyTitle: "Pourquoi la stratégie est la clé de votre performance",
-    whyText: "Sans stratégie, le marketing devient une suite d’actions isolées. Avec une stratégie solide, chaque levier travaille pour le même objectif : attirer, convaincre, convertir et fidéliser.",
+    whyText: "Sans stratégie, le marketing devient une suite d’actions isolées et des opportunités perdues. Avec une stratégie claire, chaque levier devient une force unie et chaque effort est un pas de plus vers l’objectif à atteindre : attirer, convaincre, convertir et fidéliser",
     benefits: [
       "Une vision claire de votre positionnement",
       "Des objectifs précis et mesurables",
@@ -33,7 +33,7 @@ const ITEMS: ServiceDetail[] = [
       "Une meilleure rentabilité de vos investissements"
     ],
     steps: [
-      { title: "Audit & Diagnostic", desc: "Nous analysons en profondeur votre écosystème, vos freins et vos opportunités." },
+      { title: "Audit & Diagnostic", desc: "Analyser en profondeur votre écosystème, vos freins et vos opportunités." },
       { title: "Définition Stratégique", desc: "Poser une direction stratégique cohérente et différenciante." },
       { title: "Plan d'actions", desc: "Passer rapidement de la réflexion à l’exécution avec une roadmap claire." },
       { title: "Accompagnement", desc: "Sécuriser vos choix stratégiques et maximiser votre impact." }
@@ -44,19 +44,19 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 2,
     title: "Branding et image de marque",
-    subtitle: "CRÉER DES MARQUES DURABLES QUI INSPIRENT",
+    subtitle: "Créer des marques durables qui inspirent",
     description: "Une marque forte est un actif stratégique. Nous construisons des identités cohérentes, différenciantes et mémorables.",
     tags: ["Branding", "Identité Visuelle", "Positionnement"],
-    color: "#8FA396",
+    color: "#CFB586",
 
-    catchphrase: "TRANSFORMER VOTRE MARQUE EN LEVIER D’ATTRACTION ET DE PRÉFÉRENCE.",
-    intro: "Une marque forte est un actif stratégique. Nous construisons une identité de marque cohérente, différenciante et mémorable. Bobenvy transforme votre entreprise en une véritable évidence pour votre audience.",
+    catchphrase: "Transformer votre marque en levier d’attraction et de préférence.",
+    intro: "Une marque forte est un actif stratégique. Nous construisons une identité de marque cohérente, différenciante et mémorable. Nous façonnons des marques qui s’imposent comme une évidence.",
     mission: "Construire une marque claire, alignée et différenciante grâce à un positionnement stratégique précis.",
     objectif: "Créer une connexion émotionnelle, améliorer la mémorisation et renforcer la confiance.",
     whyTitle: "Pourquoi le branding est essentiel à votre succès",
-    whyText: "Dans un environnement saturé, un bon branding ne se contente pas d’être beau : il est stratégique. Une direction artistique pointue couplée à un univers graphique maîtrisé permet de se différencier clairement, de renforcer sa crédibilité et de soutenir directement vos performances marketing et commerciales.",
+    whyText: "Dans un environnement saturé, un branding efficace ne se limite pas à un beau design mais à une stratégie graphique bien étudiée. Une direction artistique pointue, couplée à un univers graphique maîtrisé permet de se différencier, de renforcer sa crédibilité et de soutenir ses performances marketing et commerciales.",
     benefits: [
-      "Vous différencier clairement de vos concurrents",
+      "Développer votre authenticité",
       "Créer une connexion émotionnelle avec votre audience",
       "Renforcer la crédibilité et la confiance",
       "Améliorer la mémorisation et la préférence de marque",
@@ -65,23 +65,23 @@ const ITEMS: ServiceDetail[] = [
     steps: [
       {
         title: "Audit de marque & analyse",
-        desc: "Nous comprenons en profondeur votre ADN et votre environnement pour identifier les forces de votre marque et les axes d’amélioration."
+        desc: "Comprendre votre ADN, votre environnement et identifier les forces de votre marque et les axes d’amélioration."
       },
       {
         title: "Plateforme de marque",
-        desc: "Nous définissons les fondations de votre marque : mission, vision, valeur et ton de voix pour un alignement parfait."
+        desc: "Définir les fondations de votre marque : mission, vision, valeur et ton de voix pour un alignement parfait."
       },
       {
         title: "Identité visuelle",
-        desc: "Nous traduisons votre stratégie en une image forte et mémorable, de la création du logo et déclinaison sur tous vos supports."
+        desc: "Traduire votre stratégie de marque en une image forte et mémorable"
       },
       {
         title: "Branding opérationnel",
-        desc: "Nous vous accompagnons dans le déploiement pour assurer une image de marque cohérente et performante dans le temps."
+        desc: "Assurer une image de marque cohérente et performante dans le temps grâce à notre accompagnement."
       }
     ],
     conclusion: "Un bon branding est stratégique, cohérent et impactant.",
-    ctaText: "Prêt à construire une identité de marque inoubliable ? Discutons de votre vision et de vos ambitions."
+    ctaText: "Vous avez un projet de création, de refonte ou d’évolution de votre image de marque ? Contactez-nous pour révéler votre potentiel."
   },
   {
     id: 3,
@@ -91,7 +91,7 @@ const ITEMS: ServiceDetail[] = [
     tags: ["Branding", "Logo", "DA"],
     color: "#CFB586",
 
-    catchphrase: "CRÉER DES MARQUES DURABLES QUI INSPIRENT.",
+    catchphrase: "Créer des marques durables qui inspirent.",
     intro: "Une marque forte est un actif stratégique. Nous construisons des identités cohérentes, différenciantes et mémorables. Bobenvy transforme votre marque en levier d’attraction et de préférence.",
     mission: "Un bon branding ne se contente pas d’être beau : il est stratégique, cohérent et impactant.",
     objectif: "Transformer votre marque en levier d’attraction et de préférence.",
@@ -114,16 +114,16 @@ const ITEMS: ServiceDetail[] = [
   },
   {
     id: 4,
-    title: "Marketing Digita & performance",
+    title: "Marketing Digital & performance",
     subtitle: "ACTIVER & CONVERTIR",
     description: "Site web, SEO/SEA et campagnes d'acquisition pour transformer votre visibilité en chiffre d'affaires.",
     tags: ["Site Web", "SEO / SEA", "Lead Gen"],
     color: "#CFB586",
 
-    catchphrase: "TRANSFORMEZ VOTRE VISIBILITÉ EN RÉSULTATS MESURABLES.",
-    intro: "Nous activons les bons leviers pour générer de la visibilité, du trafic et de la conversion. Chaque action est pensée pour produire des résultats concrets. Chez Bobenvy, nous créons et pilotons des stratégies digitales orientées résultats : plus de visibilité, plus de leads, plus de ventes.",
+    catchphrase: "Transformez votre visibilité en résultats mesurables.",
+    intro: `Nous activons les bons leviers pour générer de la visibilité, du trafic et de la conversion. Chaque action est pensée pour produire des résultats concrets.\n Chez Bobenvy, nous créons et pilotons des stratégies digitales orientées résultats : plus de visibilité, plus de leads, plus de ventes.`,
     mission: "Transformer vos canaux digitaux en leviers de croissance via une stratégie d'activation et d'optimisation.",
-    objectif: "Maximiser votre retour sur investissement (ROI).",
+    objectif: "Maximiser votre retour sur investissements (ROI) et rentabiliser vos campagnes.",
     whyTitle: "Pourquoi miser sur le marketing digital",
     whyText: "Sans pilotage ni stratégie, le digital coûte. Bien maîtrisé, il devient un moteur de performance. Nous combinons stratégie et optimisation continue pour accélérer votre croissance.",
     benefits: [
@@ -139,18 +139,18 @@ const ITEMS: ServiceDetail[] = [
       { title: "Optimisation continue", desc: "Améliorer vos résultats mois après mois, car la performance se construit dans la durée." }
     ],
     conclusion: "Passez d'une visibilité passive à une acquisition active.",
-    ctaText: "Vous souhaitez générer plus de leads ou améliorer votre rentabilité ? Contactez-nous pour accélérer votre croissance."
+    ctaText: "Vous souhaitez générer plus de leads ou améliorer votre visibilité ? Contactez-nous pour accélérer votre croissance."
   },
-  { 
-    id: 5, 
+  {
+    id: 5,
     title: "Personal Branding",
-    subtitle: "FAITES DE VOTRE IMAGE UN LEVIER D’INFLUENCE", 
-    description: "Nous accompagnons dirigeants, entrepreneurs et experts dans la construction d’une image forte, cohérente et influente.", 
-    tags: ["Personal Branding", "Influence", "E-réputation"], 
-    color: "#BCA38F", 
-    
-    catchphrase: "VOTRE IMAGE PERSONNELLE EST UN ACTIF STRATÉGIQUE.",
-    intro: "Faire de votre voix une référence dans un monde où les personnes réalisent plus d’audience que les marques. Chez Bobenvy, nous accompagnons dirigeants, entrepreneurs, experts et talents dans la construction d’une marque personnelle forte, authentique et influente, au service de leurs objectifs professionnels.",
+    subtitle: "FAITES DE VOTRE IMAGE UN LEVIER D’INFLUENCE",
+    description: "Nous accompagnons dirigeants, entrepreneurs et experts dans la construction d’une image forte, cohérente et influente.",
+    tags: ["Personal Branding", "Influence", "E-réputation"],
+    color: "#BCA38F",
+
+    catchphrase: "Votre image est un levier de crédibilité, d’influence et d’opportunités.",
+    intro: "Faire de votre voix une référence, dans un monde où les audiences les plus marquantes sont portées par des personnes physiques. Chez Bobenvy, nous accompagnons dirigeants, entrepreneurs, experts et talents dans la construction d’une marque personnelle forte, authentique et influente, au service de leurs objectifs professionnels.",
     mission: "Rendre visible la bonne version de vous-même avec un message clair, crédible et différenciant, loin de la simple mise en avant.",
     objectif: "Développer votre notoriété et vous positionner comme un véritable leader d'opinion.",
     whyTitle: "Pourquoi le personal branding est incontournable",
@@ -163,21 +163,21 @@ const ITEMS: ServiceDetail[] = [
       "Vous différencier durablement dans votre écosystème"
     ],
     steps: [
-      { 
-          title: "Audit personnel & positionnement", 
-          desc: "Nous commençons par poser des bases solides en analysant votre environnement, vos objectifs et votre e-réputation pour définir un positionnement clair, crédible et différenciant." 
+      {
+        title: "Audit personnel & positionnement",
+        desc: "Poser des bases solides en analysant votre environnement, vos objectifs et votre e-réputation pour définir un positionnement clair, crédible et différenciant."
       },
-      { 
-          title: "Plateforme de marque personnelle", 
-          desc: "Nous structurons votre identité pour construire une image cohérente et alignée avec qui vous êtes, en définissant votre proposition de valeur, votre ton de voix et votre posture." 
+      {
+        title: "Plateforme de marque personnelle",
+        desc: "Structurer votre identité pour construire une image cohérente et alignée avec qui vous êtes, en définissant votre proposition de valeur, votre ton de voix et votre posture."
       },
-      { 
-          title: "Image & expression", 
-          desc: "Nous traduisons votre positionnement en éléments concrets via un storytelling puissant et une ligne éditoriale sur-mesure pour rendre votre image professionnelle et mémorable." 
+      {
+        title: "Image & expression",
+        desc: "Traduire votre positionnement en éléments concrets via un storytelling puissant et une ligne éditoriale sur-mesure pour rendre votre image professionnelle et reconnaissable."
       },
-      { 
-          title: "Déploiement & accompagnement", 
-          desc: "Nous vous accompagnons dans la durée pour installer votre marque personnelle dans le temps, optimiser vos réseaux sociaux (social media) et maîtriser vos prises de parole." 
+      {
+        title: "Déploiement & accompagnement",
+        desc: "Vous accompagner dans la durée pour installer votre marque personnelle dans le temps, optimiser vos réseaux sociaux (social media) et maîtriser vos prises de parole."
       }
     ],
     conclusion: "Prêt à révéler votre marque personnelle ?",
@@ -188,15 +188,15 @@ const ITEMS: ServiceDetail[] = [
     title: "Communication & Influence",
     subtitle: "DÉPLOYER & FÉDÉRER",
     description: "Social media, influence et relations presse pour créer un lien durable et émotionnel avec votre audience.",
-    tags: ["Social Media", "Influence", "PR"],
+    tags: ["Réseaux sociaux ", "Influence", "PR"],
     color: "#CFB586",
 
-    catchphrase: "DÉPLOYER VOTRE MESSAGE SUR LES BONS CANAUX AU BON MOMENT.",
-    intro: "Nous orchestrons votre communication pour renforcer votre notoriété et votre crédibilité. Bobenvy amplifie votre visibilité et votre impact. Être visible ne suffit plus : une marque doit porter un message clair, cohérent et influent pour exister durablement.",
+    catchphrase: "Déployer votre message sur les bons canaux au bon moment.",
+    intro: "Nous nous chargeons de votre communication pour renforcer votre notoriété et votre crédibilité. Bobenvy amplifie votre visibilité et votre impact. Être visible ne suffit plus : une marque doit porter un message clair, cohérent et influent pour exister durablement.",
     mission: "Transformer votre communication en levier d’influence et de préférence de marque.",
     objectif: "Capter l’attention, créer l’adhésion et renforcer votre crédibilité.",
     whyTitle: "Pourquoi l'influence est devenue stratégique",
-    whyText: "Dans un environnement ultra-concurrentiel et saturé de messages, une communication maîtrisée est essentielle. Une stratégie efficace repose sur la cohérence, la crédibilité et la constance pour influencer la perception et la décision.",
+    whyText: "Dans un environnement ultra-concurrentiel et saturé de messages, une communication maîtrisée est essentielle. Une stratégie efficace repose sur la cohérence, la crédibilité et la constance pour influencer la perception et la décision. Nous combinons stratégie éditoriale, création de messages et activation des bons relais pour maximiser votre impact.",
     benefits: [
       "Renforcer votre notoriété et image de marque",
       "Créer une relation de confiance durable",
@@ -205,13 +205,56 @@ const ITEMS: ServiceDetail[] = [
     ],
     steps: [
       { title: "Audit & Analyse", desc: "Comprendre comment votre marque est perçue et identifier les leviers d’influence actuels." },
-      { title: "Stratégie de Com", desc: "Construire un discours différenciant et diffuser le bon message, au bon moment, sur les bons canaux." },
+      { title: "Stratégie de communication", desc: "Construire un discours différenciant et diffuser le bon message, au bon moment, sur les bons canaux." },
       { title: "Influence & RP", desc: "Accroître votre visibilité et renforcer votre crédibilité par des voix influentes et des relais pertinents." },
-      { title: "Activation & Event", desc: "Concevoir des événements marquants et piloter l'impact pour créer du lien avec vos cibles." }
+      { title: "Activation & Event", desc: "Concevoir des événements marquants et piloter l'impact pour créer du lien avec vos cibles." },
+      { title: "Pilotage et optimisation de l’impact", desc: "Maximiser l’efficacité de vos actions et construire une influence durable" }
     ],
     conclusion: "Construisez une influence durable et mesurable.",
     ctaText: "Vous souhaitez développer votre notoriété, structurer votre discours ou gagner en crédibilité ? Contactez-nous pour amplifier la portée de votre marque."
   },
+  {
+    id: 7,
+    title: "Relation client et fidélisation",
+    subtitle: "SATISFAIRE ET FIDÉLISER",
+    description: "Créer une expérience client efficace et les fidéliser pour en faire de véritables ambassadeurs.",
+    tags: ["Fidélisation", "Expérience client", "Satisfaction", "Parcours client"],
+    color: "#8FA396", // Couleur d'exemple, à adapter si besoin
+
+    catchphrase: "L’expérience client est un avantage concurrentiel et les clients des ambassadeurs.",
+    intro: "Une relation client maîtrisée permet non seulement d’augmenter la valeur de chaque client, mais aussi de créer de la confiance, de l’engagement et de la recommandation. Nous concevons des stratégies de relation client et de fidélisation qui renforcent l’expérience, en prenant en compte chaque point de contact.",
+    mission: "Chez Bobenvy, nous concevons des stratégies de relation client et de fidélisation qui renforcent l’expérience et l'excellence relationnelle.",
+    objectif: "Maximiser la rétention et transformer vos clients en véritables ambassadeurs.",
+    whyTitle: "Pourquoi la relation client est un enjeu stratégique",
+    whyText: "Aujourd’hui, l’expérience client est souvent le premier facteur de différenciation. Nous plaçons l’expérience et la donnée au cœur de la relation pour créer des parcours clients cohérents, personnalisés et performants, en analysant les feedbacks et avis clients.",
+    benefits: [
+      "Augmenter la fidélité et la rétention client",
+      "Améliorer la satisfaction et l’expérience globale",
+      "Accroître la valeur vie client (CLV)",
+      "Générer du réachat et de la recommandation",
+      "Différencier votre marque par l’expérience"
+    ],
+    steps: [
+      {
+        title: "Audit de l’expérience & de la relation client",
+        desc: "Analyser l’ensemble du parcours client et comprendre précisément ce que vivent vos clients via la segmentation et profils clients."
+      },
+      {
+        title: "Stratégie de relation client",
+        desc: "Structurer une stratégie adaptée à votre activité et créer une relation cohérente, utile et engageante, incluant la formation relation client si nécessaire."
+      },
+      {
+        title: "Programmes de fidélisation & engagement",
+        desc: "Concevoir des dispositifs concrets comme un programme de fidélité pour renforcer l’attachement à votre marque et atteindre l’excellence relationnelle."
+      },
+      {
+        title: "Pilotage & optimisation continue",
+        desc: "Mesurer l’efficacité de vos actions pour les améliorer dans le temps et augmenter la valeur et la durée de vie de chaque client."
+      }
+    ],
+    conclusion: "Prêt à renforcer la relation avec vos clients ?",
+    ctaText: "Vous souhaitez améliorer votre expérience client, augmenter la fidélité ou créer plus d’engagement ? Contactez-nous pour un premier échange."
+  }
 ];
 
 export interface ScrollStackItemProps {
@@ -252,7 +295,7 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
       >
         <div className="flex justify-between items-start">
           <div>
-            <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] mb-2 block" style={{ color: data.color }}>{data.subtitle}</span>
+            <span className="font-mono text-[10px] md:text-xs tracking-[0.2em] mb-2 block" style={{ color: data.color }}>{data.subtitle}</span>
             <h2 className="font-museo text-2xl md:text-5xl text-light-text dark:text-dark-text mt-1 md:mt-2 group-hover:text-primary transition-colors">{data.title}</h2>
           </div>
           <span className="font-mono text-light-muted dark:text-dark-muted text-lg md:text-xl border border-light-border dark:border-dark-border rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">0{i + 1}</span>
@@ -270,7 +313,7 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
           </div>
 
           <div className="flex items-center gap-2 text-light-text dark:text-dark-text group-hover:text-primary transition-colors uppercase tracking-widest text-[10px] md:text-xs font-bold">
-            Découvrir <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={16} />
+            Contactez-nous <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={16} />
           </div>
         </div>
 
@@ -292,6 +335,7 @@ const ScrollStack = ({ headerHeight = 30, children }: { headerHeight?: number, c
   const container = useRef<HTMLElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
+  const [titleHeight, setTitleHeight] = useState(30);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -318,9 +362,15 @@ const ScrollStack = ({ headerHeight = 30, children }: { headerHeight?: number, c
     <>
       <section
         ref={container}
-        className="relative w-full pb-[50vh]"
+        className="relative w-full pb-[40vh] mb-40 max-md:"
         style={{ height: scrollHeight }}
       >
+        <div
+          className="sticky top-0 left-0 right-0 z-29 flex flex-col justify-end pb-4 px-6 md:px-12 bg-light-bg dark:bg-dark-bg transition-all duration-300"
+          style={{ height: `${titleHeight}vh` }}>
+          <span className="text-primary font-mono text-xs uppercase tracking-widest block mb-4">Domaines d'intervention</span>
+          <h3 className="font-museo text-5xl md:text-8xl text-light-text dark:text-dark-text transition-colors leading-none">EXPERTISES</h3>
+        </div>
         <div className="relative w-full">
           {ITEMS.map((item, i) => {
             const targetScale = 1 - (cardLength - i) * SCROLL_CONFIG.SCALE_STEP;
@@ -342,7 +392,7 @@ const ScrollStack = ({ headerHeight = 30, children }: { headerHeight?: number, c
         </div>
       </section>
 
-      <div className="relative z-[90]">
+      <div className="relative z-[91]">
         <ServiceModal
           isOpen={!!selectedService}
           onClose={() => setSelectedService(null)}
