@@ -59,7 +59,7 @@ const ContactForm = () => {
                                 <Send size={32} className="text-black ml-1" />
                             </div>
                             <h3 className="font-museo text-3xl mb-2 text-light-text dark:text-dark-text">Message Reçu</h3>
-                            <p className="opacity-60 mb-8">Nous revenons vers vous sous 24h.</p>
+                            <p className="opacity-60 mb-8">Nous revenons vers vous bientôt.</p>
                             <button onClick={() => setFormStatus('IDLE')} className="text-xs font-bold uppercase tracking-widest border-b border-primary pb-1 hover:text-primary transition-colors">
                                 Envoyer un autre message
                             </button>
