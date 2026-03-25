@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Send } from 'lucide-react';
+import { ArrowRight, Send, Loader2 } from 'lucide-react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
     const [formStatus, setFormStatus] = useState<'IDLE' | 'SENDING' | 'SUCCESS' | 'ERROR'>('IDLE');
@@ -18,24 +19,21 @@ const ContactForm = () => {
 
         setFormStatus('SENDING');
         const form = e.currentTarget;
-        const formData = new FormData(form);
 
         try {
-            const response = await fetch("https://formspree.io/f/xlgwnvrg", {
-                method: "POST",
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
+            await emailjs.sendForm(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                form,
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            );
 
-            if (response.ok) {
-                setFormStatus('SUCCESS');
-                form.reset();
-                setCaptchaToken(null);
-                recaptchaRef.current?.reset();
-            } else {
-                setFormStatus('ERROR');
-            }
+            setFormStatus('SUCCESS');
+            form.reset();
+            setCaptchaToken(null);
+            recaptchaRef.current?.reset();
         } catch (error) {
+            console.error("Erreur d'envoi:", error);
             setFormStatus('ERROR');
         }
     };
@@ -92,6 +90,17 @@ const ContactForm = () => {
                             </div>
 
                             <div className="space-y-2">
+                                <label className="text-xs font-mono uppercase tracking-widest opacity-50 ml-1">Objet</label>
+                                <input
+                                    required
+                                    name="subject"
+                                    type="text"
+                                    placeholder="Sujet de votre message"
+                                    className="w-full bg-transparent border-b border-light-border dark:border-dark-border px-4 py-4 focus:outline-none focus:border-primary focus:bg-light-surface/50 dark:focus:bg-dark-surface/50 transition-all text-lg"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
                                 <label className="text-xs font-mono uppercase tracking-widest opacity-50 ml-1">Message</label>
                                 <textarea
                                     required
@@ -103,21 +112,29 @@ const ContactForm = () => {
                             </div>
 
                             <div className="pt-4 flex flex-col gap-6">
-                                {/* Clé de test publique Google (à remplacer par ta vraie clé Site Key) */}
                                 <ReCAPTCHA
                                     ref={recaptchaRef}
-                                    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                                     onChange={(token) => setCaptchaToken(token)}
                                     theme="dark"
                                 />
-                                
+
                                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full">
                                     <button
                                         type="submit"
                                         disabled={formStatus === 'SENDING' || !captchaToken}
                                         className="w-full md:w-auto bg-primary text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                                     >
-                                        {formStatus === 'SENDING' ? 'Envoi...' : <>Envoyer <ArrowRight size={18} /></>}
+                                        {formStatus === 'SENDING' ? (
+                                            <>
+                                                <Loader2 size={18} className="animate-spin" />
+                                                Envoi...
+                                            </>
+                                        ) : (
+                                            <>
+                                                Envoyer <ArrowRight size={18} />
+                                            </>
+                                        )}
                                     </button>
 
                                     {formStatus === 'ERROR' && <p className="text-red-500 text-xs font-mono">Erreur lors de l'envoi. Réessayez.</p>}
