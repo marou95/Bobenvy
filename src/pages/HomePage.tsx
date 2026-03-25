@@ -52,8 +52,6 @@ const HomePage = () => {
                 <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-70">
                     <source src="https://cdn.pixabay.com/video/2016/08/12/4382-178617337_large.mp4" type="video/mp4" />
                 </video>
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-
                 <div className="absolute inset-0 w-full h-full p-6 md:p-12 z-10 flex flex-col justify-center items-center text-center md:justify-end md:items-stretch md:text-left">
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
@@ -117,7 +115,7 @@ const HomePage = () => {
             {/* --- SERVICES --- */}
             <div id="services" className="relative bg-light-bg dark:bg-dark-bg transition-colors duration-500 min-h-screen">
                 <div className="relative z-10 pb-20">
-                    <ScrollStack headerHeight={titleHeight} />
+                    <ScrollStack/>
                 </div>
             </div>
 

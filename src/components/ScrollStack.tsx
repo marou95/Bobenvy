@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import ServiceModal, { ServiceDetail } from "./ServiceModal";
 
 const SCROLL_CONFIG = {
-  MOBILE_FACTOR: 51,
+  MOBILE_FACTOR: 54, // Légèrement augmenté pour éviter le chevauchement
   DESKTOP_FACTOR: 61,
   SCALE_STEP: 0.05,
   MOBILE_BREAKPOINT: 768,
@@ -219,7 +219,7 @@ const ITEMS: ServiceDetail[] = [
     subtitle: "SATISFAIRE ET FIDÉLISER",
     description: "Créer une expérience client efficace et les fidéliser pour en faire de véritables ambassadeurs.",
     tags: ["Fidélisation", "Expérience client", "Satisfaction", "Parcours client"],
-    color: "#8FA396", // Couleur d'exemple, à adapter si besoin
+    color: "#8FA396",
 
     catchphrase: "L’expérience client est un avantage concurrentiel et les clients des ambassadeurs.",
     intro: "Une relation client maîtrisée permet non seulement d’augmenter la valeur de chaque client, mais aussi de créer de la confiance, de l’engagement et de la recommandation. Nous concevons des stratégies de relation client et de fidélisation qui renforcent l’expérience, en prenant en compte chaque point de contact.",
@@ -301,7 +301,7 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
           <span className="font-mono text-light-muted dark:text-dark-muted text-lg md:text-xl border border-light-border dark:border-dark-border rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">0{i + 1}</span>
         </div>
 
-        <p className="text-sm md:text-xl text-light-muted dark:text-dark-muted font-light leading-relaxed max-w-2xl mt-4">{data.description}</p>
+        <p className="text-sm md:text-xl text-light-muted dark:text-dark-muted font-light leading-relaxed max-w-2xl mt-4 line-clamp-3">{data.description}</p>
 
         <div className="flex flex-col md:flex-row justify-between items-end gap-4 md:gap-6 mt-4">
           <div className="flex flex-wrap gap-2">
@@ -312,8 +312,8 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
             ))}
           </div>
 
-          <div className="flex items-center gap-2 text-light-text dark:text-dark-text group-hover:text-primary transition-colors uppercase tracking-widest text-[10px] md:text-xs font-bold">
-            Contactez-nous <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={16} />
+          <div className="flex items-center gap-2 text-light-text dark:text-dark-text group-hover:text-primary transition-colors uppercase tracking-widest text-[10px] md:text-xs font-bold shrink-0">
+            Découvrir <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={16} />
           </div>
         </div>
 
@@ -331,19 +331,20 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
   );
 };
 
-const ScrollStack = ({ headerHeight = 30, children }: { headerHeight?: number, children?: React.ReactNode }) => {
+const ScrollStack = () => {
   const container = useRef<HTMLElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
   const [titleHeight, setTitleHeight] = useState(30);
 
   useEffect(() => {
-    const checkMobile = () => {
+    const handleResize = () => {
       setIsMobile(window.innerWidth < SCROLL_CONFIG.MOBILE_BREAKPOINT);
+      setTitleHeight(window.innerWidth < 768 ? 20 : 28);
     };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -362,15 +363,15 @@ const ScrollStack = ({ headerHeight = 30, children }: { headerHeight?: number, c
     <>
       <section
         ref={container}
-        className="relative w-full pb-[40vh] mb-40 max-md:"
+        className="relative w-full pb-[20vh] md:pb-[40vh] mb-20 md:mb-40"
         style={{ height: scrollHeight }}
       >
-        <div
-          className="sticky top-0 left-0 right-0 z-29 flex flex-col justify-end pb-4 px-6 md:px-12 bg-light-bg dark:bg-dark-bg transition-all duration-300"
-          style={{ height: `${titleHeight}vh` }}>
-          <span className="text-primary font-mono text-xs uppercase tracking-widest block mb-4">Domaines d'intervention</span>
-          <h3 className="font-museo text-5xl md:text-8xl text-light-text dark:text-dark-text transition-colors leading-none">EXPERTISES</h3>
-        </div>
+          <div
+            className="sticky top-0 left-0 right-0 z-40 flex flex-col justify-end pb-4 px-6 md:px-12 bg-light-bg dark:bg-dark-bg transition-all duration-300 border-b border-light-border/10 dark:border-dark-border/10"
+            style={{ height: `${titleHeight}vh` }}>
+            <span className="text-primary font-mono text-xs uppercase tracking-widest block mb-4">Domaines d'intervention</span>
+            <h3 className="font-museo text-5xl md:text-8xl text-light-text dark:text-dark-text transition-colors leading-none">EXPERTISES</h3>
+          </div>
         <div className="relative w-full">
           {ITEMS.map((item, i) => {
             const targetScale = 1 - (cardLength - i) * SCROLL_CONFIG.SCALE_STEP;
@@ -384,7 +385,7 @@ const ScrollStack = ({ headerHeight = 30, children }: { headerHeight?: number, c
                 progress={scrollYProgress}
                 range={range}
                 targetScale={targetScale}
-                headerHeight={headerHeight}
+                headerHeight={titleHeight}
                 onOpen={setSelectedService}
               />
             );

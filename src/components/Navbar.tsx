@@ -165,9 +165,6 @@ const Navbar: React.FC = () => {
               transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
               className="fixed top-0 right-0 bottom-0 w-full md:w-1/3 lg:w-[30rem] z-[100] flex flex-col justify-between px-8 py-24 md:py-32 overflow-y-auto bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text border-l border-light-border dark:border-dark-border shadow-2xl"
             >
-              {/* Overlay Bruit Optionnel */}
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
-
               {/* LIENS DE NAVIGATION */}
               <div className="flex flex-col gap-6 relative z-10">
                 <span className="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">Navigation</span>
