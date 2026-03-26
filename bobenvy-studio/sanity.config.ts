@@ -10,7 +10,30 @@ export default defineConfig({
   projectId: 'owylobqj',
   dataset: 'bobenvy-studio',
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title('Contenu du site')
+          .items([
+            S.listItem()
+              .title('Hero Accueil')
+              .id('homeHero')
+              .child(
+                S.document()
+                  .schemaType('homeHero')
+                  .documentId('homeHero')
+              ),
+            
+            S.divider(),
+            
+            ...S.documentTypeListItems().filter(
+              (listItem) => !['homeHero'].includes(listItem.getId() || '')
+            ),
+          ]),
+    }), 
+    visionTool()
+  ],
 
   schema: {
     types: schemaTypes,

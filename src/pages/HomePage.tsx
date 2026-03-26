@@ -2,6 +2,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowDownRight } from 'lucide-react';
 
+// API
+import { getHomeHero, type HomeHero } from '../lib/sanity';
+
 // Components
 import ScrollStack from '../components/ScrollStack';
 import AboutSection from '../components/AboutSection';
@@ -19,8 +22,12 @@ const HomePage = () => {
     const cursorYSpring = useSpring(cursorY, springConfig);
 
     const [titleHeight, setTitleHeight] = useState(30);
+    const [heroData, setHeroData] = useState<HomeHero | null>(null);
 
     useEffect(() => {
+        // Récupération des données du Hero depuis Sanity
+        getHomeHero().then(setHeroData).catch(console.error);
+        
         const moveCursor = (e: MouseEvent) => {
             cursorX.set(e.clientX - 6);
             cursorY.set(e.clientY - 6);
@@ -49,9 +56,17 @@ const HomePage = () => {
 
             {/* HERO */}
             <section className="relative h-screen w-full overflow-hidden bg-dark-bg">
-                <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-70">
-                    <source src="https://cdn.pixabay.com/video/2016/08/12/4382-178617337_large.mp4" type="video/mp4" />
-                </video>
+                <video 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    className="absolute inset-0 w-full h-full object-cover opacity-70"
+                    src={heroData?.videoUrl || ""} 
+                />
+                
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+
                 <div className="absolute inset-0 w-full h-full p-6 md:p-12 z-10 flex flex-col justify-center items-center text-center md:justify-end md:items-stretch md:text-left">
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
@@ -60,13 +75,16 @@ const HomePage = () => {
                         className="w-full"
                     >
                         <h1 className="font-museo text-[15vw] md:text-[12vw] leading-[0.85] md:leading-[0.8] font-bold tracking-tighter uppercase text-white mix-blend-overlay opacity-90 mb-6 md:mb-0">
-                            Bobenvy
+                            {heroData?.title || 'Bobenvy'}
                         </h1>
                         <div className="flex flex-col items-center md:flex-row md:justify-between md:items-end md:mt-8 md:border-t md:border-white/20 md:pt-6">
                             <div className="w-[1px] h-8 bg-primary mb-6 md:hidden"></div>
-                            <h2 className="max-w-xs md:max-w-md text-lg md:text-2xl font-light leading-tight text-white/90">
-                                Agence marketing et communication <br className="hidden md:block" />Île-de-France & Maroc. <br />
-                                <span className="text-primary italic font-serif mt-2 inline-block">Révélateur de singularité.</span>
+                            <h2 className="max-w-screen-md text-lg md:text-2xl font-light leading-tight text-white/90 whitespace-pre-line">
+                                {heroData?.subtitle || "Agence marketing et communication \nÎle-de-France & Maroc."}
+                                <br />
+                                <span className="text-primary text-4xl italic font-vibes mt-2 inline-block">
+                                    {heroData?.highlight || 'Révélateur de singularité.'}
+                                </span>
                             </h2>
                             <div className="hidden md:block animate-bounce mt-8 md:mt-0">
                                 <ArrowDownRight size={48} className="text-primary" />
@@ -132,7 +150,7 @@ const HomePage = () => {
             <ContactForm />
 
             <footer className="bg-light-bg dark:bg-dark-bg py-12 px-6 flex justify-between items-end border-t border-light-border dark:border-dark-border text-xs font-mono text-light-muted dark:text-dark-muted uppercase relative z-0 transition-colors duration-500">
-                <div>© {new Date().getFullYear()} Bobenvy</div>
+                <div>© {new Date().getFullYear()}  Bobenvy</div>
                 <div className="flex gap-4"><a href="#" className="hover:text-light-text dark:hover:text-white">LinkedIn</a><a href="#" className="hover:text-light-text dark:hover:text-white">Instagram</a><a href="#" className="hover:text-light-text dark:hover:text-white">Facebook</a></div>
             </footer>
         </div>

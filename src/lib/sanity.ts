@@ -1,5 +1,6 @@
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+
 // --- CONFIGURATION ---
 export const client = createClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'owylobqj',
@@ -13,6 +14,13 @@ const builder = imageUrlBuilder(client);
 export const urlFor = (source: any) => builder.image(source);
 
 // --- TYPES (Interfaces) ---
+
+export interface HomeHero {
+  title: string;
+  subtitle: string;
+  highlight?: string;
+  videoUrl?: string;
+}
 
 export interface Project {
   _id: string;
@@ -40,6 +48,19 @@ export interface Post {
   body?: any[];
   author?: string;
 }
+
+// --- REQUÊTES PAGE D'ACCUEIL ---
+
+export const getHomeHero = async (): Promise<HomeHero> => {
+  return await client.fetch(`
+    *[_type == "homeHero"][0] {
+      title,
+      subtitle,
+      highlight,
+      "videoUrl": backgroundVideo.asset->url
+    }
+  `);
+};
 
 // --- REQUÊTES PORTFOLIO (Projects) ---
 
