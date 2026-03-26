@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Menu as MenuIcon, X, Linkedin, Instagram, Facebook } from 'lucide-react';
+import { Menu as MenuIcon, X, Linkedin, Instagram, Facebook, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -30,28 +30,20 @@ const Navbar: React.FC = () => {
     { name: t('nav.contact'), href: '/#contact' },
   ];
 
-  // LOGIQUE DE SCROLL
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsOpen(false);
-
     if (href.startsWith('/#')) {
       e.preventDefault();
       const targetId = href.replace('/#', '');
-
       const performSmoothScroll = () => {
         const element = document.getElementById(targetId);
         if (element) {
           const offset = 85;
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.scrollY - offset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
       };
-
       if (location.pathname === '/') {
         setTimeout(performSmoothScroll, 100);
       } else {
@@ -61,11 +53,9 @@ const Navbar: React.FC = () => {
     }
   };
 
-  // LOGIQUE LOGO (Retour en haut)
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setIsOpen(false);
-    
     if (location.pathname === '/') {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
@@ -84,10 +74,8 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* LAYER 1 : MIX-BLEND */}
       <nav className={`${navContainerClasses} z-[998] dark:text-white bg-slate-50/10 backdrop-blur-sm border-b border-slate-50/10 dark:border-slate-900/20`}>
         <div className="pointer-events-auto">
-          {/* LOGO CLIQUABLE */}
           <a href="/" onClick={handleLogoClick} className="group relative block cursor-pointer">
             <span className="font-museo text-3xl font-bold tracking-tight">
               BOBENVY<span className="text-primary">.</span>
@@ -96,10 +84,9 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-4 md:gap-8 pointer-events-auto">
-          <div className="invisible opacity-0 w-[52px]">
-            <ThemeToggle />
-          </div>
+          <div className="invisible opacity-0 w-[52px]"><ThemeToggle /></div>
 
+          {/* Bouton Desktop Langue */}
           <button onClick={toggleLang} className="hidden md:flex font-mono text-xs uppercase hover:text-primary transition-colors">
             {currentLang === 'en' ? 'FR' : 'EN'}
           </button>
@@ -107,7 +94,7 @@ const Navbar: React.FC = () => {
           <Link
             to="/#contact"
             onClick={(e) => handleNavClick(e as any, '/#contact')}
-            className="hidden md:flex items-center gap-2 border  border-slate-950/50 dark:border-white/30 hover:border-primary  px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:text-primary transition-all"
+            className="hidden md:flex items-center gap-2 border border-slate-950/50 dark:border-white/30 hover:border-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:text-primary transition-all"
           >
             {t('nav.contact_us')}
           </Link>
@@ -123,17 +110,12 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* LAYER 2 : NORMAL (Toggle) */}
       <nav className={`${navContainerClasses} z-[999]`}>
         <div className="invisible pointer-events-none">
           <span className="font-museo text-2xl md:text-3xl font-bold tracking-tight">BOBENVY<span className="text-primary">.</span></span>
         </div>
-
         <div className="flex items-center gap-4 md:gap-8 pointer-events-none">
-          <div className="pointer-events-auto">
-            <ThemeToggle />
-          </div>
-          {/* Espaces réservés invisibles */}
+          <div className="pointer-events-auto"><ThemeToggle /></div>
           <button className="hidden md:flex font-mono text-xs uppercase invisible">{currentLang === 'en' ? 'FR' : 'EN'}</button>
           <div className="hidden md:flex items-center gap-2 border border-white/30 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest invisible">{t('nav.start_project')}</div>
           <div className="flex items-center gap-2 invisible">
@@ -143,11 +125,9 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* MENU LATÉRAL (1/3 écran desktop, Full écran mobile) */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* BACKDROP : Le fond sombre cliquable pour fermer */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -157,17 +137,26 @@ const Navbar: React.FC = () => {
                 className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90]"
             />
 
-            {/* LE MENU EN LUI-MÊME */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%", transition: { duration: 0.4, ease: [0.33, 1, 0.68, 1] } }}
               transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-              className="fixed top-0 right-0 bottom-0 w-full md:w-1/3 lg:w-[30rem] z-[100] flex flex-col justify-between px-8 py-24 md:py-32 overflow-y-auto bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text border-l border-light-border dark:border-dark-border shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-full md:w-1/3 lg:w-[30rem] z-[100] flex flex-col justify-between px-8 py-20 md:py-32 overflow-y-auto bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text border-l border-light-border dark:border-dark-border shadow-2xl"
             >
-              {/* LIENS DE NAVIGATION */}
               <div className="flex flex-col gap-6 relative z-10">
-                <span className="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">{t('nav.navigation')}</span>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-primary font-mono text-[10px] uppercase tracking-widest block">{t('nav.navigation')}</span>
+                  
+                  {/* Bouton Mobile Langue ajouté ici */}
+                  <button 
+                    onClick={toggleLang} 
+                    className="md:hidden flex items-center gap-2 font-mono text-xs border border-primary/30 px-3 py-1 rounded-full text-primary"
+                  >
+                    <Globe size={12} /> {currentLang === 'en' ? 'FRANÇAIS' : 'ENGLISH'}
+                  </button>
+                </div>
+                
                 {navLinks.map((link, i) => (
                   <div key={link.name} className="overflow-hidden">
                     <motion.div custom={i} variants={menuVariants} initial="hidden" animate="visible" exit="exit">
@@ -183,36 +172,43 @@ const Navbar: React.FC = () => {
                 ))}
               </div>
 
-              {/* INFOS CONTACT & RÉSEAUX (En bas du menu) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }}
                 className="flex flex-col gap-8 pt-12 mt-12 border-t border-light-border/20 dark:border-dark-border/20 relative z-10"
               >
-                <div>
-                  <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">{t('nav.contact_title')}</h4>
-                  <a href="mailto:contact@bobenvy.com" className="opacity-80 text-sm hover:text-primary transition-colors">contact@bobenvy.com</a>
-                </div>
-
-                <div>
-                  <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">{t('nav.follow_us')}</h4>
-                  <div className="flex gap-4">
-                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
-                        <Linkedin size={18} />
-                    </a>
-                    <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
-                        <Instagram size={18} />
-                    </a>
-                    <a href="https://facebook.com" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
-                        <Facebook size={18} />
-                    </a>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">{t('nav.contact_title')}</h4>
+                    <a href="mailto:contact@bobenvy.com" className="opacity-80 text-sm hover:text-primary transition-colors">contact@bobenvy.com</a>
+                  </div>
+                  <div>
+                    <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">{t('nav.follow_us')}</h4>
+                    <div className="flex gap-4">
+                      <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
+                          <Linkedin size={18} />
+                      </a>
+                      <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
+                          <Instagram size={18} />
+                      </a>
+                    </div>
                   </div>
                 </div>
-                
-                <div className="text-[9px] uppercase font-mono opacity-40 mt-4">
-                  © Bobenvy {new Date().getFullYear()}
+
+                <div className="flex flex-col gap-4">
+                  {/* Lien vers Mentions Légales ajouté ici */}
+                  <Link 
+                    to="/mentions-legales" 
+                    onClick={() => setIsOpen(false)}
+                    className="text-[10px] uppercase font-mono text-primary hover:underline transition-all"
+                  >
+                    {t('footer.legal') || 'Mentions Légales'}
+                  </Link>
+
+                  <div className="text-[9px] uppercase font-mono opacity-40">
+                    © Bobenvy {new Date().getFullYear()}
+                  </div>
                 </div>
               </motion.div>
-              
             </motion.div>
           </>
         )}

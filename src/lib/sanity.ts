@@ -5,14 +5,15 @@ import imageUrlBuilder from '@sanity/image-url';
 export const client = createClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'owylobqj',
   dataset: import.meta.env.VITE_SANITY_DATASET || 'bobenvy-studio',
-  useCdn: true,
+  // Conseil : passe à false pendant tes phases de dev intense pour éviter le cache
+  useCdn: false, 
   apiVersion: '2023-05-03',
 });
 
 const builder = imageUrlBuilder(client);
 export const urlFor = (source: any) => builder.image(source);
 
-// --- TYPES (Interfaces) ---
+// --- TYPES (Interfaces simplifiées pour les Slugs) ---
 
 export interface HomeHero {
   title: string;
@@ -25,7 +26,7 @@ export interface Project {
   _id: string;
   title: string;
   subtitle: string;
-  slug: { current: string };
+  slug: string;
   mainImage: any;
   themeColor?: string;
   tags?: string[];
@@ -39,7 +40,7 @@ export interface Project {
 export interface Post {
   _id: string;
   title: string;
-  slug: { current: string };
+  slug: string; // Simplifié en string
   mainImage: any;
   category: string;
   publishedAt: string;
@@ -57,7 +58,7 @@ export interface LegalPage {
 
 export const getHomeHero = async (lang: string = 'fr'): Promise<HomeHero> => {
   return await client.fetch(`
-    *[_type == "homeHero"][0] {
+    *[_id == "homeHero"][0] {
       "title": title[$lang],
       "subtitle": subtitle[$lang],
       "highlight": highlight[$lang],
@@ -70,11 +71,11 @@ export const getHomeHero = async (lang: string = 'fr'): Promise<HomeHero> => {
 
 export const getProjects = async (lang: string = 'fr'): Promise<Project[]> => {
   return await client.fetch(`
-    *[_type == "project"] | order(publishedAt desc) {
+    *[_type == "project" && !(_id in path('drafts.**'))] | order(publishedAt desc) {
       _id,
       "title": title[$lang],
       "subtitle": subtitle[$lang],
-      slug,
+      "slug": slug.current,
       mainImage,
       themeColor,
       tags,
@@ -85,11 +86,11 @@ export const getProjects = async (lang: string = 'fr'): Promise<Project[]> => {
 
 export const getRecentProjects = async (lang: string = 'fr'): Promise<Project[]> => {
   return await client.fetch(`
-    *[_type == "project"] | order(publishedAt desc)[0...6] {
+    *[_type == "project" && !(_id in path('drafts.**'))] | order(publishedAt desc)[0...6] {
       _id,
       "title": title[$lang],
       "subtitle": subtitle[$lang],
-      slug,
+      "slug": slug.current,
       mainImage,
       themeColor
     }
@@ -98,7 +99,7 @@ export const getRecentProjects = async (lang: string = 'fr'): Promise<Project[]>
 
 export const getProjectBySlug = async (slug: string, lang: string = 'fr'): Promise<Project> => {
   return await client.fetch(
-    `*[_type == "project" && slug.current == $slug][0] {
+    `*[_type == "project" && slug.current == $slug && !(_id in path('drafts.**'))][0] {
       _id,
       "title": title[$lang],
       "subtitle": subtitle[$lang],
@@ -119,10 +120,10 @@ export const getProjectBySlug = async (slug: string, lang: string = 'fr'): Promi
 
 export const getPosts = async (lang: string = 'fr'): Promise<Post[]> => {
   return await client.fetch(`
-    *[_type == "post"] | order(publishedAt desc) {
+    *[_type == "post" && !(_id in path('drafts.**'))] | order(publishedAt desc) {
       _id,
       "title": title[$lang],
-      slug,
+      "slug": slug.current,
       mainImage,
       category,
       publishedAt,
@@ -133,10 +134,10 @@ export const getPosts = async (lang: string = 'fr'): Promise<Post[]> => {
 
 export const getRecentPosts = async (lang: string = 'fr'): Promise<Post[]> => {
   return await client.fetch(`
-    *[_type == "post"] | order(publishedAt desc)[0...6] {
+    *[_type == "post" && !(_id in path('drafts.**'))] | order(publishedAt desc)[0...6] {
       _id,
       "title": title[$lang],
-      slug,
+      "slug": slug.current,
       category,
       publishedAt,
       "excerpt": excerpt[$lang]
@@ -146,7 +147,7 @@ export const getRecentPosts = async (lang: string = 'fr'): Promise<Post[]> => {
 
 export const getPostBySlug = async (slug: string, lang: string = 'fr'): Promise<Post> => {
   return await client.fetch(
-    `*[_type == "post" && slug.current == $slug][0] {
+    `*[_type == "post" && slug.current == $slug && !(_id in path('drafts.**'))][0] {
       _id,
       "title": title[$lang],
       mainImage,
@@ -163,7 +164,7 @@ export const getPostBySlug = async (slug: string, lang: string = 'fr'): Promise<
 
 export const getLegalPage = async (lang: string = 'fr'): Promise<LegalPage> => {
   return await client.fetch(`
-    *[_type == "legal"][0] {
+    *[_id == "legal"][0] {
       "title": title[$lang],
       "content": content[$lang]
     }

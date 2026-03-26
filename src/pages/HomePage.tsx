@@ -67,9 +67,6 @@ const HomePage = () => {
                     className="absolute inset-0 w-full h-full object-cover opacity-70"
                     src={heroData?.videoUrl || ""}
                 />
-
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-
                 <div className="absolute inset-0 w-full h-full p-6 md:p-12 z-10 flex flex-col justify-center items-center text-center md:justify-end md:items-stretch md:text-left">
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
