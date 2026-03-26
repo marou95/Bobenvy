@@ -15,7 +15,7 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 1,
     title: "Stratégie & Conseil",
-    subtitle: "ANALYSER & STRUCTURER",
+    subtitle: "Analyser & Structurer",
     description: "Audit complet, business plan et feuille de route pour prioriser vos actions et sécuriser votre croissance.",
     tags: ["Audit", "Business Plan", "Analyse concurrentielle", "Positionnement", "Étude de marché", "Étude qualitative et quantitative", "Indicateur de performance"],
     color: "#CFB586",
@@ -86,7 +86,7 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 3,
     title: "Identité de Marque",
-    subtitle: "RÉVÉLER & INCARNER",
+    subtitle: "Révéler & Incarner",
     description: "Plateforme de marque, naming, logo et territoire visuel pour rendre votre entreprise inoubliable.",
     tags: ["Branding", "Logo", "DA"],
     color: "#CFB586",
@@ -115,7 +115,7 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 4,
     title: "Marketing Digital & performance",
-    subtitle: "ACTIVER & CONVERTIR",
+    subtitle: "Activer & Convertir",
     description: "Site web, SEO/SEA et campagnes d'acquisition pour transformer votre visibilité en chiffre d'affaires.",
     tags: ["Site Web", "SEO / SEA", "Lead Gen"],
     color: "#CFB586",
@@ -144,7 +144,7 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 5,
     title: "Personal Branding",
-    subtitle: "FAITES DE VOTRE IMAGE UN LEVIER D’INFLUENCE",
+    subtitle: "Faites De Votre Image Un Levier D’influence",
     description: "Nous accompagnons dirigeants, entrepreneurs et experts dans la construction d’une image forte, cohérente et influente.",
     tags: ["Personal Branding", "Influence", "E-réputation"],
     color: "#BCA38F",
@@ -186,7 +186,7 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 6,
     title: "Communication & Influence",
-    subtitle: "DÉPLOYER & FÉDÉRER",
+    subtitle: "Déployer & Fédérer",
     description: "Social media, influence et relations presse pour créer un lien durable et émotionnel avec votre audience.",
     tags: ["Réseaux sociaux ", "Influence", "PR"],
     color: "#CFB586",
@@ -216,7 +216,7 @@ const ITEMS: ServiceDetail[] = [
   {
     id: 7,
     title: "Relation client et fidélisation",
-    subtitle: "SATISFAIRE ET FIDÉLISER",
+    subtitle: "Satisfaire Et Fidéliser",
     description: "Créer une expérience client efficace et les fidéliser pour en faire de véritables ambassadeurs.",
     tags: ["Fidélisation", "Expérience client", "Satisfaction", "Parcours client"],
     color: "#8FA396",

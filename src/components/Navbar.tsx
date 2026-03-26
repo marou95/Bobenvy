@@ -80,16 +80,16 @@ const Navbar: React.FC = () => {
     exit: { opacity: 0, x: 20 }
   };
 
-  const navContainerClasses = "fixed top-0 left-0 w-full px-6 py-6 md:px-12 md:py-4 flex justify-between items-center pointer-events-none";
+  const navContainerClasses = "fixed top-0 left-0 w-full px-6 py-4 max-md:px-6 max-md:py-3 flex justify-between items-center pointer-events-none";
 
   return (
     <>
       {/* LAYER 1 : MIX-BLEND */}
-      <nav className={`${navContainerClasses} z-[998] dark:text-white bg-slate-50/10 backdrop-blur-sm border-b border-slate-50/10 dark:border-slate-900/20 `}>
+      <nav className={`${navContainerClasses} z-[998] dark:text-white bg-slate-50/10 backdrop-blur-sm border-b border-slate-50/10 dark:border-slate-900/20`}>
         <div className="pointer-events-auto">
           {/* LOGO CLIQUABLE */}
           <a href="/" onClick={handleLogoClick} className="group relative block cursor-pointer">
-            <span className="font-museo text-2xl md:text-3xl font-bold tracking-tight">
+            <span className="font-museo text-3xl font-bold tracking-tight">
               BOBENVY<span className="text-primary">.</span>
             </span>
           </a>
