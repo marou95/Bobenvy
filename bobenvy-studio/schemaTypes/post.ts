@@ -8,14 +8,14 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Titre de l\'article',
-      type: 'string',
+      type: 'localeString', // Traduisible FR/EN
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: { source: 'title', maxLength: 96 },
+      options: { source: 'title.fr', maxLength: 96 }, // On se base sur le titre FR pour l'URL
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -40,17 +40,12 @@ export default defineType({
     defineField({
       name: 'excerpt',
       title: 'Extrait (pour la liste)',
-      type: 'text',
-      rows: 3
+      type: 'localeText', // Traduisible FR/EN
     }),
     defineField({
       name: 'body',
       title: 'Contenu',
-      type: 'array',
-      of: [
-        { type: 'block' },
-        { type: 'image' }
-      ]
+      type: 'localeBlock', // Traduisible FR/EN (Rich Text)
     }),
     defineField({
       name: 'publishedAt',
@@ -60,8 +55,15 @@ export default defineType({
     defineField({
       name: 'author',
       title: 'Auteur',
-      type: 'string',
+      type: 'string', // Généralement l'auteur ne change pas selon la langue
       initialValue: 'Team Bobenvy'
     })
   ],
+  preview: {
+    select: {
+      title: 'title.fr',
+      author: 'author',
+      media: 'mainImage'
+    }
+  }
 })

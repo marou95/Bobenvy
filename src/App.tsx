@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import '@fontsource/great-vibes';
+import './services/i18n'; // Initialisation de i18n
 
 // Components
 import Navbar from './components/Navbar';
@@ -11,6 +12,7 @@ import PortfolioPage from './pages/PortfolioPage';
 import ResourcesPage from './pages/RessourcePage';
 import ProjectDetail from './pages/ProjectDetail';
 import PostDetail from './pages/PostDetail';
+import MentionsLegales from './pages/MentionsLegales';
 
 // Ce composant gère les routes et les animations
 const AnimatedRoutes = () => {
@@ -26,6 +28,7 @@ const AnimatedRoutes = () => {
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/resources/:slug" element={<PostDetail />} />
           <Route path="*" element={<HomePage />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
         </Routes>
       </div>
     </AnimatePresence>

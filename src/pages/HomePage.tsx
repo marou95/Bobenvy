@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowDownRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // API
 import { getHomeHero, type HomeHero } from '../lib/sanity';
@@ -12,8 +13,11 @@ import PortfolioPreview from '../components/PortfolioPreview';
 import ResourcesPreview from '../components/ResourcesPreview';
 import Navbar from '../components/Navbar';
 import ContactForm from '../components/ContactForm';
+import Footer from '../components/Footer';
 
 const HomePage = () => {
+    const { t, i18n } = useTranslation();
+
     // Cursor config
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
@@ -26,15 +30,14 @@ const HomePage = () => {
 
     useEffect(() => {
         // Récupération des données du Hero depuis Sanity
-        getHomeHero().then(setHeroData).catch(console.error);
-        
+        getHomeHero(i18n.language).then(setHeroData).catch(console.error);
         const moveCursor = (e: MouseEvent) => {
             cursorX.set(e.clientX - 6);
             cursorY.set(e.clientY - 6);
         };
         window.addEventListener('mousemove', moveCursor);
         return () => window.removeEventListener('mousemove', moveCursor);
-    }, []);
+    }, [i18n.language]); // Très important : le useEffect surveille la langue
 
     useEffect(() => {
         const handleResize = () => {
@@ -56,15 +59,15 @@ const HomePage = () => {
 
             {/* HERO */}
             <section className="relative h-screen w-full overflow-hidden bg-dark-bg">
-                <video 
-                    autoPlay 
-                    muted 
-                    loop 
-                    playsInline 
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                     className="absolute inset-0 w-full h-full object-cover opacity-70"
-                    src={heroData?.videoUrl || ""} 
+                    src={heroData?.videoUrl || ""}
                 />
-                
+
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
 
                 <div className="absolute inset-0 w-full h-full p-6 md:p-12 z-10 flex flex-col justify-center items-center text-center md:justify-end md:items-stretch md:text-left">
@@ -80,10 +83,10 @@ const HomePage = () => {
                         <div className="flex flex-col items-center md:flex-row md:justify-between md:items-end md:mt-8 md:border-t md:border-white/20 md:pt-6">
                             <div className="w-[1px] h-8 bg-primary mb-6 md:hidden"></div>
                             <h2 className="max-w-screen-md text-lg md:text-2xl font-light leading-tight text-white/90 whitespace-pre-line">
-                                {heroData?.subtitle || "Agence marketing et communication \nÎle-de-France & Maroc."}
+                                {heroData?.subtitle || t('home.hero.fallback_subtitle')}
                                 <br />
                                 <span className="text-primary text-4xl italic font-vibes mt-2 inline-block">
-                                    {heroData?.highlight || 'Révélateur de singularité.'}
+                                    {heroData?.highlight || t('home.hero.fallback_highlight')}
                                 </span>
                             </h2>
                             <div className="hidden md:block animate-bounce mt-8 md:mt-0">
@@ -111,18 +114,18 @@ const HomePage = () => {
             <section className="py-40 px-6 md:px-24 bg-light-bg dark:bg-dark-bg transition-colors duration-500 relative z-10">
                 <div className="max-w-6xl mx-auto">
                     <h2 className="text-4xl md:text-6xl lg:text-5xl leading-[1.1] font-light text-light-muted dark:text-dark-muted transition-colors">
-                        Votre marque manque de différenciation ? <br />
-                        <span className="text-light-text dark:text-dark-text lg:text-6xl">Vos actions sont dispersées ?</span> <br />
-                        <span className="text-light-text dark:text-dark-text lg:text-6xl">Vous ne mesurez pas le rendement de vos investissements ?</span> <br />
-                        <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} className="text-primary font-vibes italic lg:text-6xl">Vous n'êtes pas seul.</motion.span>
+                        {t('home.manifesto.line1')} <br />
+                        <span className="text-light-text dark:text-dark-text lg:text-6xl">{t('home.manifesto.line2')}</span> <br />
+                        <span className="text-light-text dark:text-dark-text lg:text-6xl">{t('home.manifesto.line3')}</span> <br />
+                        <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} className="text-primary font-vibes italic lg:text-6xl">{t('home.manifesto.line4')}</motion.span>
                     </h2>
                     <div className="mt-24 grid md:grid-cols-2 gap-12 border-l border-primary pl-8">
                         <p className="text-lg text-light-muted dark:text-dark-muted">
-                            Bobenvy structure le chaos. Nous ne vendons pas de simples prestations, nous vendons de la clarté.
+                            {t('home.manifesto.description')}
                         </p>
                         <div className="flex items-center">
                             <a href="#about" className="group flex items-center gap-4 text-light-text dark:text-dark-text uppercase tracking-widest hover:text-primary transition-colors cursor-pointer">
-                                Découvrir l'agence
+                                {t('home.manifesto.cta')}
                                 <div className="w-12 h-[1px] bg-light-text dark:bg-white group-hover:bg-primary transition-colors"></div>
                             </a>
                         </div>
@@ -133,7 +136,7 @@ const HomePage = () => {
             {/* --- SERVICES --- */}
             <div id="services" className="relative bg-light-bg dark:bg-dark-bg transition-colors duration-500 min-h-screen">
                 <div className="relative z-10 pb-20">
-                    <ScrollStack/>
+                    <ScrollStack />
                 </div>
             </div>
 
@@ -149,10 +152,7 @@ const HomePage = () => {
             {/* CONTACT FORM SECTION */}
             <ContactForm />
 
-            <footer className="bg-light-bg dark:bg-dark-bg py-12 px-6 flex justify-between items-end border-t border-light-border dark:border-dark-border text-xs font-mono text-light-muted dark:text-dark-muted uppercase relative z-0 transition-colors duration-500">
-                <div>© {new Date().getFullYear()}  Bobenvy</div>
-                <div className="flex gap-4"><a href="#" className="hover:text-light-text dark:hover:text-white">LinkedIn</a><a href="#" className="hover:text-light-text dark:hover:text-white">Instagram</a><a href="#" className="hover:text-light-text dark:hover:text-white">Facebook</a></div>
-            </footer>
+            <Footer />
         </div>
     );
 };

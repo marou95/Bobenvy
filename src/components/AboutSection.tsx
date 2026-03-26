@@ -2,154 +2,131 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Heart, Zap, ShieldCheck, Fingerprint, ChevronDown } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
-
-// --- DATA ---
-const TABS = [
-    {
-        id: 'history',
-        label: 'Notre Histoire',
-        subtitle: "2 générations, 1 vision",
-        content: (
-            <div className="space-y-6">
-                <h3 className="font-museo text-3xl md:text-4xl">Une alliance entre expérience et créativité.</h3>
-                <p className="text-lg font-light leading-relaxed opacity-80">
-                    Bobenvy est une entreprise familiale : deux fondatrices, deux générations différentes mais une vision commune.
-                </p>
-                <p className="text-lg font-light leading-relaxed opacity-80">
-                    Entre la sagesse de l'expérience et l'audace de la créativité, elles ont créé Bobenvy pour donner naissance à leurs inspirations et partager leur savoir-faire.
-                </p>
-                <div className="p-6 border border-light-border dark:border-dark-border rounded-xl bg-light-surface/50 dark:bg-dark-surface/50 mt-4">
-                    <p className="font-vibes text-3xl text-primary mb-2">Notre Ambition</p>
-                    <p className="italic">"Créer un lien solide et durable entre votre marque et vos clients."</p>
-                </div>
-            </div>
-        )
-    },
-    {
-        id: 'values',
-        label: 'Nos Valeurs',
-        subtitle: "Ce qui nous guide",
-        content: (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                    { icon: Heart, title: "Empathie", txt: "Pour rester à votre écoute." },
-                    { icon: Zap, title: "Créativité", txt: "Pour bâtir des projets inspirants et différenciants." },
-                    { icon: ShieldCheck, title: "Exigence", txt: "Une rigueur absolue dans l’exécution de nos projets." },
-                    { icon: Fingerprint, title: "Authenticité", txt: "Des stratégies claires et des messages honnêtes." },
-                ].map((val, i) => (
-                    <div key={i} className="p-4 border border-light-border dark:border-dark-border rounded-lg hover:border-primary transition-colors group">
-                        <val.icon className="text-primary mb-3 group-hover:scale-110 transition-transform" size={24} />
-                        <h4 className="font-bold text-lg mb-1">{val.title}</h4>
-                        <p className="text-sm opacity-70 leading-tight">{val.txt}</p>
-                    </div>
-                ))}
-            </div>
-        )
-    },
-    {
-        id: 'mission',
-        label: 'Notre Mission',
-        subtitle: "Un accompagnement efficace sur vos problématique stratégique et marketing",
-        subtitleColor: "text-primary",
-        content: (
-            <div className="space-y-6">
-                <div className="space-y-4">
-                    {[
-                        "Stratégie de marque et positionnement",
-                        "Identité visuelle et direction créative",
-                        "Marketing digital, social media et campagnes",
-                        "Production de contenu (photo, vidéo, rédaction, storytelling)",
-                        "Expériences en ligne et hors ligne qui marquent les esprits"
-                    ].map((item, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                            <div className="min-w-[6px] h-[6px] rounded-full bg-primary mt-2"></div>
-                            <span className="text-lg font-light opacity-90">{item}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        )
-    },
-    {
-        id: 'why',
-        label: 'Pourquoi Bobenvy ?',
-        subtitle: "L'approche business-first",
-        content: (
-            <div className="space-y-6">
-                <div className="space-y-4">
-                    {[
-                        "Une vision globale : de la stratégie à l’exécution.",
-                        "Des recommandations claires, concrètes et actionnables.",
-                        "Un accompagnement humain, exigeant et transparent.",
-                        "De la flexibilité pour des solutions sur mesure."
-                    ].map((item, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                            <div className="min-w-[6px] h-[6px] rounded-full bg-secondary mt-2"></div>
-                            <span className="text-lg font-light opacity-90">{item}</span>
-                        </div>
-                    ))}
-                </div>
-                <div className="pt-4">
-                    <p className="font-museo text-2xl">"Nous ne cherchons pas à faire plus. <br />Nous cherchons à faire <span className="text-primary italic">mieux</span>."</p>
-                </div>
-            </div>
-        )
-    },
-    {
-        id: 'strategy',
-        label: 'Notre Approche Stratégique',
-        subtitle: "Vision stratégique et expertise opérationnelle",
-        content: (
-            <div className="space-y-6">
-                <div className="grid gap-4">
-                    <div className="border-l-2 border-primary pl-4">
-                        <h4 className="font-bold text-xl text-primary mb-1">Clarifier</h4>
-                        <p className="opacity-80">Comprendre votre marché avant de chercher la performance.</p>
-                    </div>
-                    <div className="border-l-2 border-primary pl-4">
-                        <h4 className="font-bold text-xl text-primary mb-1">Décider</h4>
-                        <p className="opacity-80">Une action bien pensée vaut mieux que dix actions mal alignées.</p>
-                    </div>
-                    <div className="border-l-2 border-primary pl-4">
-                        <h4 className="font-bold text-xl text-primary mb-1">Aligner</h4>
-                        <p className="opacity-80">La cohérence comme levier de performance et avantage concurrentiel</p>
-                    </div>
-                    <div className="border-l-2 border-primary pl-4">
-                        <h4 className="font-bold text-xl text-primary mb-1">Durer</h4>
-                        <p className="opacity-80">Installer une croissance durable plutôt qu'un buzz éphémère.</p>
-                    </div>
-                </div>
-            </div>
-        )
-    },
-    {
-        id: 'methodology',
-        label: 'Notre Méthodologie',
-        subtitle: "Une méthodologie claire et efficace",
-        subtitleColor: "text-primary",
-        content: (
-            <div className="space-y-6">
-                <div className="grid gap-4">
-                    {[
-                        { title: "Analyser", desc: "Audit, compréhension du marché et des enjeux." },
-                        { title: "Structurer", desc: "Définition de la stratégie et des priorités." },
-                        { title: "Activer", desc: "Déploiement des leviers marketing et communication." },
-                        { title: "Optimiser", desc: "Analyse des performances et amélioration continue." }
-                    ].map((item, i) => (
-                        <div key={i} className="border-l-2 border-primary pl-4">
-                            <h4 className="font-bold text-xl text-primary mb-1">{item.title}</h4>
-                            <p className="opacity-80">{item.desc}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        )
-    }
-];
+import { useTranslation } from 'react-i18next';
 
 const AboutSection = () => {
+    const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
+
+    // --- DATA --- (Déplacé à l'intérieur pour accéder à t)
+    const TABS = [
+        {
+            id: 'history',
+            label: t('about.tabs.history.label'),
+            subtitle: t('about.tabs.history.subtitle'),
+            content: (
+                <div className="space-y-6">
+                    <h3 className="font-museo text-3xl md:text-4xl">{t('about.tabs.history.title')}</h3>
+                    <p className="text-lg font-light leading-relaxed opacity-80">
+                        {t('about.tabs.history.p1')}
+                    </p>
+                    <p className="text-lg font-light leading-relaxed opacity-80">
+                        {t('about.tabs.history.p2')}
+                    </p>
+                    <div className="p-6 border border-light-border dark:border-dark-border rounded-xl bg-light-surface/50 dark:bg-dark-surface/50 mt-4">
+                        <p className="font-vibes text-3xl text-primary mb-2">{t('about.tabs.history.ambition')}</p>
+                        <p className="italic">{t('about.tabs.history.quote')}</p>
+                    </div>
+                </div>
+            )
+        },
+        {
+            id: 'values',
+            label: t('about.tabs.values.label'),
+            subtitle: t('about.tabs.values.subtitle'),
+            content: (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {[
+                        { icon: Heart, id: 'v1' },
+                        { icon: Zap, id: 'v2' },
+                        { icon: ShieldCheck, id: 'v3' },
+                        { icon: Fingerprint, id: 'v4' },
+                    ].map((val, i) => (
+                        <div key={i} className="p-4 border border-light-border dark:border-dark-border rounded-lg hover:border-primary transition-colors group">
+                            <val.icon className="text-primary mb-3 group-hover:scale-110 transition-transform" size={24} />
+                            <h4 className="font-bold text-lg mb-1">{t(`about.tabs.values.items.${val.id}.title`)}</h4>
+                            <p className="text-sm opacity-70 leading-tight">{t(`about.tabs.values.items.${val.id}.txt`)}</p>
+                        </div>
+                    ))}
+                </div>
+            )
+        },
+        {
+            id: 'mission',
+            label: t('about.tabs.mission.label'),
+            subtitle: t('about.tabs.mission.subtitle'),
+            content: (
+                <div className="space-y-6">
+                    <div className="space-y-4">
+                        {(t('about.tabs.mission.items', { returnObjects: true }) as string[]).map((item, i) => (
+                            <div key={i} className="flex items-start gap-3">
+                                <div className="min-w-[6px] h-[6px] rounded-full bg-primary mt-2"></div>
+                                <span className="text-lg font-light opacity-90">{item}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )
+        },
+        {
+            id: 'why',
+            label: t('about.tabs.why.label'),
+            subtitle: t('about.tabs.why.subtitle'),
+            content: (
+                <div className="space-y-6">
+                    <div className="space-y-4">
+                        {(t('about.tabs.why.items', { returnObjects: true }) as string[]).map((item, i) => (
+                            <div key={i} className="flex items-start gap-3">
+                                <div className="min-w-[6px] h-[6px] rounded-full bg-secondary mt-2"></div>
+                                <span className="text-lg font-light opacity-90">{item}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="pt-4">
+                        <p className="font-museo text-2xl">
+                            "{t('about.tabs.why.quote1')} <br />
+                            {t('about.tabs.why.quote2')} <span className="text-primary italic">{t('about.tabs.why.quote3')}</span>."
+                        </p>
+                    </div>
+                </div>
+            )
+        },
+        {
+            id: 'strategy',
+            label: t('about.tabs.strategy.label'),
+            subtitle: t('about.tabs.strategy.subtitle'),
+            content: (
+                <div className="space-y-6">
+                    <div className="grid gap-4">
+                        {['s1', 's2', 's3', 's4'].map((s, i) => (
+                            <div key={i} className="border-l-2 border-primary pl-4">
+                                <h4 className="font-bold text-xl text-primary mb-1">{t(`about.tabs.strategy.items.${s}.title`)}</h4>
+                                <p className="opacity-80">{t(`about.tabs.strategy.items.${s}.txt`)}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )
+        },
+        {
+            id: 'methodology',
+            label: t('about.tabs.methodology.label'),
+            subtitle: t('about.tabs.methodology.subtitle'),
+            content: (
+                <div className="space-y-6">
+                    <div className="grid gap-4">
+                        {['m1', 'm2', 'm3', 'm4'].map((m, i) => (
+                            <div key={i} className="border-l-2 border-primary pl-4">
+                                <h4 className="font-bold text-xl text-primary mb-1">{t(`about.tabs.methodology.items.${m}.title`)}</h4>
+                                <p className="opacity-80">{t(`about.tabs.methodology.items.${m}.txt`)}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )
+        }
+    ];
 
     return (
         <section id="about" className="py-20 md:py-32 bg-light-bg dark:bg-dark-bg transition-colors duration-500 overflow-hidden relative z-10">
@@ -159,16 +136,18 @@ const AboutSection = () => {
                 {/* INTRO HEADER */}
                 <div className="mb-12 md:mb-20 grid gap-8 md:gap-12 items-end">
                     <div>
-                        <span className="text-primary font-vibes text-4xl block mb-4">À Propos</span>
+                        <span className="text-primary font-vibes text-4xl block mb-4">{t('about.badge')}</span>
                         <h2 className="font-museo text-4xl md:text-6xl leading-[1.1] text-light-text dark:text-dark-text">
-                            BOBENVY <br />
-                            <span className="italic opacity-60">une approche rigoureuse et profondément humaine</span>
+                            {t('about.title')} <br />
+                            <span className="italic opacity-60">{t('about.subtitle')}</span>
                         </h2>
                     </div>
                     <div>
                         <p className="text-lg md:text-xl font-light text-light-muted dark:text-dark-muted leading-relaxed">
-                            Nous accompagnons les dirigeants dans la structuration de leur stratégie et la révélation de leur singularité.
-                            <strong className="block mt-2 font-normal text-light-text dark:text-dark-text">Notre approche personnalisée et sur-mesure, et notre accompagnement dans vos prises de décisions stratégiques et leur mise en œuvre opérationnelle, vous permettront d’atteindre vos objectifs et d’accroître votre notoriété.</strong>
+                            {t('about.intro1')}
+                            <strong className="block mt-2 font-normal text-light-text dark:text-dark-text">
+                                {t('about.intro2')}
+                            </strong>
                         </p>
                     </div>
                 </div>
@@ -203,7 +182,7 @@ const AboutSection = () => {
                                         className="overflow-hidden"
                                     >
                                         <div className="p-6 pt-0 border-t border-light-border/10 dark:border-dark-border/10 mt-2">
-                                            <span className={`font-vibes text-3xl mb-6 block mt-4  text-secondary`}>
+                                            <span className={`font-vibes text-3xl mb-6 block mt-4 text-secondary`}>
                                                 {tab.subtitle}
                                             </span>
                                             <div className="text-light-text dark:text-dark-text mb-8">
@@ -213,7 +192,7 @@ const AboutSection = () => {
                                                 onClick={() => setIsOpen(true)}
                                                 className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-secondary transition-colors cursor-pointer"
                                             >
-                                                Prendre rendez-vous <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+                                                {t('about.cta')} <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
                                             </button>
                                         </div>
                                     </motion.div>
@@ -278,7 +257,7 @@ const AboutSection = () => {
                                                 onClick={() => setIsOpen(true)}
                                                 className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-secondary transition-colors cursor-pointer"
                                             >
-                                                Prendre rendez-vous <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+                                                {t('about.cta')} <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
                                             </button>
                                         </div>
                                     </div>

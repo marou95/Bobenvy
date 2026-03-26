@@ -1,5 +1,11 @@
 import { defineField, defineType } from 'sanity'
 
+/**
+ * Note : Assure-toi que les types 'localeString', 'localeText' 
+ * et 'localeBlock' sont bien définis dans ton dossier schemaTypes 
+ * et importés dans ton index.ts.
+ */
+
 export default defineType({
   name: 'project',
   title: 'Réalisations (Portfolio)',
@@ -8,20 +14,21 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Titre du projet',
-      type: 'string',
+      type: 'localeString', // FR/EN
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
       title: 'Slug (URL)',
       type: 'slug',
-      options: { source: 'title', maxLength: 96 },
+      description: 'L’identifiant unique pour l’URL (commun aux deux langues)',
+      options: { source: 'title.fr', maxLength: 96 },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'subtitle',
       title: 'Sous-titre (Court)',
-      type: 'string',
+      type: 'localeString', // FR/EN
     }),
     defineField({
       name: 'mainImage',
@@ -40,7 +47,7 @@ export default defineType({
       name: 'tags',
       title: 'Tags / Expertises',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'string' }], // On peut garder les tags globaux ou les traduire aussi si besoin
       options: {
         layout: 'tags'
       }
@@ -48,20 +55,17 @@ export default defineType({
     defineField({
       name: 'description',
       title: 'Description courte (Card)',
-      type: 'text',
-      rows: 3
+      type: 'localeText', // FR/EN
     }),
-    // Contenu riche pour la page détail
     defineField({
       name: 'challenge',
       title: 'Le Challenge (Contexte)',
-      type: 'text',
+      type: 'localeText', // FR/EN
     }),
     defineField({
       name: 'solution',
       title: 'La Solution',
-      type: 'array',
-      of: [{ type: 'block' }] // Rich text
+      type: 'localeBlock', // FR/EN (Rich Text)
     }),
     defineField({
       name: 'gallery',
@@ -75,4 +79,12 @@ export default defineType({
       type: 'datetime',
     }),
   ],
+  // Titre en français dans la liste Sanity
+  preview: {
+    select: {
+      title: 'title.fr',
+      subtitle: 'subtitle.fr',
+      media: 'mainImage'
+    }
+  }
 })

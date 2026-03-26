@@ -1,5 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import fr from './fr.json';
+import en from './en.json';
 
 const resources = {
   en: {
@@ -47,11 +49,14 @@ const resources = {
 i18n
   .use(initReactI18next)
   .init({
-    resources,
-    lng: "en", // Default language
-    fallbackLng: "en",
+    resources: {
+      fr: { translation: fr },
+      en: { translation: en }
+    },
+    lng: 'fr', // La langue par défaut au premier chargement
+    fallbackLng: 'fr', // La langue de secours s'il manque une traduction
     interpolation: {
-      escapeValue: false
+      escapeValue: false // React protège déjà contre les injections XSS
     }
   });
 

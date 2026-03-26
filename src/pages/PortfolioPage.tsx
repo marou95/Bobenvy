@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { getProjects, Project, urlFor } from '../lib/sanity';
 import Navbar from '../components/Navbar';
 
 const PortfolioPage = () => {
+    const { t, i18n } = useTranslation();
     const [projects, setProjects] = useState<Project[]>([]);
 
     useEffect(() => {
-        getProjects().then(setProjects).catch(console.error);
-    }, []);
+        getProjects(i18n.language).then(setProjects).catch(console.error);
+    }, [i18n.language]);
 
     return (
         <div className="bg-light-bg dark:bg-dark-bg min-h-screen text-light-text dark:text-dark-text transition-colors duration-500">
@@ -21,11 +23,11 @@ const PortfolioPage = () => {
                 {/* Header de Page */}
                 <div className="mb-20">
                     <Link to="/" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest opacity-60 hover:opacity-100 hover:text-primary mb-8 transition-colors">
-                        <ArrowLeft size={16} /> Retour Accueil
+                        <ArrowLeft size={16} /> {t('portfolioPage.back_home')}
                     </Link>
-                    <h1 className="font-museo text-5xl md:text-8xl mb-6">Nos Réalisations</h1>
+                    <h1 className="font-museo text-5xl md:text-8xl mb-6">{t('portfolioPage.title')}</h1>
                     <p className="text-xl font-light opacity-70 max-w-2xl">
-                        Découvrez comment nous transformons les marques. Chaque projet est une réponse unique à un défi stratégique.
+                        {t('portfolioPage.description')}
                     </p>
                 </div>
 

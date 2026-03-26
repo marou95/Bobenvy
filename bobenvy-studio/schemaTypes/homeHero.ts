@@ -4,24 +4,23 @@ export default defineType({
   name: 'homeHero',
   title: 'Accueil',
   type: 'document',
-  fields: [
+  fields: [    
     defineField({
       name: 'title',
       title: 'Grand Titre',
-      type: 'string',
+      type: 'localeString', // FR/EN
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'subtitle',
       title: 'Sous-titre',
-      type: 'text',
-      rows: 3,
+      type: 'localeText', // FR/EN
       description: 'Utilisez la touche Entrée pour les retours à la ligne.',
     }),
     defineField({
       name: 'highlight',
       title: 'Texte mis en valeur (Doré)',
-      type: 'string',
+      type: 'localeString', // FR/EN
     }),
     defineField({
       name: 'backgroundVideo',
@@ -34,9 +33,12 @@ export default defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      title: 'title.fr',
+    },
+    prepare({ title }) {
       return {
-        title: 'Contenu de la page d’accueil',
+        title: title || 'Contenu de la page d’accueil',
       };
     },
   },

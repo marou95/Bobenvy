@@ -5,11 +5,10 @@ import imageUrlBuilder from '@sanity/image-url';
 export const client = createClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'owylobqj',
   dataset: import.meta.env.VITE_SANITY_DATASET || 'bobenvy-studio',
-  useCdn: true, 
+  useCdn: true,
   apiVersion: '2023-05-03',
 });
 
-// Helper pour les images
 const builder = imageUrlBuilder(client);
 export const urlFor = (source: any) => builder.image(source);
 
@@ -49,115 +48,124 @@ export interface Post {
   author?: string;
 }
 
+export interface LegalPage {
+  title: string;
+  content: any[];
+}
+
 // --- REQUÊTES PAGE D'ACCUEIL ---
 
-export const getHomeHero = async (): Promise<HomeHero> => {
+export const getHomeHero = async (lang: string = 'fr'): Promise<HomeHero> => {
   return await client.fetch(`
     *[_type == "homeHero"][0] {
-      title,
-      subtitle,
-      highlight,
+      "title": title[$lang],
+      "subtitle": subtitle[$lang],
+      "highlight": highlight[$lang],
       "videoUrl": backgroundVideo.asset->url
     }
-  `);
+  `, { lang });
 };
 
 // --- REQUÊTES PORTFOLIO (Projects) ---
 
-// 1. Récupérer TOUS les projets (Page Portfolio)
-export const getProjects = async (): Promise<Project[]> => {
+export const getProjects = async (lang: string = 'fr'): Promise<Project[]> => {
   return await client.fetch(`
     *[_type == "project"] | order(publishedAt desc) {
       _id,
-      title,
-      subtitle,
+      "title": title[$lang],
+      "subtitle": subtitle[$lang],
       slug,
       mainImage,
       themeColor,
       tags,
-      description
+      "description": description[$lang]
     }
-  `);
+  `, { lang });
 };
 
-// 2. Récupérer les 3 derniers projets (PortfolioPreview sur la Home)
-export const getRecentProjects = async (): Promise<Project[]> => {
+export const getRecentProjects = async (lang: string = 'fr'): Promise<Project[]> => {
   return await client.fetch(`
-    *[_type == "project"] | order(publishedAt desc)[0...3] {
+    *[_type == "project"] | order(publishedAt desc)[0...6] {
       _id,
-      title,
-      subtitle,
+      "title": title[$lang],
+      "subtitle": subtitle[$lang],
       slug,
       mainImage,
       themeColor
     }
-  `);
+  `, { lang });
 };
 
-// Récupérer un projet complet avec contenu riche
-export const getProjectBySlug = async (slug: string): Promise<Project> => {
+export const getProjectBySlug = async (slug: string, lang: string = 'fr'): Promise<Project> => {
   return await client.fetch(
     `*[_type == "project" && slug.current == $slug][0] {
       _id,
-      title,
-      subtitle,
+      "title": title[$lang],
+      "subtitle": subtitle[$lang],
       mainImage,
       themeColor,
       tags,
-      description,
-      challenge, 
-      solution, 
+      "description": description[$lang],
+      "challenge": challenge[$lang], 
+      "solution": solution[$lang], 
       gallery,
       "slug": slug.current
     }`,
-    { slug }
+    { slug, lang }
   );
 };
 
 // --- REQUÊTES RESSOURCES (Posts) ---
 
-// 1. Récupérer TOUS les articles (Page Ressources)
-export const getPosts = async (): Promise<Post[]> => {
+export const getPosts = async (lang: string = 'fr'): Promise<Post[]> => {
   return await client.fetch(`
     *[_type == "post"] | order(publishedAt desc) {
       _id,
-      title,
+      "title": title[$lang],
       slug,
       mainImage,
       category,
       publishedAt,
-      excerpt
+      "excerpt": excerpt[$lang]
     }
-  `);
+  `, { lang });
 };
 
-// 2. Récupérer les 3 derniers articles (ResourcesPreview sur la Home)
-export const getRecentPosts = async (): Promise<Post[]> => {
+export const getRecentPosts = async (lang: string = 'fr'): Promise<Post[]> => {
   return await client.fetch(`
-    *[_type == "post"] | order(publishedAt desc)[0...3] {
+    *[_type == "post"] | order(publishedAt desc)[0...6] {
       _id,
-      title,
+      "title": title[$lang],
       slug,
       category,
       publishedAt,
-      excerpt
+      "excerpt": excerpt[$lang]
     }
-  `);
+  `, { lang });
 };
 
-export const getPostBySlug = async (slug: string): Promise<Post> => {
+export const getPostBySlug = async (slug: string, lang: string = 'fr'): Promise<Post> => {
   return await client.fetch(
     `*[_type == "post" && slug.current == $slug][0] {
       _id,
-      title,
+      "title": title[$lang],
       mainImage,
       category,
       publishedAt,
-      excerpt,
-      body,
+      "excerpt": excerpt[$lang],
+      "body": body[$lang],
       author,
       "slug": slug.current
     }`,
-    { slug }
+    { slug, lang }
   );
+};
+
+export const getLegalPage = async (lang: string = 'fr'): Promise<LegalPage> => {
+  return await client.fetch(`
+    *[_type == "legal"][0] {
+      "title": title[$lang],
+      "content": content[$lang]
+    }
+  `, { lang });
 };

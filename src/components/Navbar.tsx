@@ -23,11 +23,11 @@ const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { name: t('nav.about') || "Agence", href: '/#about' },
-    { name: t('nav.services') || "Expertises", href: '/#services' },
-    { name: t('nav.portfolio') || "Projets", href: '/#portfolio' },
-    { name: t('nav.ressources') || "Ressources", href: '/#ressources' },
-    { name: t('nav.contact') || "Contact", href: '/#contact' },
+    { name: t('nav.about'), href: '/#about' },
+    { name: t('nav.services'), href: '/#services' },
+    { name: t('nav.portfolio'), href: '/#portfolio' },
+    { name: t('nav.ressources'), href: '/#ressources' },
+    { name: t('nav.contact'), href: '/#contact' },
   ];
 
   // LOGIQUE DE SCROLL
@@ -109,12 +109,12 @@ const Navbar: React.FC = () => {
             onClick={(e) => handleNavClick(e as any, '/#contact')}
             className="hidden md:flex items-center gap-2 border  border-slate-950/50 dark:border-white/30 hover:border-primary  px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:text-primary transition-all"
           >
-            Nous contacter
+            {t('nav.contact_us')}
           </Link>
 
           <button onClick={() => setIsOpen(!isOpen)} className="flex items-center gap-2 group cursor-pointer">
             <span className="hidden md:block font-mono text-xs uppercase tracking-widest group-hover:text-primary transition-colors">
-              {isOpen ? 'Close' : 'Menu'}
+              {isOpen ? t('nav.close') : t('nav.menu')}
             </span>
             <div className={`p-2 rounded-full border border-white/30 transition-all duration-300 ${isOpen ? 'rotate-90 bg-white text-black' : 'group-hover:bg-white group-hover:text-black'}`}>
               {isOpen ? <X size={20} /> : <MenuIcon size={20} />}
@@ -135,9 +135,9 @@ const Navbar: React.FC = () => {
           </div>
           {/* Espaces réservés invisibles */}
           <button className="hidden md:flex font-mono text-xs uppercase invisible">{currentLang === 'en' ? 'FR' : 'EN'}</button>
-          <div className="hidden md:flex items-center gap-2 border border-white/30 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest invisible">Start Project</div>
+          <div className="hidden md:flex items-center gap-2 border border-white/30 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest invisible">{t('nav.start_project')}</div>
           <div className="flex items-center gap-2 invisible">
-            <span className="hidden md:block font-mono text-xs uppercase tracking-widest">{isOpen ? 'Close' : 'Menu'}</span>
+            <span className="hidden md:block font-mono text-xs uppercase tracking-widest">{isOpen ? t('nav.close') : t('nav.menu')}</span>
             <div className="p-2 rounded-full border border-white/30"><MenuIcon size={20} /></div>
           </div>
         </div>
@@ -167,7 +167,7 @@ const Navbar: React.FC = () => {
             >
               {/* LIENS DE NAVIGATION */}
               <div className="flex flex-col gap-6 relative z-10">
-                <span className="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">Navigation</span>
+                <span className="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">{t('nav.navigation')}</span>
                 {navLinks.map((link, i) => (
                   <div key={link.name} className="overflow-hidden">
                     <motion.div custom={i} variants={menuVariants} initial="hidden" animate="visible" exit="exit">
@@ -189,12 +189,12 @@ const Navbar: React.FC = () => {
                 className="flex flex-col gap-8 pt-12 mt-12 border-t border-light-border/20 dark:border-dark-border/20 relative z-10"
               >
                 <div>
-                  <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">Contact</h4>
+                  <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">{t('nav.contact_title')}</h4>
                   <a href="mailto:contact@bobenvy.com" className="opacity-80 text-sm hover:text-primary transition-colors">contact@bobenvy.com</a>
                 </div>
 
                 <div>
-                  <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">Suivez-nous</h4>
+                  <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">{t('nav.follow_us')}</h4>
                   <div className="flex gap-4">
                     <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
                         <Linkedin size={18} />
@@ -209,7 +209,7 @@ const Navbar: React.FC = () => {
                 </div>
                 
                 <div className="text-[9px] uppercase font-mono opacity-40 mt-4">
-                  © Bobenvy 2026
+                  © Bobenvy {new Date().getFullYear()}
                 </div>
               </motion.div>
               

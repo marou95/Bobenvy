@@ -16,23 +16,33 @@ export default defineConfig({
         S.list()
           .title('Contenu du site')
           .items([
+            // On repasse sur un Singleton simple : un seul bouton pour un seul document
             S.listItem()
-              .title('Hero Accueil')
+              .title('Accueil')
               .id('homeHero')
               .child(
                 S.document()
                   .schemaType('homeHero')
                   .documentId('homeHero')
               ),
+            S.listItem()
+              .title('Mentions Légales')
+              .id('legal')
+              .child(
+                S.document()
+                  .schemaType('legal')
+                  .documentId('legal')
+              ),
             
             S.divider(),
             
+            // On affiche le reste normalement (Projets, Posts)
             ...S.documentTypeListItems().filter(
-              (listItem) => !['homeHero'].includes(listItem.getId() || '')
+              (listItem) => !['homeHero', 'legal'].includes(listItem.getId() || '')
             ),
           ]),
     }), 
-    visionTool()
+    visionTool(),
   ],
 
   schema: {

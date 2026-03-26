@@ -5,6 +5,7 @@ import { ArrowLeft, User, Calendar, Tag } from 'lucide-react';
 import { PortableText } from '@portabletext/react';
 import { getPostBySlug, Post, urlFor } from '../lib/sanity';
 import Navbar from '../components/Navbar';
+import i18n from '../services/i18n';
 
 const PostDetail = () => {
   const { slug } = useParams();
@@ -13,12 +14,12 @@ const PostDetail = () => {
 
   useEffect(() => {
     if (slug) {
-      getPostBySlug(slug).then((data) => {
+      getPostBySlug(slug, i18n.language).then((data) => {
         setPost(data);
         setLoading(false);
       });
     }
-  }, [slug]);
+  }, [slug, i18n.language]);
 
   if (loading) return <div className="h-screen bg-light-bg dark:bg-dark-bg" />;
   if (!post) return <div className="h-screen flex items-center justify-center">Article introuvable</div>;
@@ -117,15 +118,6 @@ const PostDetail = () => {
                 {post.body && <PortableText value={post.body} components={ptComponents} />}
              </div>
 
-             {/* Share / Tags footer */}
-             <div className="pt-8 border-t border-light-border dark:border-dark-border mt-12 flex justify-between items-center">
-                <span className="font-mono text-xs uppercase opacity-50">Partager cet article</span>
-                <div className="flex gap-4">
-                    {/* Liens factices pour l'exemple */}
-                    <button className="hover:text-primary transition-colors">LinkedIn</button>
-                    <button className="hover:text-primary transition-colors">Twitter</button>
-                </div>
-             </div>
         </div>
 
       </article>
