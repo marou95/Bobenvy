@@ -18,7 +18,6 @@ const ResourcesPreview = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-12">
             <div>
-                <span className="text-primary font-mono text-xs tracking-widest block mb-4">{t('resourcesPreview.badge')}</span>
                 <h2 className="font-museo text-4xl text-light-text dark:text-dark-text">{t('resourcesPreview.title')}</h2>
             </div>
             <Link to="/resources" className="hidden md:flex items-center gap-2 group text-sm font-bold uppercase tracking-widest text-light-text dark:text-dark-text hover:text-primary transition-colors">
@@ -50,7 +49,7 @@ const ResourcesPreview = () => {
                 </div>
             ) : (
                 posts.map((post, i) => (
-                    <Link to={`/resources/${post.slug.current}`} key={post._id} className="group block h-full">
+                    <Link to={`/resources/${post.slug}`} key={post._id} className="group block h-full">
                         <motion.article 
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}

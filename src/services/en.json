@@ -1,7 +1,7 @@
 {
     "nav": {
-        "about": "About",
-        "services": "Services",
+        "about": "About us",
+        "services": "Expertises",
         "portfolio": "Portfolio",
         "ressources": "Resources",
         "contact": "Contact",
@@ -14,9 +14,9 @@
         "start_project": "Start a Project"
     },
     "about": {
-        "badge": "About",
+        "badge": "About us",
         "title": "BOBENVY",
-        "subtitle": "A rigorous and deeply human approach",
+        "subtitle": "A rigorous and human approach",
         "intro1": "We support leaders in structuring their strategy and revealing their uniqueness.",
         "intro2": "Our personalized and tailor-made approach, combined with our support in your strategic decision-making and operational implementation, will allow you to achieve your objectives and increase your brand awareness.",
         "cta": "Book a meeting",
@@ -131,9 +131,7 @@
             "line1": "Does your brand lack differentiation?",
             "line2": "Are your actions scattered?",
             "line3": "You don't measure the return on your investments?",
-            "line4": "You are not alone.",
-            "description": "Bobenvy structures the chaos. We don't sell simple services, we sell clarity.",
-            "cta": "Discover the agency"
+            "line4": "You are not alone."
         }
     },
     "services": {

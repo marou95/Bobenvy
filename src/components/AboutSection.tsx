@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Heart, Zap, ShieldCheck, Fingerprint, ChevronDown } from 'lucide-react';
+import { ArrowRight, Handshake, Zap, ShieldCheck, Fingerprint, ChevronDown } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
 import { useTranslation } from 'react-i18next';
 
@@ -38,7 +38,7 @@ const AboutSection = () => {
             content: (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
-                        { icon: Heart, id: 'v1' },
+                        { icon: Handshake, id: 'v1' },
                         { icon: Zap, id: 'v2' },
                         { icon: ShieldCheck, id: 'v3' },
                         { icon: Fingerprint, id: 'v4' },

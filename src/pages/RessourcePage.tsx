@@ -31,7 +31,7 @@ const ResourcesPage = () => {
 
                 <div className="grid gap-12">
                     {posts.map((post) => (
-                        <Link to={`/resources/${post.slug.current}`} key={post._id} className="block group">
+                        <Link to={`/resources/${post.slug}`} key={post._id} className="block group">
                             <article className="group grid md:grid-cols-12 gap-8 items-center border-b border-light-border dark:border-dark-border pb-12 last:border-0">
 
                                 {/* Image */}

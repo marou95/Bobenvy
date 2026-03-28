@@ -102,33 +102,38 @@ const HomePage = () => {
                 </div>
             </section>
 
+            {/* MANIFESTO */}
+            <section className="py-10 px-6 md:px-24 bg-light-bg dark:bg-dark-bg transition-colors duration-500 relative z-10">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="text-3xl md:text-3xl lg:text-3xl font-light text-light-muted dark:text-dark-muted transition-colors leading-tight">
+                        <span className="block mb-6 md:mb-4">
+                            {t('home.manifesto.line1')}
+                        </span>
+
+                        <span className="block mb-6 md:mb-4 text-light-text dark:text-dark-text">
+                            {t('home.manifesto.line2')}
+                        </span>
+
+                        <span className="block mb-8 md:mb-8 text-light-text dark:text-dark-text">
+                            {t('home.manifesto.line3')}
+                        </span>
+
+                        <motion.span
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1 }}
+                            className="block text-primary font-vibes italic text-5xl md:text-6xl lg:text-8xl mt-4"
+                        >
+                            {t('home.manifesto.line4')}
+                        </motion.span>
+                    </h2>
+                </div>
+            </section>
+
             {/* ABOUT */}
             <div id="about">
                 <AboutSection />
             </div>
-
-            {/* MANIFESTO */}
-            <section className="py-40 px-6 md:px-24 bg-light-bg dark:bg-dark-bg transition-colors duration-500 relative z-10">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-4xl md:text-6xl lg:text-5xl leading-[1.1] font-light text-light-muted dark:text-dark-muted transition-colors">
-                        {t('home.manifesto.line1')} <br />
-                        <span className="text-light-text dark:text-dark-text lg:text-6xl">{t('home.manifesto.line2')}</span> <br />
-                        <span className="text-light-text dark:text-dark-text lg:text-6xl">{t('home.manifesto.line3')}</span> <br />
-                        <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} className="text-primary font-vibes italic lg:text-6xl">{t('home.manifesto.line4')}</motion.span>
-                    </h2>
-                    <div className="mt-24 grid md:grid-cols-2 gap-12 border-l border-primary pl-8">
-                        <p className="text-lg text-light-muted dark:text-dark-muted">
-                            {t('home.manifesto.description')}
-                        </p>
-                        <div className="flex items-center">
-                            <a href="#about" className="group flex items-center gap-4 text-light-text dark:text-dark-text uppercase tracking-widest hover:text-primary transition-colors cursor-pointer">
-                                {t('home.manifesto.cta')}
-                                <div className="w-12 h-[1px] bg-light-text dark:bg-white group-hover:bg-primary transition-colors"></div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* --- SERVICES --- */}
             <div id="services" className="relative bg-light-bg dark:bg-dark-bg transition-colors duration-500 min-h-screen">

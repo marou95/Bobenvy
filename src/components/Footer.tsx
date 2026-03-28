@@ -91,9 +91,9 @@ const Footer = () => {
                 </div>
 
                 <div className="flex gap-6">
-                    <a href="#" className="hover:text-light-text dark:hover:text-white transition-colors">LinkedIn</a>
-                    <a href="#" className="hover:text-light-text dark:hover:text-white transition-colors">Instagram</a>
-                    <a href="#" className="hover:text-light-text dark:hover:text-white transition-colors">Facebook</a>
+                    <a href="linkedin.com/company/bobenvy/" target="_blank" rel="noopener noreferrer" className="hover:text-light-text dark:hover:text-white transition-colors">LinkedIn</a>
+                    <a href="https://www.instagram.com/bobenvy/" target='_blank' className="hover:text-light-text dark:hover:text-white transition-colors">Instagram</a>
+                    <a href="https://www.facebook.com/bobenvy" target="_blank" rel="noopener noreferrer" className="hover:text-light-text dark:hover:text-white transition-colors">Facebook</a>
                 </div>
             </div>
 

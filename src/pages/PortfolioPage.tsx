@@ -34,7 +34,7 @@ const PortfolioPage = () => {
                 {/* Grille Complète */}
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-20">
                     {projects.map((project, i) => (
-                        <Link to={`/portfolio/${project.slug.current}`} key={project._id} className="block">
+                        <Link to={`/portfolio/${project.slug}`} key={project._id} className="block">
                             <motion.div
                                 key={project._id}
                                 initial={{ opacity: 0, y: 30 }}

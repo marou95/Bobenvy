@@ -1,9 +1,9 @@
 {
   "nav": {
     "about": "A propos",
-    "services": "Services",
-    "portfolio": "Portfolio",
-    "ressources": "Ressources",
+    "services": "Expertises",
+    "portfolio": "Réalisations",
+    "ressources": "Actualités",
     "contact": "Contact",
     "contact_us": "Nous contacter",
     "close": "Fermer",
@@ -16,8 +16,8 @@
   "about": {
     "badge": "À Propos",
     "title": "BOBENVY",
-    "subtitle": "une approche rigoureuse et profondément humaine",
-    "intro1": "Nous accompagnons les dirigeants dans la structuration de leur stratégie et la révélation de leur singularité.",
+    "subtitle": "Une approche rigoureuse et profondément humaine",
+    "intro1": "Nous accompagnons les entreprises dans la structuration de leur stratégie et la révélation de leur singularité.",
     "intro2": "Notre approche personnalisée et sur-mesure, et notre accompagnement dans vos prises de décisions stratégiques et leur mise en œuvre opérationnelle, vous permettront d’atteindre vos objectifs et d’accroître votre notoriété.",
     "cta": "Prendre rendez-vous",
     "tabs": {
@@ -48,13 +48,13 @@
           },
           "v4": {
             "title": "Authenticité",
-            "txt": "Des stratégies claires et des messages honnêtes."
+            "txt": "Des stratégies claires et des messages adaptés."
           }
         }
       },
       "mission": {
         "label": "Notre Mission",
-        "subtitle": "Un accompagnement efficace sur vos problématique stratégique et marketing",
+        "subtitle": "Un accompagnement efficace sur vos problématiques stratégique et marketing",
         "items": [
           "Stratégie de marque et positionnement",
           "Identité visuelle et direction créative",
@@ -131,9 +131,7 @@
       "line1": "Votre marque manque de différenciation ?",
       "line2": "Vos actions sont dispersées ?",
       "line3": "Vous ne mesurez pas le rendement de vos investissements ?",
-      "line4": "Vous n'êtes pas seul.",
-      "description": "Bobenvy structure le chaos. Nous ne vendons pas de simples prestations, nous vendons de la clarté.",
-      "cta": "Découvrir l'agence"
+      "line4": "Vous n'êtes pas seul."
     }
   },
   "services": {
@@ -197,7 +195,7 @@
           "Positionnement"
         ],
         "catchphrase": "Transformer votre marque en levier d’attraction et de préférence.",
-        "intro": "Une marque forte est un actif stratégique. Nous construisons une identité de marque cohérente, différenciante et mémorable. Nous façonnons des marques qui s’imposent comme une évidence.",
+        "intro": "Une marque forte est un actif stratégique. Nous construisons une identité de marque cohérente, différenciante et mémorable.",
         "mission": "Construire une marque claire, alignée et différenciante grâce à un positionnement stratégique précis.",
         "objectif": "Créer une connexion émotionnelle, améliorer la mémorisation et renforcer la confiance.",
         "whyTitle": "Pourquoi le branding est essentiel à votre succès",
@@ -231,48 +229,6 @@
         "ctaText": "Vous avez un projet de création, de refonte ou d’évolution de votre image de marque ? Contactez-nous pour révéler votre potentiel."
       },
       {
-        "title": "Identité de Marque",
-        "subtitle": "Révéler & Incarner",
-        "description": "Plateforme de marque, naming, logo et territoire visuel pour rendre votre entreprise inoubliable.",
-        "tags": [
-          "Branding",
-          "Logo",
-          "DA"
-        ],
-        "catchphrase": "Créer des marques durables qui inspirent.",
-        "intro": "Une marque forte est un actif stratégique. Nous construisons des identités cohérentes, différenciantes et mémorables. Bobenvy transforme votre marque en levier d’attraction et de préférence.",
-        "mission": "Un bon branding ne se contente pas d’être beau : il est stratégique, cohérent et impactant.",
-        "objectif": "Transformer votre marque en levier d’attraction et de préférence.",
-        "whyTitle": "Pourquoi le branding est essentiel à votre succès",
-        "whyText": "Dans un environnement saturé, une marque forte est indispensable pour soutenir vos performances marketing et commerciales.",
-        "benefits": [
-          "Vous différencier clairement de vos concurrents",
-          "Créer une connexion émotionnelle",
-          "Renforcer la crédibilité et la confiance",
-          "Améliorer la mémorisation de la marque"
-        ],
-        "steps": [
-          {
-            "title": "Audit & Analyse",
-            "desc": "Identifier les forces de votre marque et les axes d’amélioration en comprenant votre ADN."
-          },
-          {
-            "title": "Plateforme de marque",
-            "desc": "Définir les fondations pour construire une marque claire, alignée et différenciante."
-          },
-          {
-            "title": "Identité visuelle",
-            "desc": "Traduire votre stratégie de marque en une image forte et mémorable."
-          },
-          {
-            "title": "Déploiement",
-            "desc": "Assurer une image de marque cohérente et performante dans le temps."
-          }
-        ],
-        "conclusion": "Révélez tout le potentiel de votre entreprise.",
-        "ctaText": "Vous avez un projet de création, de refonte ou d’évolution de votre image de marque ? Contactez-nous pour révéler votre potentiel."
-      },
-      {
         "title": "Marketing Digital & performance",
         "subtitle": "Activer & Convertir",
         "description": "Site web, SEO/SEA et campagnes d'acquisition pour transformer votre visibilité en chiffre d'affaires.",
@@ -286,7 +242,7 @@
         "mission": "Transformer vos canaux digitaux en leviers de croissance via une stratégie d'activation et d'optimisation.",
         "objectif": "Maximiser votre retour sur investissements (ROI) et rentabiliser vos campagnes.",
         "whyTitle": "Pourquoi miser sur le marketing digital",
-        "whyText": "Sans pilotage ni stratégie, le digital coûte. Bien maîtrisé, il devient un moteur de performance. Nous combinons stratégie et optimisation continue pour accélérer votre croissance.",
+        "whyText": "Sans pilotage ni stratégie, le marketing digital n'est pas rentable. Bien maîtrisé, il devient un moteur de performance. Nous combinons stratégie et optimisation continue pour accélérer votre croissance.",
         "benefits": [
           "Attirer des prospects qualifiés",
           "Convertir votre audience en clients",
@@ -296,7 +252,7 @@
         "steps": [
           {
             "title": "Audit & Analyse",
-            "desc": "Analyser votre écosystème pour comprendre précisément ce qui génère (ou freine) votre performance."
+            "desc": "Analyser votre écosystème pour comprendre précisément ce qui génère ou freine votre performance."
           },
           {
             "title": "Stratégie d’acquisition",
@@ -316,7 +272,7 @@
       },
       {
         "title": "Personal Branding",
-        "subtitle": "Faites De Votre Image Un Levier D’influence",
+        "subtitle": "Faites de votre image un levier d’influence",
         "description": "Nous accompagnons dirigeants, entrepreneurs et experts dans la construction d’une image forte, cohérente et influente.",
         "tags": [
           "Personal Branding",
@@ -324,7 +280,7 @@
           "E-réputation"
         ],
         "catchphrase": "Votre image est un levier de crédibilité, d’influence et d’opportunités.",
-        "intro": "Faire de votre voix une référence, dans un monde où les audiences les plus marquantes sont portées par des personnes physiques. Chez Bobenvy, nous accompagnons dirigeants, entrepreneurs, experts et talents dans la construction d’une marque personnelle forte, authentique et influente, au service de leurs objectifs professionnels.",
+        "intro": "Faire de votre voix une référence dans un monde où les audiences les plus marquantes sont portées par des personnes physiques. Chez Bobenvy, nous accompagnons dirigeants, entrepreneurs, experts et talents dans la construction d’une marque personnelle forte, authentique et influente, au service de leurs objectifs professionnels.",
         "mission": "Rendre visible la bonne version de vous-même avec un message clair, crédible et différenciant, loin de la simple mise en avant.",
         "objectif": "Développer votre notoriété et vous positionner comme un véritable leader d'opinion.",
         "whyTitle": "Pourquoi le personal branding est incontournable",
@@ -373,7 +329,7 @@
         "whyTitle": "Pourquoi l'influence est devenue stratégique",
         "whyText": "Dans un environnement ultra-concurrentiel et saturé de messages, une communication maîtrisée est essentielle. Une stratégie efficace repose sur la cohérence, la crédibilité et la constance pour influencer la perception et la décision. Nous combinons stratégie éditoriale, création de messages et activation des bons relais pour maximiser votre impact.",
         "benefits": [
-          "Renforcer votre notoriété et image de marque",
+          "Renforcer votre notoriété et votre image de marque",
           "Créer une relation de confiance durable",
           "Influencer la perception et la décision",
           "Amplifier vos actions marketing et commerciales"
@@ -462,7 +418,6 @@
     "error_loading": "Erreur lors du chargement des projets.",
     "empty_badge": "Temporairement indisponible",
     "empty_text": "Nos réalisations sont en cours d'actualisation. Revenez bientôt pour découvrir nos prochaines publications.",
-    "badge": "Portfolio",
     "title": "RÉALISATIONS",
     "link_desktop": "Tous les projets",
     "link_mobile": "Voir tout le portfolio"
@@ -473,7 +428,6 @@
     "description": "Découvrez comment nous transformons les marques. Chaque projet est une réponse unique à un défi stratégique."
   },
   "resourcesPreview": {
-    "badge": "Veille & Stratégie",
     "title": "ACTUALITÉS",
     "link_desktop": "Tous les articles",
     "fallback_badge": "Info",
@@ -525,9 +479,9 @@
   },
   "footer": {
     "nav_title": "Navigation",
-    "nav_about": "L'Agence",
-    "nav_services": "Nos Expertises",
-    "nav_portfolio": "Nos Réalisations",
+    "nav_about": "A propos",
+    "nav_services": "Expertises",
+    "nav_portfolio": "Réalisations",
     "nav_ressources": "Actualités",
     "services_title": "Nos Services",
     "services_list": {

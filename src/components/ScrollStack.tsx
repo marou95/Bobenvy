@@ -17,9 +17,8 @@ const BASE_ITEMS = [
   { id: 2, color: "#CFB586" },
   { id: 3, color: "#CFB586" },
   { id: 4, color: "#CFB586" },
-  { id: 5, color: "#BCA38F" },
+  { id: 5, color: "#CFB586" },
   { id: 6, color: "#CFB586" },
-  { id: 7, color: "#8FA396" }
 ];
 
 export interface ScrollStackItemProps {
@@ -61,7 +60,7 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
       >
         <div className="flex justify-between items-start">
           <div>
-            <span className="font-mono text-[10px] md:text-xs tracking-[0.2em] mb-2 block" style={{ color: data.color }}>{data.subtitle}</span>
+            <span className="font-museo2 text-sm md:text-lg tracking-[0.1em] mb-2 block" style={{ color: data.color }}>{data.subtitle}</span>
             <h2 className="font-museo text-2xl md:text-5xl text-light-text dark:text-dark-text mt-1 md:mt-2 group-hover:text-primary transition-colors">{data.title}</h2>
           </div>
           <span className="font-mono text-light-muted dark:text-dark-muted text-lg md:text-xl border border-light-border dark:border-dark-border rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">0{i + 1}</span>
@@ -147,7 +146,6 @@ const ScrollStack = () => {
           <div
             className="sticky top-0 left-0 right-0 z-40 flex flex-col justify-end pb-4 px-6 md:px-12 bg-light-bg dark:bg-dark-bg transition-all duration-300 border-b border-light-border/10 dark:border-dark-border/10"
             style={{ height: `${titleHeight}vh` }}>
-            <span className="text-primary font-mono text-xs uppercase tracking-widest block mb-4">{t('services.badge')}</span>
             <h3 className="font-museo text-5xl md:text-8xl text-light-text dark:text-dark-text transition-colors leading-none">{t('services.title')}</h3>
           </div>
         <div className="relative w-full">

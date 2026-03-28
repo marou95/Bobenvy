@@ -184,11 +184,14 @@ const Navbar: React.FC = () => {
                   <div>
                     <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">{t('nav.follow_us')}</h4>
                     <div className="flex gap-4">
-                      <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
+                      <a href="linkedin.com/company/bobenvy/" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
                           <Linkedin size={18} />
                       </a>
-                      <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
+                      <a href="https://www.instagram.com/bobenvy/" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
                           <Instagram size={18} />
+                      </a>
+                      <a href="https://facebook.com/bobenvy" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
+                          <Facebook size={18} />
                       </a>
                     </div>
                   </div>

@@ -9,6 +9,7 @@ export default {
     extend: {
       fontFamily: {
         museo: ['MuseoModerno', 'cursive'], 
+        museo2: ['MuseoModerno', 'serif'],
         sans: ['Montserrat', 'sans-serif'],
         serif: ['Playfair Display', 'serif'],
         vibes: ['"Great Vibes"', 'cursive'],

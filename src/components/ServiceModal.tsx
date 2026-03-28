@@ -90,9 +90,9 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
                 transition={{ delay: 0.2 }}
                 className="mb-24"
               >
-                <span className="font-mono text-xs tracking-widest text-primary mb-4 block drop-shadow-md">{t('serviceModal.detail_badge')}</span>
+                {/* <span className="font-museo text-xs tracking-widest text-primary mb-4 block ">{t('serviceModal.detail_badge')}</span> */}
                 <h2 className="font-museo text-5xl md:text-7xl mb-6 text-light-text dark:text-dark-text drop-shadow-sm">{service.title}</h2>
-                <h3 className="font-vibes text-2xl md:text-2xl tracking-[0.2em] opacity-90 mb-8 border-l-2 pl-4" style={{ borderColor: service.color, color: service.color }}>{service.catchphrase}</h3>
+                <h3 className="font-vibes text-2xl md:text-2xl mb-8 border-l-2 pl-4" style={{ borderColor: service.color, color: service.color }}>{service.catchphrase}</h3>
                 <p className="text-xl md:text-2xl font-light leading-relaxed text-light-text dark:text-dark-text max-w-3xl drop-shadow-md">
                   {service.intro}
                 </p>

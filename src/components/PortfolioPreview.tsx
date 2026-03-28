@@ -66,7 +66,6 @@ const PortfolioPreview = () => {
 
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 pr-6 md:pr-12">
         <div>
-          <span className="text-primary font-mono text-xs tracking-widest block mb-4">{t('portfolioPreview.badge')}</span>
           <h2 className="font-museo text-4xl md:text-6xl text-light-text dark:text-dark-text">{t('portfolioPreview.title')}</h2>
         </div>
         <Link to="/portfolio" className="hidden md:flex items-center gap-2 group text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors mt-8 md:mt-0">
@@ -80,7 +79,7 @@ const PortfolioPreview = () => {
         ) : (
           projects.map((project, i) => (
             <Link
-              to={`/portfolio/${project.slug.current}`}
+              to={`/portfolio/${project.slug}`}
               key={project._id}
               className="flex-none w-[85vw] md:w-[450px] group snap-start"
             >
