@@ -43,7 +43,6 @@ const Footer = () => {
                         <div className="flex flex-col gap-4">
                             <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.strategy')}</a>
                             <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.branding')}</a>
-                            <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.identity')}</a>
                             <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.digital')}</a>
                             <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.personal')}</a>
                             <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.influence')}</a>

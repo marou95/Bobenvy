@@ -129,7 +129,7 @@ const AboutSection = () => {
     ];
 
     return (
-        <section id="about" className="py-20 md:py-32 bg-light-bg dark:bg-dark-bg transition-colors duration-500 overflow-hidden relative z-10">
+        <section id="about" className="py-20 bg-light-bg dark:bg-dark-bg transition-colors duration-500 overflow-hidden relative z-10">
 
             <div className="max-w-7xl mx-auto px-6 md:px-12">
 
@@ -203,7 +203,7 @@ const AboutSection = () => {
                 </div>
 
                 {/* --- VERSION DESKTOP : ONGLETS --- */}
-                <div className="hidden lg:grid lg:grid-cols-12 gap-12 border-t border-light-border dark:border-dark-border pt-12">
+                <div className="hidden lg:grid lg:grid-cols-12 gap-12 border-light-border dark:border-dark-border pt-12">
 
                     {/* MENU GAUCHE */}
                     <div className="lg:col-span-4 flex flex-col gap-2">

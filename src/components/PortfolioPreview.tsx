@@ -41,7 +41,7 @@ const PortfolioPreview = () => {
 
   if (loading) {
     return (
-      <section className="py-24 pl-6 md:pl-12 bg-light-bg dark:bg-dark-bg border-t border-light-border dark:border-dark-border overflow-hidden">
+      <section className="py-24 pl-6 md:pl-12 bg-light-bg dark:bg-dark-bg border-light-border dark:border-dark-border overflow-hidden">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 pr-6 md:pr-12">
           <div className="animate-pulse">
             <div className="h-4 w-24 bg-light-border dark:bg-dark-border mb-4 rounded"></div>
@@ -62,7 +62,7 @@ const PortfolioPreview = () => {
   }
 
   return (
-    <section className="py-24 pl-6 md:pl-12 bg-light-bg dark:bg-dark-bg border-t border-light-border dark:border-dark-border overflow-hidden">
+    <section className="py-24 pl-6 md:pl-12 bg-light-bg dark:bg-dark-bg  border-light-border dark:border-dark-border overflow-hidden">
 
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 pr-6 md:pr-12">
         <div>
