@@ -14,6 +14,7 @@ import ResourcesPreview from '../components/ResourcesPreview';
 import Navbar from '../components/Navbar';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
+import ScrollToTop from '../components/ScrollToTop';
 
 const HomePage = () => {
     const { t, i18n } = useTranslation();
@@ -86,9 +87,6 @@ const HomePage = () => {
                                     {heroData?.highlight || t('home.hero.fallback_highlight')}
                                 </span>
                             </h2>
-                            <div className="hidden md:block animate-bounce mt-8 md:mt-0">
-                                <ArrowDownRight size={48} className="text-primary" />
-                            </div>
                         </div>
                     </motion.div>
                     <motion.div
@@ -150,6 +148,9 @@ const HomePage = () => {
             <div id="ressources" >
                 <ResourcesPreview />
             </div>
+
+            {/* SCROLL TO TOP BUTTON */}
+            <ScrollToTop />
 
             {/* CONTACT FORM SECTION */}
             <ContactForm />
