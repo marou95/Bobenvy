@@ -75,7 +75,7 @@ const HomePage = () => {
                         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                         className="w-full"
                     >
-                        <h1 className="font-museo text-[15vw] md:text-[12vw] leading-[0.85] md:leading-[0.8] font-bold tracking-tighter uppercase text-white mix-blend-overlay opacity-90 mb-6 md:mb-0">
+                        <h1 className="font-museo text-[8vw] md:text-[8vw] leading-[0.85] md:leading-[0.8] font-bold tracking-tighter uppercase text-white mix-blend-overlay opacity-90 mb-6 md:mb-0">
                             {heroData?.title || 'Bobenvy'}
                         </h1>
                         <div className="flex flex-col items-center md:flex-row md:justify-between md:items-end md:mt-8 md:border-t md:border-white/20 md:pt-6">

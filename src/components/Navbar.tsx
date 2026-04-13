@@ -74,10 +74,10 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`${navContainerClasses} z-[998] dark:text-white bg-slate-50/10 backdrop-blur-sm border-b border-slate-50/10 dark:border-slate-900/20`}>
+      <nav className={`${navContainerClasses} z-[998] bg-light-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-light-border dark:border-dark-border text-light-text dark:text-dark-text transition-colors duration-500`}>
         <div className="pointer-events-auto">
           <a href="/" onClick={handleLogoClick} className="group relative block cursor-pointer">
-            <span className="font-museo text-3xl font-bold tracking-tight">
+            <span className="font-museo text-3xl font-bold tracking-tight text-light-text dark:text-dark-text transition-colors">
               BOBENVY<span className="text-primary">.</span>
             </span>
           </a>
@@ -87,23 +87,28 @@ const Navbar: React.FC = () => {
           <div className="invisible opacity-0 w-[52px]"><ThemeToggle /></div>
 
           {/* Bouton Desktop Langue */}
-          <button onClick={toggleLang} className="hidden md:flex font-mono text-xs uppercase hover:text-primary transition-colors">
+          <button onClick={toggleLang} className="hidden md:flex font-mono text-xs uppercase text-light-text dark:text-dark-text dark:hover:text-primary transition-colors">
             {currentLang === 'en' ? 'FR' : 'EN'}
           </button>
 
           <Link
             to="/#contact"
             onClick={(e) => handleNavClick(e as any, '/#contact')}
-            className="hidden md:flex items-center gap-2 border border-slate-950/50 dark:border-white/30 hover:border-primary px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:text-primary transition-all"
+            className="hidden md:flex items-center gap-2 border border-light-border dark:border-dark-border px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-light-text dark:text-dark-text hover:border-primary dark:hover:text-primary transition-all"
           >
             {t('nav.contact_us')}
           </Link>
 
-          <button onClick={() => setIsOpen(!isOpen)} className="flex items-center gap-2 group cursor-pointer">
-            <span className="hidden md:block font-mono text-xs uppercase tracking-widest group-hover:text-primary transition-colors">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="flex items-center gap-2 group cursor-pointer text-light-text dark:text-dark-text"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? t('nav.close') : t('nav.menu')}
+          >
+            <span className="hidden md:block font-mono text-xs uppercase tracking-widest text-light-text dark:text-dark-text dark:group-hover:text-primary transition-colors">
               {isOpen ? t('nav.close') : t('nav.menu')}
             </span>
-            <div className={`p-2 rounded-full border border-white/30 transition-all duration-300 ${isOpen ? 'rotate-90 bg-white text-black' : 'group-hover:bg-white group-hover:text-black'}`}>
+            <div className={`p-2 rounded-full border border-light-border dark:border-dark-border transition-all duration-300 ${isOpen ? 'rotate-90 bg-light-text text-light-bg dark:bg-dark-text dark:text-dark-bg' : 'group-hover:bg-light-text group-hover:text-light-bg dark:group-hover:bg-dark-text dark:group-hover:text-dark-bg'}`}>
               {isOpen ? <X size={20} /> : <MenuIcon size={20} />}
             </div>
           </button>
@@ -184,7 +189,7 @@ const Navbar: React.FC = () => {
                   <div>
                     <h4 className="font-bold mb-4 uppercase tracking-widest text-[10px] text-primary font-mono">{t('nav.follow_us')}</h4>
                     <div className="flex gap-4">
-                      <a href="linkedin.com/company/bobenvy/" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
+                      <a href="https://www.linkedin.com/company/bobenvy/" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
                           <Linkedin size={18} />
                       </a>
                       <a href="https://www.instagram.com/bobenvy/" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">

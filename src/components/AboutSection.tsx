@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Handshake, Zap, ShieldCheck, Fingerprint, ChevronDown } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
@@ -10,7 +10,7 @@ const AboutSection = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     // --- DATA --- (Déplacé à l'intérieur pour accéder à t)
-    const TABS = [
+    const TABS = useMemo(() => [
         {
             id: 'history',
             label: t('about.tabs.history.label'),
@@ -126,7 +126,7 @@ const AboutSection = () => {
                 </div>
             )
         }
-    ];
+    ], [t]);
 
     return (
         <section id="about" className="py-20 bg-light-bg dark:bg-dark-bg transition-colors duration-500 overflow-hidden relative z-10">
