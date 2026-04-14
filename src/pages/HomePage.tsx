@@ -83,7 +83,7 @@ const HomePage = () => {
                             <h2 className="max-w-screen-md text-lg md:text-2xl font-light leading-tight text-white/90 whitespace-pre-line">
                                 {heroData?.subtitle || t('home.hero.fallback_subtitle')}
                                 <br />
-                                <span className="text-primary text-4xl italic font-vibes mt-2 inline-block">
+                                <span className="text-primary text-4xl italic font-serif mt-2 inline-block">
                                     {heroData?.highlight || t('home.hero.fallback_highlight')}
                                 </span>
                             </h2>
@@ -103,7 +103,7 @@ const HomePage = () => {
             {/* MANIFESTO */}
             <section className="py-10 px-6 md:px-24 bg-light-bg dark:bg-dark-bg transition-colors duration-500 relative z-10">
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-3xl md:text-3xl lg:text-3xl font-light text-light-muted dark:text-dark-muted transition-colors leading-tight">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-light-muted dark:text-dark-muted transition-colors leading-tight">
                         <span className="block mb-6 md:mb-4">
                             {t('home.manifesto.line1')}
                         </span>
@@ -120,7 +120,7 @@ const HomePage = () => {
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
-                            className="block text-primary font-vibes italic text-5xl md:text-6xl lg:text-8xl mt-4"
+                            className="block text-primary font-serif italic text-3xl md:text-4xl lg:text-5xl mt-4"
                         >
                             {t('home.manifesto.line4')}
                         </motion.span>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
 import { useTranslation } from 'react-i18next';
+import { CALENDLY_CONFIG } from '../config';
 
 const Footer = () => {
     const { t } = useTranslation();
@@ -90,15 +91,15 @@ const Footer = () => {
                 </div>
 
                 <div className="flex gap-6">
-                    <a href="linkedin.com/company/bobenvy/" target="_blank" rel="noopener noreferrer" className="hover:text-light-text dark:hover:text-white transition-colors">LinkedIn</a>
+                    <a href="https://www.linkedin.com/company/bobenvy/" target="_blank" rel="noopener noreferrer" className="hover:text-light-text dark:hover:text-white transition-colors">LinkedIn</a>
                     <a href="https://www.instagram.com/bobenvy/" target='_blank' className="hover:text-light-text dark:hover:text-white transition-colors">Instagram</a>
-                    <a href="https://www.facebook.com/bobenvy" target="_blank" rel="noopener noreferrer" className="hover:text-light-text dark:hover:text-white transition-colors">Facebook</a>
+                    <a href="https://www.facebook.com/people/Bobenvy/61576514106429/" target="_blank" rel="noopener noreferrer" className="hover:text-light-text dark:hover:text-white transition-colors">Facebook</a>
                 </div>
             </div>
 
             {/* MODALE CALENDLY */}
             <PopupModal
-                url="https://calendly.com/contact-bobenvy/30min"
+                url={CALENDLY_CONFIG.URL}
                 onModalClose={() => setIsOpen(false)}
                 open={isOpen}
                 rootElement={document.getElementById("root")!}

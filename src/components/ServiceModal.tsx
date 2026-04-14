@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { PopupButton } from "react-calendly";
 import { useTranslation } from "react-i18next";
+import { CALENDLY_CONFIG } from '../config';
 
 export interface ServiceDetail {
   id: number;
@@ -35,6 +36,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
   // GESTION DU SCROLL : Bloque le body (homepage), laisse la modale active
   useEffect(() => {
     if (isOpen) {
+      document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
 
       const handleEsc = (e: KeyboardEvent) => {
@@ -43,6 +45,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
       window.addEventListener('keydown', handleEsc);
 
       return () => {
+        document.documentElement.style.overflow = '';
         document.body.style.overflow = 'unset';
         window.removeEventListener('keydown', handleEsc);
       };
@@ -92,7 +95,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
               >
                 {/* <span className="font-museo text-xs tracking-widest text-primary mb-4 block ">{t('serviceModal.detail_badge')}</span> */}
                 <h2 className="font-museo text-5xl md:text-7xl mb-6 text-light-text dark:text-dark-text drop-shadow-sm">{service.title}</h2>
-                <h3 className="font-vibes text-2xl md:text-2xl mb-8 border-l-2 pl-4" style={{ borderColor: service.color, color: service.color }}>{service.catchphrase}</h3>
+                <h3 className="font-serif text-2xl md:text-2xl mb-8 border-l-2 pl-4" style={{ borderColor: service.color, color: service.color }}>{service.catchphrase}</h3>
                 <p className="text-xl md:text-2xl font-light leading-relaxed text-light-text dark:text-dark-text max-w-3xl drop-shadow-md">
                   {service.intro}
                 </p>
@@ -143,7 +146,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
 
                   <div className="inline-block">
                     <PopupButton
-                      url="https://calendly.com/contact-bobenvy/30min"
+                      url={CALENDLY_CONFIG.URL}
                       rootElement={document.getElementById("root")!}
                       text={t('serviceModal.book_button')}
                       className="bg-black text-white px-8 py-4 rounded-full font-mono uppercase tracking-widest text-xs hover:scale-105 transition-transform font-bold cursor-pointer"

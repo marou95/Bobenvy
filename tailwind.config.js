@@ -8,11 +8,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        museo: ['MuseoModerno', 'cursive'], 
-        museo2: ['MuseoModerno', 'serif'],
-        sans: ['Montserrat', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
-        vibes: ['"Great Vibes"', 'cursive'],
+        museo: ['MuseoModerno', 'ui-sans-serif', 'system-ui', 'sans-serif'], 
+        sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+        serif: ['Playfair Display', 'ui-serif', 'Georgia', 'Cambria', "Times New Roman", 'Times', 'serif'],
       },
       colors: {
         primary: '#CFB586', 

@@ -60,7 +60,7 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
       >
         <div className="flex justify-between items-start">
           <div>
-            <span className="font-museo2 text-sm md:text-lg tracking-[0.1em] mb-2 block" style={{ color: data.color }}>{data.subtitle}</span>
+            <span className="font-museo text-sm md:text-lg tracking-[0.1em] mb-2 block" style={{ color: data.color }}>{data.subtitle}</span>
             <h2 className="font-museo text-2xl md:text-5xl text-light-text dark:text-dark-text mt-1 md:mt-2 group-hover:text-primary transition-colors">{data.title}</h2>
           </div>
           <span className="font-mono text-light-muted dark:text-dark-muted text-lg md:text-xl border border-light-border dark:border-dark-border rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">0{i + 1}</span>

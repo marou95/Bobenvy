@@ -8,6 +8,7 @@ import { getProjectBySlug, Project, urlFor } from '../lib/sanity';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer'; // Ajouté pour la cohérence
 import { PopupModal } from 'react-calendly';
+import { CALENDLY_CONFIG } from '../config';
 
 const ProjectDetail = () => {
   const { t, i18n } = useTranslation();
@@ -157,7 +158,7 @@ const ProjectDetail = () => {
       <Footer />
 
       <PopupModal
-          url="https://calendly.com/contact-bobenvy/30min"
+          url={CALENDLY_CONFIG.URL}
           onModalClose={() => setIsOpen(false)}
           open={isOpen}
           rootElement={document.getElementById("root")!}

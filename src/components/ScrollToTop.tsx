@@ -4,6 +4,7 @@ import { ArrowUp } from 'lucide-react';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isBlocked, setIsBlocked] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -15,8 +16,19 @@ const ScrollToTop = () => {
       }
     };
 
+    // Observe le body pour détecter si le scroll est bloqué (ouverture d'une modale ou du menu)
+    const observer = new MutationObserver(() => {
+      setIsBlocked(document.body.style.overflow === 'hidden');
+    });
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+    setIsBlocked(document.body.style.overflow === 'hidden');
+
     window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+      observer.disconnect();
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -28,7 +40,7 @@ const ScrollToTop = () => {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && !isBlocked && (
         <motion.button
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}

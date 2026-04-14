@@ -195,7 +195,7 @@ const Navbar: React.FC = () => {
                       <a href="https://www.instagram.com/bobenvy/" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
                           <Instagram size={18} />
                       </a>
-                      <a href="https://facebook.com/bobenvy" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
+                      <a href="https://www.facebook.com/people/Bobenvy/61576514106429/" target="_blank" rel="noreferrer" className="p-2 border border-light-border dark:border-dark-border rounded-full hover:border-primary hover:text-primary transition-colors">
                           <Facebook size={18} />
                       </a>
                     </div>

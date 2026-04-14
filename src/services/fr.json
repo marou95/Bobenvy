@@ -73,8 +73,7 @@
           "De la flexibilité pour des solutions sur mesure."
         ],
         "quote1": "La performance au service de votre croissance.",
-        "quote2": "L’excellence comme standard.",
-        "quote3": "mieux"
+        "quote2": "L’excellence comme standard. "
       },
       "strategy": {
         "label": "Notre Approche Stratégique",
@@ -90,7 +89,7 @@
           },
           "s3": {
             "title": "Aligner",
-            "txt": "La cohérence comme levier de performance et avantage concurrentiel"
+            "txt": "La cohérence comme levier de performance et avantage concurrentiel."
           },
           "s4": {
             "title": "Durer",
@@ -157,7 +156,7 @@
         "mission": "Transformer vos enjeux en un plan d’action et des résultats concrets, mesurables et rentables.",
         "objectif": "Aligner votre vision avec votre marque et vos leviers de croissance.",
         "whyTitle": "Pourquoi la stratégie est la clé de votre performance",
-        "whyText": "Sans stratégie, le marketing devient une suite d’actions isolées et des opportunités perdues. Avec une stratégie claire, chaque levier devient une force unie et chaque effort est un pas de plus vers l’objectif à atteindre : attirer, convaincre, convertir et fidéliser",
+        "whyText": "Sans stratégie, le marketing devient une suite d’actions isolées et des opportunités perdues. Avec une stratégie claire, chaque levier devient une force unie et chaque effort est un pas de plus vers l’objectif à atteindre : attirer, convaincre, convertir et fidéliser.",
         "benefits": [
           "Une vision claire de votre positionnement",
           "Des objectifs précis et mesurables",
@@ -238,7 +237,7 @@
           "Lead Gen"
         ],
         "catchphrase": "Transformez votre visibilité en résultats mesurables.",
-        "intro": "Nous activons les bons leviers pour générer de la visibilité, du trafic et de la conversion. Chaque action est pensée pour produire des résultats concrets.\n Chez Bobenvy, nous créons et pilotons des stratégies digitales orientées résultats : plus de visibilité, plus de leads, plus de ventes.",
+        "intro": "Nous activons les bons leviers pour générer de la visibilité, du trafic et de la conversion. Chaque action est pensée pour produire des résultats concrets.\nChez Bobenvy, nous créons et pilotons des stratégies digitales orientées résultats : plus de visibilité, plus de leads, plus de ventes.",
         "mission": "Transformer vos canaux digitaux en leviers de croissance via une stratégie d'activation et d'optimisation.",
         "objectif": "Maximiser votre retour sur investissements (ROI) et rentabiliser vos campagnes.",
         "whyTitle": "Pourquoi miser sur le marketing digital",
@@ -353,7 +352,7 @@
           },
           {
             "title": "Pilotage et optimisation de l’impact",
-            "desc": "Maximiser l’efficacité de vos actions et construire une influence durable"
+            "desc": "Maximiser l’efficacité de vos actions et construire une influence durable."
           }
         ],
         "conclusion": "Construisez une influence durable et mesurable.",
@@ -416,6 +415,7 @@
   },
   "portfolioPreview": {
     "error_loading": "Erreur lors du chargement des projets.",
+    "badge": "Portfolio",
     "empty_badge": "Temporairement indisponible",
     "empty_text": "Nos réalisations sont en cours d'actualisation. Revenez bientôt pour découvrir nos prochaines publications.",
     "title": "RÉALISATIONS",

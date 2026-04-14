@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Handshake, Zap, ShieldCheck, Fingerprint, ChevronDown } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
 import { useTranslation } from 'react-i18next';
+import { CALENDLY_CONFIG } from '../config';
 
 const AboutSection = () => {
     const { t } = useTranslation();
@@ -25,7 +26,7 @@ const AboutSection = () => {
                         {t('about.tabs.history.p2')}
                     </p>
                     <div className="p-6 border border-light-border dark:border-dark-border rounded-xl bg-light-surface/50 dark:bg-dark-surface/50 mt-4">
-                        <p className="font-vibes text-3xl text-primary mb-2">{t('about.tabs.history.ambition')}</p>
+                        <p className="font-serif text-3xl text-primary mb-2">{t('about.tabs.history.ambition')}</p>
                         <p className="italic">{t('about.tabs.history.quote')}</p>
                     </div>
                 </div>
@@ -86,7 +87,7 @@ const AboutSection = () => {
                     <div className="pt-4">
                         <p className="font-museo text-2xl">
                             "{t('about.tabs.why.quote1')} <br />
-                            {t('about.tabs.why.quote2')} <span className="text-primary italic">{t('about.tabs.why.quote3')}</span>."
+                            <span className="text-primary italic">{t('about.tabs.why.quote2')}</span>"
                         </p>
                     </div>
                 </div>
@@ -136,7 +137,7 @@ const AboutSection = () => {
                 {/* INTRO HEADER */}
                 <div className="mb-12 md:mb-20 grid gap-8 md:gap-12 items-end">
                     <div>
-                        <span className="text-primary font-vibes text-4xl block mb-4">{t('about.badge')}</span>
+                        <span className="text-primary font-serif text-4xl block mb-4">{t('about.badge')}</span>
                         <h2 className="font-museo text-4xl md:text-6xl leading-[1.1] text-light-text dark:text-dark-text">
                             {t('about.title')} <br />
                             <span className="italic opacity-60">{t('about.subtitle')}</span>
@@ -182,7 +183,7 @@ const AboutSection = () => {
                                         className="overflow-hidden"
                                     >
                                         <div className="p-6 pt-0 border-t border-light-border/10 dark:border-dark-border/10 mt-2">
-                                            <span className={`font-vibes text-3xl mb-6 block mt-4 text-secondary`}>
+                                            <span className={`font-serif text-3xl mb-6 block mt-4 text-secondary`}>
                                                 {tab.subtitle}
                                             </span>
                                             <div className="text-light-text dark:text-dark-text mb-8">
@@ -246,7 +247,7 @@ const AboutSection = () => {
                                 >
                                     <div className="absolute top-0 right-0 w-64 h-64 bg-secondary rounded-full blur-[150px] opacity-10 pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
                                     <div className="relative z-10">
-                                        <span className={`font-vibes text-4xl mb-6 block text-secondary`}>
+                                        <span className={`font-serif text-4xl mb-6 block text-secondary`}>
                                             {TABS[activeTab].subtitle}
                                         </span>
                                         <div className="text-light-text dark:text-dark-text">
@@ -268,7 +269,7 @@ const AboutSection = () => {
                 </div>
 
                 <PopupModal
-                    url="https://calendly.com/contact-bobenvy/30min"
+                    url={CALENDLY_CONFIG.URL}
                     onModalClose={() => setIsOpen(false)}
                     open={isOpen}
                     rootElement={document.getElementById("root")!}
