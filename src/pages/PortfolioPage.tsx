@@ -20,7 +20,6 @@ const PortfolioPage = () => {
 
             <div className="pt-32 px-6 md:px-12 max-w-7xl mx-auto pb-20">
 
-                {/* Header de Page */}
                 <div className="mb-20">
                     <Link to="/" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest opacity-60 hover:opacity-100 hover:text-primary mb-8 transition-colors">
                         <ArrowLeft size={16} /> {t('portfolioPage.back_home')}
@@ -31,7 +30,6 @@ const PortfolioPage = () => {
                     </p>
                 </div>
 
-                {/* Grille Complète */}
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-20">
                     {projects.map((project, i) => (
                         <Link to={`/portfolio/${project.slug}`} key={project._id} className="block">
@@ -62,9 +60,27 @@ const PortfolioPage = () => {
                                 </div>
 
                                 <h2 className="font-museo text-3xl md:text-4xl group-hover:text-primary transition-colors">{project.title}</h2>
-                                <p className="font-mono text-xs uppercase tracking-widest mt-2 opacity-60" style={{ color: project.themeColor }}>
-                                    {project.subtitle}
-                                </p>
+                                
+                                <div className="flex items-center gap-3 mt-2">
+                                    <p className="font-mono text-xs uppercase tracking-widest opacity-60">
+                                        {project.subtitle}
+                                    </p>
+                                    
+                                    {project.themeColors && project.themeColors.length > 0 && (
+                                        <div className="flex items-center gap-1.5 border-l border-light-border dark:border-dark-border pl-3">
+                                            {project.themeColors.slice(0, 3).map((color, idx) => (
+                                                <span 
+                                                    key={idx} 
+                                                    className="w-3 h-3 rounded-full border border-light-border dark:border-dark-border shadow-sm" 
+                                                    style={{ backgroundColor: color }}
+                                                />
+                                            ))}
+                                            {project.themeColors.length > 3 && (
+                                                <span className="font-mono text-[10px] opacity-50 ml-0.5">...</span>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
                             </motion.div>
                         </Link>
                     ))}

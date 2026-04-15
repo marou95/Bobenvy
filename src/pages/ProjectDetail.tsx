@@ -6,7 +6,7 @@ import { PortableText } from '@portabletext/react';
 import { useTranslation } from 'react-i18next';
 import { getProjectBySlug, Project, urlFor } from '../lib/sanity';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer'; // Ajouté pour la cohérence
+import Footer from '../components/Footer';
 import { PopupModal } from 'react-calendly';
 import { CALENDLY_CONFIG } from '../config';
 
@@ -71,7 +71,7 @@ const ProjectDetail = () => {
             >
                 {project.title}
             </motion.h1>
-            <p className="font-mono text-white/80 uppercase tracking-widest text-sm md:text-base border-l-2 pl-4" style={{ borderColor: project.themeColor || '#fff' }}>
+            <p className="font-mono text-white/80 uppercase tracking-widest text-sm md:text-base border-l-2 pl-4" style={{ borderColor: project.themeColors?.[0] || '#fff' }}>
                 {project.subtitle}
             </p>
         </div>
@@ -90,12 +90,17 @@ const ProjectDetail = () => {
                         ))}
                     </div>
                 </div>
-                {project.themeColor && (
+                
+                {project.themeColors && project.themeColors.length > 0 && (
                     <div>
                          <span className="font-mono text-xs uppercase tracking-widest opacity-50 block mb-2">{t('projectDetail.color_code')}</span>
-                         <div className="flex items-center gap-2">
-                             <div className="w-6 h-6 rounded-full border border-white/20" style={{ backgroundColor: project.themeColor }}></div>
-                             <span className="font-mono text-xs">{project.themeColor}</span>
+                         <div className="flex flex-wrap gap-4">
+                             {project.themeColors.map((color, idx) => (
+                                 <div key={idx} className="flex items-center gap-2">
+                                     <div className="w-6 h-6 rounded-full border border-white/20 shadow-sm" style={{ backgroundColor: color }}></div>
+                                     <span className="font-mono text-xs uppercase">{color}</span>
+                                 </div>
+                             ))}
                          </div>
                     </div>
                 )}
@@ -120,10 +125,9 @@ const ProjectDetail = () => {
                 </div>
             </div>
 
-            {/* Colonne Galerie Images (Correction de l'erreur urlFor) */}
+            {/* Colonne Galerie Images */}
             <div className="md:col-span-7 order-1 md:order-2 space-y-8">
                 {project.gallery?.map((img: any, i: number) => {
-                    // SÉCURITÉ : On ne rend l'image que si elle possède un asset valide
                     if (!img || !img.asset) return null;
 
                     return (

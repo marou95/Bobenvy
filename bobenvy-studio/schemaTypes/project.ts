@@ -37,11 +37,19 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
-      name: 'themeColor',
-      title: 'Couleur du thème (Hex)',
-      type: 'string',
-      description: 'Ex: #CFB586. Utilisé pour les bordures et les accents.',
-      initialValue: '#CFB586'
+      name: 'themeColors',
+      title: 'Code couleur (Optionnel)',
+      type: 'array',
+      description: 'Ajoutez un ou plusieurs codes couleur (ex: #CFB586) utilisé pour le thème du projet.',
+      of: [{
+        type: 'string',
+        validation: (Rule) => Rule.regex(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, {
+          name: 'Format Hex (#RRGGBB)'
+        }).error('Veuillez entrer un code hexadécimal valide (ex: #CFB586)')
+      }],
+      options: {
+        layout: 'tags'
+      }
     }),
     defineField({
       name: 'tags',

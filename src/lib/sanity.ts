@@ -28,7 +28,7 @@ export interface Project {
   subtitle: string;
   slug: string;
   mainImage: any;
-  themeColor?: string;
+  themeColors?: string[];
   tags?: string[];
   description?: string;
   challenge?: string;
@@ -77,7 +77,7 @@ export const getProjects = async (lang: string = 'fr'): Promise<Project[]> => {
       "subtitle": subtitle[$lang],
       "slug": slug.current,
       mainImage,
-      themeColor,
+      themeColors,
       tags,
       "description": description[$lang]
     }
@@ -92,7 +92,7 @@ export const getRecentProjects = async (lang: string = 'fr'): Promise<Project[]>
       "subtitle": subtitle[$lang],
       "slug": slug.current,
       mainImage,
-      themeColor
+      themeColors
     }
   `, { lang });
 };
@@ -104,7 +104,7 @@ export const getProjectBySlug = async (slug: string, lang: string = 'fr'): Promi
       "title": title[$lang],
       "subtitle": subtitle[$lang],
       mainImage,
-      themeColor,
+      themeColors,
       tags,
       "description": description[$lang],
       "challenge": challenge[$lang], 
