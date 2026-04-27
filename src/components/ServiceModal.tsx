@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { PopupButton } from "react-calendly";
@@ -22,6 +22,7 @@ export interface ServiceDetail {
   steps: { title: string; desc: string }[];
   conclusion: string;
   ctaText: string;
+  image: string;
 }
 
 interface ServiceModalProps {
@@ -32,6 +33,17 @@ interface ServiceModalProps {
 
 const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service }) => {
   const { t } = useTranslation();
+  const [imgSrc, setImgSrc] = useState(service?.image || '');
+
+  useEffect(() => {
+    if (service?.image) setImgSrc(service.image);
+  }, [service]);
+
+  const handleImgError = () => {
+    if (imgSrc.endsWith('.jpg')) {
+      setImgSrc(imgSrc.replace('.jpg', '.png'));
+    }
+  };
 
   // GESTION DU SCROLL : Bloque le body (homepage), laisse la modale active
   useEffect(() => {
@@ -93,6 +105,17 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose, service })
                 transition={{ delay: 0.2 }}
                 className="mb-24"
               >
+                {service.image && (
+                  <div className="w-full aspect-[21/9] md:aspect-[21/7] rounded-2xl md:rounded-3xl overflow-hidden mb-12 border border-light-border dark:border-dark-border shadow-lg">
+                    <img 
+                      src={imgSrc} 
+                      alt={service.title} 
+                      onError={handleImgError}
+                      className="w-full h-full object-cover" 
+                    />
+                  </div>
+                )}
+
                 {/* <span className="font-museo text-xs tracking-widest text-primary mb-4 block ">{t('serviceModal.detail_badge')}</span> */}
                 <h2 className="font-museo text-5xl md:text-7xl mb-6 text-light-text dark:text-dark-text drop-shadow-sm">{service.title}</h2>
                 <h3 className="font-serif text-2xl md:text-2xl mb-8 border-l-2 pl-4" style={{ borderColor: service.color, color: service.color }}>{service.catchphrase}</h3>

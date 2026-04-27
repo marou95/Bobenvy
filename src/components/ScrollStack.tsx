@@ -43,6 +43,17 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, headerHeight, discoverText, onOpen }) => {
   const container = useRef(null);
   const scale = useTransform(progress, range, [1, targetScale]);
+  const [imgSrc, setImgSrc] = useState(data.image);
+
+  useEffect(() => {
+    setImgSrc(data.image);
+  }, [data.image]);
+
+  const handleImgError = () => {
+    if (imgSrc.endsWith('.jpg')) {
+      setImgSrc(imgSrc.replace('.jpg', '.png'));
+    }
+  };
 
   return (
     <div
@@ -66,7 +77,19 @@ const Card: React.FC<CardProps> = ({ i, data, progress, range, targetScale, head
           <span className="font-mono text-light-muted dark:text-dark-muted text-lg md:text-xl border border-light-border dark:border-dark-border rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">0{i + 1}</span>
         </div>
 
-        <p className="text-sm md:text-xl text-light-muted dark:text-dark-muted font-light leading-relaxed max-w-2xl mt-4 line-clamp-3">{data.description}</p>
+        <div className="flex items-center md:items-start gap-4 md:gap-8 flex-1 min-h-0 py-4">
+          <p className="text-sm md:text-xl text-light-muted dark:text-dark-muted font-light leading-relaxed flex-1 line-clamp-3 md:line-clamp-4">
+            {data.description}
+          </p>
+          <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-44 md:h-44 shrink-0 rounded-xl md:rounded-2xl overflow-hidden border border-light-border dark:border-dark-border shadow-md">
+            <img 
+              src={imgSrc} 
+              alt={data.title} 
+              onError={handleImgError}
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+            />
+          </div>
+        </div>
 
         <div className="flex flex-col md:flex-row justify-between items-end gap-4 md:gap-6 mt-4">
           <div className="flex flex-wrap gap-2">
@@ -100,7 +123,7 @@ const ScrollStack = () => {
   const { t } = useTranslation();
   const container = useRef<HTMLElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
+  const [selectedServiceId, setSelectedServiceId] = useState<number | null>(null);
   const [titleHeight, setTitleHeight] = useState(30);
 
   // Fusion des données de base avec les traductions JSON
@@ -110,9 +133,15 @@ const ScrollStack = () => {
     
     return BASE_ITEMS.map((baseItem, index) => ({
       ...baseItem,
-      ...translatedItems[index]
+      ...translatedItems[index],
+      image: `/expertises/service-0${index + 1}.jpg`
     }));
   }, [t]);
+
+  // Récupère le service actif en fonction de l'ID stocké pour permettre la mise à jour des traductions en direct
+  const activeService = useMemo(() => 
+    ITEMS.find(s => s.id === selectedServiceId) || null
+  , [ITEMS, selectedServiceId]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -175,7 +204,7 @@ const ScrollStack = () => {
                 targetScale={targetScale}
                 headerHeight={titleHeight}
                 discoverText={t('services.discover')}
-                onOpen={setSelectedService}
+                onOpen={(service) => setSelectedServiceId(service.id)}
               />
             );
           })}
@@ -184,9 +213,9 @@ const ScrollStack = () => {
 
       <div className="relative z-[91]">
         <ServiceModal
-          isOpen={!!selectedService}
-          onClose={() => setSelectedService(null)}
-          service={selectedService as ServiceDetail}
+          isOpen={!!selectedServiceId}
+          onClose={() => setSelectedServiceId(null)}
+          service={activeService}
         />
       </div>
     </>
