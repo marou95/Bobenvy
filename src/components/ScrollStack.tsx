@@ -149,6 +149,18 @@ const ScrollStack = () => {
             <h3 className="font-museo text-5xl md:text-8xl text-light-text dark:text-dark-text transition-colors leading-none">{t('services.title')}</h3>
           </div>
         <div className="relative w-full">
+          {/* Ancres de défilement invisibles pour les liens externes */}
+          <div className="absolute inset-0 pointer-events-none">
+            {ITEMS.map((_, i) => (
+              <div 
+                key={`anchor-${i}`} 
+                id={`service-${i}`} 
+                className="absolute w-full" 
+                style={{ top: `${(i / cardLength) * 100}%`, height: '1px' }} 
+              />
+            ))}
+          </div>
+
           {ITEMS.map((item, i) => {
             const targetScale = 1 - (cardLength - i) * SCROLL_CONFIG.SCALE_STEP;
             const range = [i * (1 / cardLength), 1];

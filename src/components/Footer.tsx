@@ -1,13 +1,45 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { PopupModal } from 'react-calendly';
 import { useTranslation } from 'react-i18next';
 import { CALENDLY_CONFIG } from '../config';
 
 const Footer = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (href.startsWith('/#')) {
+            e.preventDefault();
+            const targetId = href.replace('/#', '');
+            const performSmoothScroll = () => {
+                const element = document.getElementById(targetId);
+                if (element) {
+                    const offset = 85;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - offset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+            };
+            if (location.pathname === '/') {
+                setTimeout(performSmoothScroll, 100);
+            } else {
+                navigate('/');
+                setTimeout(performSmoothScroll, 500);
+            }
+        }
+    };
+
+    const getServiceIndex = (key: string) => {
+        const isEn = i18n.language === 'en';
+        const map: Record<string, number> = isEn 
+            ? { strategy: 0, branding: 1, digital: 3, personal: 4, influence: 5, crm: 6 }
+            : { strategy: 0, branding: 1, digital: 2, personal: 3, influence: 4, crm: 5 };
+        return map[key] ?? 0;
+    };
 
     return (
         <footer className="bg-light-bg dark:bg-dark-bg border-t border-light-border dark:border-dark-border relative z-0 transition-colors duration-500">
@@ -21,16 +53,16 @@ const Footer = () => {
                             {t('footer.nav_title')}
                         </span>
                         <nav className="flex flex-col gap-4">
-                            <a href="#about" className="text-lg md:text-xl font-light text-light-text dark:text-dark-text hover:text-primary transition-colors w-fit">
+                            <a href="/#about" onClick={(e) => handleNavClick(e, '/#about')} className="text-lg md:text-xl font-light text-light-text dark:text-dark-text hover:text-primary transition-colors w-fit">
                                 {t('footer.nav_about')}
                             </a>
-                            <a href="#services" className="text-lg md:text-xl font-light text-light-text dark:text-dark-text hover:text-primary transition-colors w-fit">
+                            <a href="/#services" onClick={(e) => handleNavClick(e, '/#services')} className="text-lg md:text-xl font-light text-light-text dark:text-dark-text hover:text-primary transition-colors w-fit">
                                 {t('footer.nav_services')}
                             </a>
-                            <a href="#portfolio" className="text-lg md:text-xl font-light text-light-text dark:text-dark-text hover:text-primary transition-colors w-fit">
+                            <a href="/#portfolio" onClick={(e) => handleNavClick(e, '/#portfolio')} className="text-lg md:text-xl font-light text-light-text dark:text-dark-text hover:text-primary transition-colors w-fit">
                                 {t('footer.nav_portfolio')}
                             </a>
-                            <a href="#ressources" className="text-lg md:text-xl font-light text-light-text dark:text-dark-text hover:text-primary transition-colors w-fit">
+                            <a href="/#ressources" onClick={(e) => handleNavClick(e, '/#ressources')} className="text-lg md:text-xl font-light text-light-text dark:text-dark-text hover:text-primary transition-colors w-fit">
                                 {t('footer.nav_ressources')}
                             </a>
                         </nav>
@@ -42,12 +74,12 @@ const Footer = () => {
                             {t('footer.services_title')}
                         </span>
                         <div className="flex flex-col gap-4">
-                            <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.strategy')}</a>
-                            <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.branding')}</a>
-                            <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.digital')}</a>
-                            <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.personal')}</a>
-                            <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.influence')}</a>
-                            <a href="#services" className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.crm')}</a>
+                            <a href={`/#service-${getServiceIndex('strategy')}`} onClick={(e) => handleNavClick(e, `/#service-${getServiceIndex('strategy')}`)} className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.strategy')}</a>
+                            <a href={`/#service-${getServiceIndex('branding')}`} onClick={(e) => handleNavClick(e, `/#service-${getServiceIndex('branding')}`)} className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.branding')}</a>
+                            <a href={`/#service-${getServiceIndex('digital')}`} onClick={(e) => handleNavClick(e, `/#service-${getServiceIndex('digital')}`)} className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.digital')}</a>
+                            <a href={`/#service-${getServiceIndex('personal')}`} onClick={(e) => handleNavClick(e, `/#service-${getServiceIndex('personal')}`)} className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.personal')}</a>
+                            <a href={`/#service-${getServiceIndex('influence')}`} onClick={(e) => handleNavClick(e, `/#service-${getServiceIndex('influence')}`)} className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.influence')}</a>
+                            <a href={`/#service-${getServiceIndex('crm')}`} onClick={(e) => handleNavClick(e, `/#service-${getServiceIndex('crm')}`)} className="text-sm md:text-base font-light text-light-muted dark:text-dark-muted hover:text-primary transition-colors w-fit">{t('footer.services_list.crm')}</a>
                         </div>
                     </div>
 
@@ -93,7 +125,7 @@ const Footer = () => {
                 <div className="flex gap-6">
                     <a href="https://www.linkedin.com/company/bobenvy/" target="_blank" rel="noopener noreferrer" className="hover:text-light-text dark:hover:text-white transition-colors">LinkedIn</a>
                     <a href="https://www.instagram.com/bobenvy/" target='_blank' className="hover:text-light-text dark:hover:text-white transition-colors">Instagram</a>
-                    <a href="https://www.facebook.com/people/Bobenvy/61576514106429/" target="_blank" rel="noopener noreferrer" className="hover:text-light-text dark:hover:text-white transition-colors">Facebook</a>
+                    <a href="https://www.facebook.com/profile.php?id=61576514106429" target="_blank" rel="noopener noreferrer" className="hover:text-light-text dark:hover:text-white transition-colors">Facebook</a>
                 </div>
             </div>
 
