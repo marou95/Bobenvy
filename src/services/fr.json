@@ -447,7 +447,9 @@
     "challenge_empty": "Pas de description du challenge disponible.",
     "solution_badge": "Notre réponse",
     "footer_title": "Prêt à lancer votre projet ?",
-    "footer_btn": "Discutons-en"
+    "footer_btn": "Discutons-en",
+    "back_resources": "Retour aux Actualités",
+    "download_pdf": "Télécharger la ressource PDF"
   },
   "resourcesPage": {
     "back_home": "Retour Accueil",

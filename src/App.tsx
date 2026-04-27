@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import '@fontsource/great-vibes';
+// import '@fontsource/great-vibes';
 import './services/i18n'; // Initialisation de i18n
 
 // Components

@@ -6,7 +6,7 @@ export const client = createClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'owylobqj',
   dataset: import.meta.env.VITE_SANITY_DATASET || 'bobenvy-studio',
   // Conseil : passe à false pendant tes phases de dev intense pour éviter le cache
-  useCdn: false, 
+  useCdn: false,
   apiVersion: '2023-05-03',
 });
 
@@ -47,6 +47,7 @@ export interface Post {
   excerpt: string;
   body?: any[];
   author?: string;
+  attachedPdfUrl?: string;
 }
 
 export interface LegalPage {
@@ -155,6 +156,7 @@ export const getPostBySlug = async (slug: string, lang: string = 'fr'): Promise<
       publishedAt,
       "excerpt": excerpt[$lang],
       "body": body[$lang],
+      "attachedPdfUrl": attachedPdf.asset->url,
       author,
       "slug": slug.current
     }`,

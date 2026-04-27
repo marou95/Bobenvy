@@ -57,7 +57,16 @@ export default defineType({
       title: 'Auteur',
       type: 'string', // Généralement l'auteur ne change pas selon la langue
       initialValue: 'Team Bobenvy'
-    })
+    }),
+    defineField({
+      name: 'attachedPdf',
+      title: 'PDF Joint (Livre blanc, Guide...)',
+      type: 'file',
+      description: 'Optionnel. ⚠️ IMPORTANT : Compressez votre PDF pour le web avant de le mettre en ligne. Poids maximum recommandé : 5/10 Mo. (Utilisez un outil comme iLovePDF si besoin).',
+      options: {
+        accept: '.pdf'
+      }
+    }),
   ],
   preview: {
     select: {

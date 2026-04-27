@@ -490,7 +490,9 @@
         "challenge_empty": "No challenge description available.",
         "solution_badge": "Our Response",
         "footer_title": "Ready to launch your project?",
-        "footer_btn": "Let's talk"
+        "footer_btn": "Let's talk",
+        "back_resources": "Back to Resources",
+        "download_pdf": "Download the PDF resource"
     },
     "resourcesPage": {
         "back_home": "Back to Home",
