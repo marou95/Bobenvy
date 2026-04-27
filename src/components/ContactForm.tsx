@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Send, Loader2 } from 'lucide-react';
+import { ArrowRight, Send, Loader2, ChevronDown } from 'lucide-react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from '@emailjs/browser';
 import { useTranslation } from 'react-i18next';
@@ -106,13 +106,26 @@ const ContactForm = () => {
                                 <label className="text-xs font-mono uppercase tracking-widest opacity-50 ml-1">
                                     {t('contactForm.label_subject')}
                                 </label>
-                                <input
-                                    required
-                                    name="subject"
-                                    type="text"
-                                    placeholder={t('contactForm.placeholder_subject')}
-                                    className="w-full bg-transparent border-b border-light-border dark:border-dark-border px-4 py-4 focus:outline-none focus:border-primary focus:bg-light-surface/50 dark:focus:bg-dark-surface/50 transition-all text-lg"
-                                />
+                                <div className="relative">
+                                    <select
+                                        required
+                                        name="subject"
+                                        defaultValue=""
+                                        className="w-full bg-transparent border-b border-light-border dark:border-dark-border px-4 py-4 focus:outline-none focus:border-primary focus:bg-light-surface/50 dark:focus:bg-dark-surface/50 transition-all text-lg appearance-none cursor-pointer"
+                                    >
+                                        <option value="" disabled className="bg-light-bg dark:bg-dark-bg">{t('contactForm.placeholder_subject')}</option>
+                                        <option value="Devis" className="bg-light-bg dark:bg-dark-bg">{t('contactForm.subjects.quote')}</option>
+                                        <option value="Audit" className="bg-light-bg dark:bg-dark-bg">{t('contactForm.subjects.audit')}</option>
+                                        <option value="Visibilité" className="bg-light-bg dark:bg-dark-bg">{t('contactForm.subjects.visibility')}</option>
+                                        <option value="Projet" className="bg-light-bg dark:bg-dark-bg">{t('contactForm.subjects.launch')}</option>
+                                        <option value="Social" className="bg-light-bg dark:bg-dark-bg">{t('contactForm.subjects.social')}</option>
+                                        <option value="Website" className="bg-light-bg dark:bg-dark-bg">{t('contactForm.subjects.website')}</option>
+                                        <option value="Partnership" className="bg-light-bg dark:bg-dark-bg">{t('contactForm.subjects.partnership')}</option>
+                                        <option value="Career" className="bg-light-bg dark:bg-dark-bg">{t('contactForm.subjects.career')}</option>
+                                        <option value="Other" className="bg-light-bg dark:bg-dark-bg">{t('contactForm.subjects.other')}</option>
+                                    </select>
+                                    <ChevronDown size={20} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none opacity-50" />
+                                </div>
                             </div>
 
                             <div className="space-y-2">
