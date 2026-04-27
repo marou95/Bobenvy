@@ -10,7 +10,6 @@ const AboutSection = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
 
-    // --- DATA --- (Déplacé à l'intérieur pour accéder à t)
     const TABS = useMemo(() => [
         {
             id: 'history',
@@ -59,16 +58,22 @@ const AboutSection = () => {
             subtitle: t('about.tabs.mission.subtitle'),
             content: (
                 <div className="space-y-6">
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {(t('about.tabs.mission.items', { returnObjects: true }) as string[]).map((item, i) => (
-                            <div key={i} className="flex items-start gap-3">
-                                <div className="min-w-[6px] h-[6px] rounded-full bg-primary mt-2"></div>
-                                <span className="text-lg font-light opacity-90">{item}</span>
+                            <div key={i} className="flex items-center gap-4 p-4 border border-light-border dark:border-dark-border rounded-xl hover:border-primary transition-colors group">
+                                <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                                    <img
+                                        src={`/about/mission-0${i + 1}.png`}
+                                        alt=""
+                                        className="w-10 h-10 dark:invert opacity-80 group-hover:opacity-100 transition-opacity"
+                                    />
+                                </div>
+                                <span className="text-base md:text-lg font-light opacity-90 leading-tight">{item}</span>
                             </div>
                         ))}
                     </div>
                 </div>
-            )
+            ),
         },
         {
             id: 'why',
@@ -116,11 +121,20 @@ const AboutSection = () => {
             subtitle: t('about.tabs.methodology.subtitle'),
             content: (
                 <div className="space-y-6">
-                    <div className="grid gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {['m1', 'm2', 'm3', 'm4'].map((m, i) => (
-                            <div key={i} className="border-l-2 border-primary pl-4">
-                                <h4 className="font-bold text-xl text-primary mb-1">{t(`about.tabs.methodology.items.${m}.title`)}</h4>
-                                <p className="opacity-80">{t(`about.tabs.methodology.items.${m}.txt`)}</p>
+                            <div key={i} className="flex items-center gap-4 p-4 border border-light-border dark:border-dark-border rounded-xl hover:border-primary transition-colors group">
+                                <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                                    <img 
+                                        src={`/about/methodology-0${i + 1}.svg`} 
+                                        alt="" 
+                                        className="w-8 h-8 dark:invert opacity-80 group-hover:opacity-100 transition-opacity" 
+                                    />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-lg mb-0.5 leading-tight">{t(`about.tabs.methodology.items.${m}.title`)}</h4>
+                                    <p className="text-sm opacity-70 leading-tight">{t(`about.tabs.methodology.items.${m}.txt`)}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -135,22 +149,35 @@ const AboutSection = () => {
             <div className="max-w-7xl mx-auto px-6 md:px-12">
 
                 {/* INTRO HEADER */}
-                <div className="mb-12 md:mb-20 grid gap-8 md:gap-12 items-end">
-                    <div>
-                        <span className="text-primary font-serif text-4xl block mb-4">{t('about.badge')}</span>
-                        <h2 className="font-museo text-4xl md:text-6xl leading-[1.1] text-light-text dark:text-dark-text">
-                            {t('about.title')} <br />
-                            <span className="italic opacity-60">{t('about.subtitle')}</span>
-                        </h2>
+                <div className="mb-12 md:mb-20 grid lg:grid-cols-[1fr_auto] gap-12 items-center">
+                    <div className="grid gap-8 md:gap-12">
+                        <div>
+                            <span className="text-primary font-serif text-4xl block mb-4">{t('about.badge')}</span>
+                            <h2 className="font-museo text-4xl md:text-6xl leading-[1.1] text-light-text dark:text-dark-text">
+                                {t('about.title')} <br />
+                                <span className="italic opacity-60">{t('about.subtitle')}</span>
+                            </h2>
+                        </div>
+                        <div>
+                            <p className="text-lg md:text-xl font-light text-light-muted dark:text-dark-muted leading-relaxed">
+                                {t('about.intro1')}
+                                <strong className="block mt-2 font-normal text-light-text dark:text-dark-text">
+                                    {t('about.intro2')}
+                                </strong>
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <p className="text-lg md:text-xl font-light text-light-muted dark:text-dark-muted leading-relaxed">
-                            {t('about.intro1')}
-                            <strong className="block mt-2 font-normal text-light-text dark:text-dark-text">
-                                {t('about.intro2')}
-                            </strong>
-                        </p>
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="relative lg:w-[320px] mx-auto lg:ml-auto"
+                    >
+                        <div className="aspect-[16/10] md:aspect-video lg:aspect-square rounded-3xl overflow-hidden border border-light-border dark:border-dark-border shadow-lg">
+                            <img src="/teamwork.jpg" alt="Bobenvy Teamwork" className="w-full h-full object-cover" />
+                        </div>
+                        <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl -z-10"></div>
+                    </motion.div>
                 </div>
 
                 {/* --- VERSION MOBILE : ACCORDÉON --- */}

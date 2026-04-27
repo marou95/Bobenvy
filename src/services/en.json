@@ -22,7 +22,7 @@
         "cta": "Book a meeting",
         "tabs": {
             "history": {
-                "label": "Our Story",
+                "label": "Our story",
                 "subtitle": "2 generations, 1 vision",
                 "title": "An alliance between experience and creativity.",
                 "p1": "Bobenvy is a family business: two founders, two different generations but a common vision.",
@@ -31,7 +31,7 @@
                 "quote": "\"Creating a solid and lasting link between your brand and your customers.\""
             },
             "values": {
-                "label": "Our Values",
+                "label": "Our values",
                 "subtitle": "What guides us",
                 "items": {
                     "v1": {
@@ -53,7 +53,7 @@
                 }
             },
             "mission": {
-                "label": "Our Mission",
+                "label": "Our mission",
                 "subtitle": "Effective support for your strategic and marketing challenges",
                 "items": [
                     "Brand strategy and positioning",
@@ -76,7 +76,7 @@
         "quote2": "Excellence as a standard. "
             },
             "strategy": {
-                "label": "Our Strategic Approach",
+                "label": "Our strategic approach",
                 "subtitle": "Strategic vision and operational expertise",
                 "items": {
                     "s1": {
@@ -98,7 +98,7 @@
                 }
             },
             "methodology": {
-                "label": "Our Methodology",
+                "label": "Our methodology",
                 "subtitle": "A clear and effective methodology",
                 "items": {
                     "m1": {

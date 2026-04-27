@@ -22,7 +22,7 @@
     "cta": "Prendre rendez-vous",
     "tabs": {
       "history": {
-        "label": "Notre Histoire",
+        "label": "Notre histoire",
         "subtitle": "2 générations, 1 vision",
         "title": "Une alliance entre expérience et créativité.",
         "p1": "Bobenvy est une entreprise familiale : deux fondatrices, deux générations différentes mais une vision commune.",
@@ -31,7 +31,7 @@
         "quote": "\"Créer un lien solide et durable entre votre marque et vos clients.\""
       },
       "values": {
-        "label": "Nos Valeurs",
+        "label": "Nos valeurs",
         "subtitle": "Ce qui nous guide",
         "items": {
           "v1": {
@@ -53,7 +53,7 @@
         }
       },
       "mission": {
-        "label": "Notre Mission",
+        "label": "Notre mission",
         "subtitle": "Un accompagnement efficace sur vos problématiques stratégique et marketing",
         "items": [
           "Stratégie de marque et positionnement",
@@ -76,7 +76,7 @@
         "quote2": "L’excellence comme standard. "
       },
       "strategy": {
-        "label": "Notre Approche Stratégique",
+        "label": "Notre approche stratégique",
         "subtitle": "Vision stratégique et expertise opérationnelle",
         "items": {
           "s1": {
@@ -98,7 +98,7 @@
         }
       },
       "methodology": {
-        "label": "Notre Méthodologie",
+        "label": "Notre méthodologie",
         "subtitle": "Une méthodologie claire et efficace",
         "items": {
           "m1": {
@@ -152,7 +152,7 @@
           "Indicateur de performance"
         ],
         "catchphrase": "Construire des fondations solides pour une croissance durable.",
-        "intro": "Toute performance commence par une stratégie claire. Bobenvy vous accompagne dans la définition et le pilotage de votre stratégie marketing globale pour prendre les bonnes décisions au bon moment grâce à une vision claire de votre marché, de vos clients et de vos leviers de croissance",
+        "intro": "Toute performance commence par une stratégie claire. Bobenvy vous accompagne dans la définition et le pilotage de votre stratégie marketing globale pour prendre les bonnes décisions au bon moment grâce à une vision claire de votre marché, de vos clients et de vos leviers de croissance.",
         "mission": "Transformer vos enjeux en un plan d’action et des résultats concrets, mesurables et rentables.",
         "objectif": "Aligner votre vision avec votre marque et vos leviers de croissance.",
         "whyTitle": "Pourquoi la stratégie est la clé de votre performance",
@@ -217,7 +217,7 @@
           },
           {
             "title": "Identité visuelle",
-            "desc": "Traduire votre stratégie de marque en une image forte et mémorable"
+            "desc": "Traduire votre stratégie de marque en une image forte et mémorable."
           },
           {
             "title": "Branding opérationnel",

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowDownRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -19,25 +19,12 @@ import ScrollToTop from '../components/ScrollToTop';
 const HomePage = () => {
     const { t, i18n } = useTranslation();
 
-    // Cursor config
-    const cursorX = useMotionValue(-100);
-    const cursorY = useMotionValue(-100);
-    const springConfig = { damping: 25, stiffness: 700 };
-    const cursorXSpring = useSpring(cursorX, springConfig);
-    const cursorYSpring = useSpring(cursorY, springConfig);
-
     const [titleHeight, setTitleHeight] = useState(30);
     const [heroData, setHeroData] = useState<HomeHero | null>(null);
 
     useEffect(() => {
         // Récupération des données du Hero depuis Sanity
         getHomeHero(i18n.language).then(setHeroData).catch(console.error);
-        const moveCursor = (e: MouseEvent) => {
-            cursorX.set(e.clientX - 6);
-            cursorY.set(e.clientY - 6);
-        };
-        window.addEventListener('mousemove', moveCursor);
-        return () => window.removeEventListener('mousemove', moveCursor);
     }, [i18n.language]); // Très important : le useEffect surveille la langue
 
     useEffect(() => {
@@ -52,11 +39,6 @@ const HomePage = () => {
     return (
         <div className="bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text font-sans selection:bg-primary selection:text-black transition-colors duration-500">
             <Navbar />
-
-            <motion.div
-                style={{ x: cursorXSpring, y: cursorYSpring }}
-                className="fixed top-0 left-0 w-3 h-3 bg-primary rounded-full pointer-events-none z-50 hidden md:block"
-            />
 
             {/* HERO */}
             <section className="relative h-screen w-full overflow-hidden bg-dark-bg">
