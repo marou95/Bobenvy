@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { CALENDLY_CONFIG } from '../config';
 
 const Footer = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -34,10 +34,14 @@ const Footer = () => {
     };
 
     const getServiceIndex = (key: string) => {
-        const isEn = i18n.language === 'en';
-        const map: Record<string, number> = isEn 
-            ? { strategy: 0, branding: 1, digital: 3, personal: 4, influence: 5, crm: 6 }
-            : { strategy: 0, branding: 1, digital: 2, personal: 3, influence: 4, crm: 5 };
+        const map: Record<string, number> = {
+            strategy: 0,
+            branding: 1,
+            digital: 2,
+            personal: 3,
+            influence: 4,
+            crm: 5,
+        };
         return map[key] ?? 0;
     };
 

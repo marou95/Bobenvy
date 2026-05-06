@@ -17,18 +17,18 @@
         "badge": "About us",
         "title": "BOBENVY",
         "subtitle": "A rigorous and human approach",
-        "intro1": "We support leaders in structuring their strategy and revealing their uniqueness.",
-        "intro2": "Our personalized and tailor-made approach, combined with our support in your strategic decision-making and operational implementation, will allow you to achieve your objectives and increase your brand awareness.",
+        "intro1": "We support companies in developing their strategies and emphasising their unique strengths.",
+        "intro2": "The implementation of a personalized and tailor-made approach, combined with guidance on strategic decision-making and operational achievement, is aimed at helping you to achieve your goals and enhance your reputation.",
         "cta": "Book a meeting",
         "tabs": {
             "history": {
                 "label": "Our story",
-                "subtitle": "2 generations, 1 vision",
-                "title": "An alliance between experience and creativity.",
-                "p1": "Bobenvy is a family business: two founders, two different generations but a common vision.",
-                "p2": "Between the wisdom of experience and the boldness of creativity, they created Bobenvy to bring their inspirations to life and share their know-how.",
+                "subtitle": "Two generations, one vision",
+                "title": "A collaboration of experience and creativity.",
+                "p1": "Bobenvy is a family business with two founders from different generations who share the same vision.",
+                "p2": "Combining experience with the audacity of creativity, they founded Bobenvy to bring their inspirations to life and share their expertise. The wealth of experience of our experts in strategy, marketing and business development consultancy enables them to provide companies with support in their strategic decision-making at both national and international levels.",
                 "ambition": "Our Ambition",
-                "quote": "\"Creating a solid and lasting link between your brand and your customers.\""
+                "quote": "\"Our mission is to establish a strong and permanent connection between your brand and your customers.\""
             },
             "values": {
                 "label": "Our values",
@@ -36,85 +36,85 @@
                 "items": {
                     "v1": {
                         "title": "Empathy",
-                        "txt": "To remain at your service and listen to your needs."
+                        "txt": "To stay in touch with you and meet your needs."
                     },
                     "v2": {
                         "title": "Creativity",
-                        "txt": "To build inspiring and differentiating projects."
+                        "txt": "To facilitate the conception of inspiring and distinctive projects."
                     },
                     "v3": {
                         "title": "Excellence",
-                        "txt": "Absolute rigor in the execution of our projects."
+                        "txt": "To adopt a rigorous approach to execution in order to ensure the successful completion of all projects."
                     },
                     "v4": {
                         "title": "Authenticity",
-                        "txt": "Clear strategies and honest messaging."
+                        "txt": "To adapt tailor-made strategies and clear messages."
                     }
                 }
             },
             "mission": {
                 "label": "Our mission",
-                "subtitle": "Effective support for your strategic and marketing challenges",
+                "subtitle": "We provide effective support for your strategic and marketing challenges, including:",
                 "items": [
                     "Brand strategy and positioning",
                     "Visual identity and creative direction",
                     "Digital marketing, social media and campaigns",
-                    "Content production (photo, video, writing, storytelling)",
-                    "Online and offline experiences that leave a lasting impression"
+                    "Content production (photography, video, copywriting and storytelling)",
+                    "Memorable online and offline experiences"
                 ]
             },
             "why": {
-                "label": "Why Bobenvy?",
-                "subtitle": "A business-first approach",
+                "label": "Why Bobenvy",
+                "subtitle": "Our business-first approach is to provide:",
                 "items": [
-                    "A global vision: from strategy to execution.",
-                    "Clear, concrete, and actionable recommendations.",
-                    "Human, demanding, and transparent support.",
-                    "Flexibility for tailor-made solutions."
+                    "A holistic strategy encompassing the entire spectrum from start to finish.",
+                    "Clear, practical and actionable recommendations.",
+                    "Tailor-made, transparent, high-quality support.",
+                    "Flexibility to allow for customised solutions or services."
                 ],
-                "quote1": "Performance for your growth.",
-        "quote2": "Excellence as a standard. "
+                "quote1": "Performance supports your growth.",
+                "quote2": "Excellence is the standard."
             },
             "strategy": {
                 "label": "Our strategic approach",
-                "subtitle": "Strategic vision and operational expertise",
+                "subtitle": "Strategic vision and operational expertise:",
                 "items": {
                     "s1": {
                         "title": "Clarify",
-                        "txt": "Understand your market before seeking performance."
+                        "txt": "Understand your market before seeking to improve performance."
                     },
                     "s2": {
                         "title": "Decide",
-                        "txt": "A well-thought-out action is better than ten misaligned ones."
+                        "txt": "One well-thought-out action is better than ten misaligned ones."
                     },
                     "s3": {
                         "title": "Align",
-                        "txt": "Consistency as a lever for performance and competitive advantage."
+                        "txt": "Performance and competitiveness are driven by consistency."
                     },
                     "s4": {
-                        "title": "Endure",
-                        "txt": "Establishing sustainable growth rather than a short-lived buzz."
+                        "title": "Sustain",
+                        "txt": "Rather than chasing short-term trends, focus on building lasting growth."
                     }
                 }
             },
             "methodology": {
                 "label": "Our methodology",
-                "subtitle": "A clear and effective methodology",
+                "subtitle": "Our methodology is clear and effective",
                 "items": {
                     "m1": {
-                        "title": "Analyze",
-                        "txt": "Audit, understanding the market and challenges."
+                        "title": "Analysis",
+                        "txt": "Audit, market analysis, and identification of key challenges."
                     },
                     "m2": {
                         "title": "Structure",
                         "txt": "Definition of strategy and priorities."
                     },
                     "m3": {
-                        "title": "Activate",
-                        "txt": "Deployment of marketing and communication levers."
+                        "title": "Activation",
+                        "txt": "Implementation of marketing and communication initiatives."
                     },
                     "m4": {
-                        "title": "Optimize",
+                        "title": "Optimisation",
                         "txt": "Performance analysis and continuous improvement."
                     }
                 }
@@ -124,7 +124,7 @@
     "home": {
         "hero": {
             "fallback_subtitle": "Marketing and communication agency \nFrance & Morocco.",
-            "fallback_highlight": "Revealing uniqueness."
+            "fallback_highlight": "Revealing singularity."
         },
         "manifesto": {
             "line1": "Does your brand lack differentiation?",
@@ -151,123 +151,81 @@
                     "Qualitative & Quantitative Study",
                     "KPIs"
                 ],
-                "catchphrase": "Building solid foundations for sustainable growth.",
-                "intro": "All performance starts with a clear strategy. Bobenvy supports you in defining and managing your global marketing strategy to make the right decisions at the right time, thanks to a clear vision of your market, your customers, and your growth levers.",
-                "mission": "Transform your challenges into an action plan and concrete, measurable, and profitable results.",
-                "objectif": "Align your vision with your brand and your growth levers.",
-                "whyTitle": "Why strategy is the key to your performance",
-                "whyText": "Without strategy, marketing becomes a series of isolated actions and lost opportunities. With a clear strategy, every lever becomes a united force and every effort is a step closer to the goal: attract, convince, convert, and retain.",
+                "catchphrase": "Building a solid foundation for sustainable growth.",
+                "intro": "Every successful outcome starts with a clear strategy. Bobenvy supports you in defining and steering your overall marketing strategy, enabling you to make the right decisions at the right time thanks to a clear understanding of your market, your customers and your growth drivers.",
+                "mission": "To turn your challenges into an action plan that delivers concrete, measurable and profitable results.",
+                "objectif": "To ensure that your vision is aligned with your brand and growth drivers.",
+                "whyTitle": "Why strategy is key to performance",
+                "whyText": "Without a strategy, marketing becomes a series of isolated actions and missed opportunities. However, with a clear strategy, every initiative becomes part of a united force, with each effort representing a new step towards the goal of attracting, convincing, converting and retaining customers.",
                 "benefits": [
                     "A clear vision of your positioning",
-                    "Precise and measurable objectives",
-                    "Intelligent prioritization of actions",
-                    "Better return on investment"
+                    "A specific and measurable objective",
+                    "A smart prioritization of actions",
+                    "A strong return on your investments"
                 ],
                 "steps": [
                     {
-                        "title": "Audit & Diagnosis",
-                        "desc": "In-depth analysis of your ecosystem, your barriers, and your opportunities."
+                        "title": "Audit and diagnosis",
+                        "desc": "Conducting an in-depth analysis of your ecosystem to identify any obstacles or opportunities."
                     },
                     {
-                        "title": "Strategic Definition",
-                        "desc": "Setting a consistent and differentiating strategic direction."
+                        "title": "Strategic definition",
+                        "desc": "Developing a clear and unique strategic approach."
                     },
                     {
-                        "title": "Action Plan",
-                        "desc": "Move quickly from reflection to execution with a clear roadmap."
+                        "title": "Action plan",
+                        "desc": "Creating a clear roadmap to help you move quickly from planning to execution."
                     },
                     {
                         "title": "Support",
-                        "desc": "Securing your strategic choices and maximizing your impact."
+                        "desc": "Reinforcing your strategic choices and maximising your impact."
                     }
                 ],
                 "conclusion": "At Bobenvy, we don't sell concepts, but strategies that move your business forward.",
-                "ctaText": "Do you have a project, a challenge, or a growth objective? Contact us for an initial discussion."
+                "ctaText": "Do you have a project, a challenge or a growth objective? Contact us."
             },
             {
                 "title": "Branding & Brand Image",
-                "subtitle": "Creating lasting brands that inspire",
-                "description": "A strong brand is a strategic asset. We build consistent, differentiating, and memorable identities.",
+                "subtitle": "Creating enduring brands that inspire",
+                "description": "A strong brand is a strategic asset. We build consistent, distinctive and memorable brand identities.",
                 "tags": [
                     "Branding",
                     "Visual Identity",
                     "Positioning"
                 ],
-                "catchphrase": "Transforming your brand into a lever of attraction and preference.",
-                "intro": "A strong brand is a strategic asset. We build a consistent, differentiating, and memorable brand identity. We shape brands that stand out as an obvious choice.",
-                "mission": "Build a clear, aligned, and differentiating brand through precise strategic positioning.",
-                "objectif": "Create an emotional connection, improve memorability, and strengthen trust.",
-                "whyTitle": "Why branding is essential to your success",
-                "whyText": "In a saturated environment, effective branding is not limited to beautiful design but to a well-studied graphic strategy. Sharp artistic direction, coupled with a mastered graphic universe, allows you to stand out, strengthen your credibility, and support your marketing and commercial performance.",
+                "catchphrase": "Turn your brand into a magnet for attraction and preference.",
+                "intro": "A strong brand is a strategic asset. We develop consistent, distinctive and memorable brand identities and create brands that stand out as the obvious choice.",
+                "mission": "To build a clear, aligned and distinctive brand through precise strategic positioning.",
+                "objectif": "To create an emotional connection, improve brand recall and build trust.",
+                "whyTitle": "Why is branding essential to your success",
+                "whyText": "In a saturated market, effective branding goes beyond attractive design to encompass a well-thought-out visual strategy. A sophisticated artistic direction, combined with a cohesive visual identity, enables you to stand out, strengthen your credibility and support your marketing and sales performance.",
                 "benefits": [
-                    "Develop your authenticity",
-                    "Create an emotional connection with your audience",
-                    "Strengthen credibility and trust",
-                    "Improve memorability and brand preference",
-                    "Support your marketing and commercial performance"
+                    "Developing your authenticity",
+                    "Building an emotional connection with your audience",
+                    "Strengthening credibility and building trust",
+                    "Increase brand awareness and preference",
+                    "Supporting your marketing and sales performance"
                 ],
                 "steps": [
                     {
-                        "title": "Brand Audit & Analysis",
-                        "desc": "Understand your DNA, your environment and identify your brand's strengths and areas for improvement."
+                        "title": "Brand audit & analysis",
+                        "desc": "Understand your brand’s DNA and environment, and identify your brand’s strengths and areas for improvement."
                     },
                     {
-                        "title": "Brand Platform",
-                        "desc": "Define the foundations of your brand: mission, vision, values, and tone of voice for perfect alignment."
+                        "title": "Brand platform",
+                        "desc": "Define your brand’s foundations: mission, vision, values and tone of voice for perfect alignment."
                     },
                     {
-                        "title": "Visual Identity",
+                        "title": "Visual identity",
                         "desc": "Translate your brand strategy into a strong and memorable image."
                     },
                     {
-                        "title": "Operational Branding",
-                        "desc": "Ensuring a consistent and high-performing brand image over time through our support."
+                        "title": "Operational branding",
+                        "desc": "Ensure a consistent and effective brand image over time with our support."
                     }
                 ],
-                "conclusion": "Good branding is strategic, consistent, and impactful.",
-                "ctaText": "Do you have a project to create, redesign, or evolve your brand image? Contact us to reveal your potential."
-            },
-            {
-                "title": "Brand Identity",
-                "subtitle": "Revealing & Embodying",
-                "description": "Brand platform, naming, logo, and visual territory to make your company unforgettable.",
-                "tags": [
-                    "Branding",
-                    "Logo",
-                    "Creative Direction"
-                ],
-                "catchphrase": "Creating lasting brands that inspire.",
-                "intro": "A strong brand is a strategic asset. We build consistent, differentiating, and memorable identities. Bobenvy transforms your brand into a lever of attraction and preference.",
-                "mission": "Good branding doesn't just look good: it's strategic, consistent, and impactful.",
-                "objectif": "Transform your brand into a lever of attraction and preference.",
-                "whyTitle": "Why branding is essential to your success",
-                "whyText": "In a saturated environment, a strong brand is essential to support your marketing and commercial performance.",
-                "benefits": [
-                    "Clearly differentiate yourself from your competitors",
-                    "Create an emotional connection",
-                    "Strengthen credibility and trust",
-                    "Improve brand recall"
-                ],
-                "steps": [
-                    {
-                        "title": "Audit & Analysis",
-                        "desc": "Identify your brand's strengths and areas for improvement by understanding your DNA."
-                    },
-                    {
-                        "title": "Brand Platform",
-                        "desc": "Defining the foundations to build a clear, aligned, and differentiating brand."
-                    },
-                    {
-                        "title": "Visual Identity",
-                        "desc": "Translate your brand strategy into a strong and memorable image."
-                    },
-                    {
-                        "title": "Deployment",
-                        "desc": "Ensure a consistent and high-performing brand image over time."
-                    }
-                ],
-                "conclusion": "Reveal the full potential of your company.",
-                "ctaText": "Do you have a project to create, redesign, or evolve your brand image? Contact us to reveal your potential."
+                "conclusion": "Good branding is not just about looking good; it is also strategic, consistent and impactful.",
+                "ctaText": "Are you planning to create, revamp or develop your brand image? Contact us to unlock your potential."
             },
             {
                 "title": "Digital Marketing & Performance",
@@ -278,171 +236,171 @@
                     "SEO / SEA",
                     "Lead Gen"
                 ],
-                "catchphrase": "Transform your visibility into measurable results.",
-        "intro": "We activate the right levers to generate visibility, traffic, and conversion. Every action is designed to produce concrete results.\nAt Bobenvy, we create and manage result-oriented digital strategies: more visibility, more leads, more sales.",
-                "mission": "Transform your digital channels into growth levers via an activation and optimization strategy.",
-                "objectif": "Maximize your return on investment (ROI) and make your campaigns profitable.",
-                "whyTitle": "Why bet on digital marketing",
-                "whyText": "Without management or strategy, digital is an expense. Well mastered, it becomes a performance engine. We combine strategy and continuous optimization to accelerate your growth.",
+                "catchphrase": "Transform visibility into measurable results.",
+                "intro": "We implement the right strategies to increase visibility, drive traffic, and boost conversions. Every action is designed to deliver tangible results. At Bobenvy, we create and manage digital strategies that deliver greater visibility, more leads and increased sales.",
+                "mission": "To transform your digital channels into growth drivers through activation and optimisation strategies.",
+                "objectif": "To maximise your return on investment (ROI) and ensure your campaigns are profitable.",
+                "whyTitle": "Why focus on digital marketing",
+                "whyText": "Digital marketing isn't cost-effective without proper management and strategy. However, when managed effectively, it can enhance your performance. We combine strategy with continuous optimisation to accelerate your growth.",
                 "benefits": [
-                    "Attract qualified leads",
-                    "Convert your audience into customers",
-                    "Optimize every euro invested",
-                    "Accelerate your growth sustainably"
+                    "Attracting qualified leads",
+                    "Converting your audience into customers",
+                    "Optimise every euro invested",
+                    "Accelerate your sustainable growth"
                 ],
                 "steps": [
                     {
-                        "title": "Audit & Analysis",
-                        "desc": "Analyze your ecosystem to understand precisely what generates (or hinders) your performance."
+                        "title": "Audit & analysis",
+                        "desc": "We analyse your ecosystem to understand precisely what drives your performance."
                     },
                     {
-                        "title": "Acquisition Strategy",
-                        "desc": "Build a strategy aligned with your business objectives to activate the right levers."
+                        "title": "Acquisition strategy",
+                        "desc": "We develop a strategy aligned with your business objectives in order to activate the right levers."
                     },
                     {
-                        "title": "Activation & Management",
-                        "desc": "Deploy and manage your marketing actions to generate concrete results."
+                        "title": "Execution & management",
+                        "desc": "We deploy and manage your marketing initiatives to generate tangible results."
                     },
                     {
-                        "title": "Continuous Optimization",
-                        "desc": "Improve your results month after month, because performance is built over time."
+                        "title": "Continuous optimisation",
+                        "desc": "We ensure your results improve every month because performance is built over time."
                     }
                 ],
                 "conclusion": "Switch from passive visibility to active acquisition.",
-                "ctaText": "Do you want to generate more leads or improve your visibility? Contact us to accelerate your growth."
+                "ctaText": "Do you want to generate more leads or improve your visibility? Contact us."
             },
             {
                 "title": "Personal Branding",
                 "subtitle": "Make Your Image a Lever for Influence",
-                "description": "We support leaders, entrepreneurs, and experts in building a strong, consistent, and influential image.",
+                "description": "We support executives, entrepreneurs, experts and rising stars in building strong, authentic and influential personal brands.",
                 "tags": [
                     "Personal Branding",
                     "Influence",
                     "E-reputation"
                 ],
-                "catchphrase": "Your image is a lever for credibility, influence, and opportunities.",
-                "intro": "Make your voice a reference in a world where the most impactful audiences are driven by individuals. At Bobenvy, we support leaders, entrepreneurs, experts, and talents in building a strong, authentic, and influential personal brand, serving their professional objectives.",
-                "mission": "Make the best version of yourself visible with a clear, credible, and differentiating message, beyond simple self-promotion.",
-                "objectif": "Develop your brand awareness and position yourself as a true thought leader.",
-                "whyTitle": "Why personal branding is essential",
-                "whyText": "We build aligned, strategic, and sustainable personal brands by combining introspection, strategy, and communication. A well-constructed personal branding strategy allows you to inspire trust even before the first contact and create an authentic link with your audience.",
+                "catchphrase": "Your image is key to building credibility, influence and opportunities.",
+                "intro": "Stand out in a world where the most influential audiences are led by individuals. Bobenvy supports executives, entrepreneurs, experts and rising stars in building strong, authentic and influential personal brands that help them achieve their professional goals.",
+                "mission": "We aim to help you showcase the best version of yourself by delivering a clear, credible and distinctive message that goes beyond mere self-promotion.",
+                "objectif": "Building your reputation and positioning you as a true thought leader.",
+                "whyTitle": "Why is personal branding essential",
+                "whyText": "We build personal brands that are aligned, strategic and sustainable, combining self-reflection, strategy and communication. A well-constructed personal branding strategy enables you to inspire confidence before the first contact and to create an authentic connection with your audience.",
                 "benefits": [
-                    "Develop your reputation and credibility",
-                    "Position yourself as an expert or thought leader",
-                    "Create business opportunities, partnerships, clients, and media coverage",
-                    "Inspire trust even before the first contact",
-                    "Differentiate yourself sustainably in your ecosystem"
+                    "Building reputation and credibility",
+                    "Positioning yourself as an expert",
+                    "Creating business opportunities, partnerships, clients and media exposure",
+                    "Inspiring trust even before first contact",
+                    "Setting yourself apart in your ecosystem for the long term"
                 ],
                 "steps": [
                     {
-                        "title": "Personal Audit & Positioning",
-                        "desc": "Set solid foundations by analyzing your environment, your objectives, and your e-reputation to define a clear, credible, and differentiating positioning."
+                        "title": "Personal audit and positioning",
+                        "desc": "We lay solid foundations by analysing your environment, objectives and online reputation, and defining a clear, credible and distinctive positioning."
                     },
                     {
-                        "title": "Personal Brand Platform",
-                        "desc": "Structure your identity to build a consistent image aligned with who you are, defining your value proposition, tone of voice, and posture."
+                        "title": "Personal branding platform",
+                        "desc": "Shaping your identity to build a consistent image that reflects who you are by defining your value proposition, tone of voice and positioning."
                     },
                     {
-                        "title": "Image & Expression",
-                        "desc": "Translate your positioning into concrete elements via powerful storytelling and a tailor-made editorial line to make your professional image recognizable."
+                        "title": "Image & expression",
+                        "desc": "Transforming your brand positioning into tangible elements through compelling storytelling and a customised editorial approach. This creates a professional and instantly recognisable brand image."
                     },
                     {
-                        "title": "Deployment & Support",
-                        "desc": "Supporting you over time to establish your personal brand, optimize your social media, and master your public speaking."
+                        "title": "Implementation, set-up and support",
+                        "desc": "We offer long-term support to help you build your personal brand, optimise your social media presence and refine your public speaking skills."
                     }
                 ],
                 "conclusion": "Ready to reveal your personal brand?",
-                "ctaText": "Do you want to develop your visibility, structure your image, or strengthen your professional influence? Contact us for an initial discussion and discover how to transform your image into opportunities."
+                "ctaText": "Would you like to increase your visibility, refine your brand image, or strengthen your professional influence? Get in touch about how to transform your brand image into lucrative opportunities."
             },
             {
                 "title": "Communication & Influence",
                 "subtitle": "Deploy & Federate",
-                "description": "Social media, influence, and press relations to create a lasting and emotional bond with your audience.",
+                "description": "We manage your communications to boost brand awareness and credibility through the right channels at the right time.",
                 "tags": [
                     "Social Media",
                     "Influence",
                     "PR"
                 ],
-                "catchphrase": "Deploy your message on the right channels at the right time.",
-                "intro": "We handle your communication to strengthen your brand awareness and credibility. Bobenvy amplifies your visibility and impact. Being visible is no longer enough: a brand must carry a clear, consistent, and influential message to exist sustainably.",
-                "mission": "Transform your communication into a lever for influence and brand preference.",
-                "objectif": "Capture attention, create buy-in, and strengthen your credibility.",
+                "catchphrase": "Deliver your message through the right channels at the right time.",
+                "intro": "We manage your communications to boost brand awareness and credibility. Today, being just visible is no longer enough. A brand must convey a clear, consistent and influential message to ensure its long-term success.",
+                "mission": "We aim to transform your communications into a tool for building influence and brand preference.",
+                "objectif": "Capture attention, build support and enhance your credibility.",
                 "whyTitle": "Why influence has become strategic",
-                "whyText": "In an ultra-competitive environment saturated with messages, mastered communication is essential. An effective strategy relies on consistency, credibility, and constancy to influence perception and decisions. We combine editorial strategy, message creation, and activation of the right relays to maximize your impact.",
+                "whyText": "In a highly competitive environment where there is an abundance of messages, a well-managed communication strategy is vital. An effective strategy is based on consistency, credibility and perseverance to shape perceptions and influence decisions. Maximise your impact by combining editorial strategy, message creation and the activation of the right channels.",
                 "benefits": [
-                    "Strengthen your brand awareness and image",
-                    "Create a lasting relationship of trust",
-                    "Influence perception and decision-making",
-                    "Amplify your marketing and commercial actions"
+                    "Enhancing your brand awareness and image",
+                    "Building a lasting relationship of trust",
+                    "Shaping perceptions and influence decisions",
+                    "Amplifying your marketing and sales efforts"
                 ],
                 "steps": [
                     {
-                        "title": "Audit & Analysis",
-                        "desc": "Understand how your brand is perceived and identify current influence levers."
+                        "title": "Audit and analysis",
+                        "desc": "Understanding how your brand is perceived and identifying the current influencing factors."
                     },
                     {
-                        "title": "Communication Strategy",
-                        "desc": "Build a differentiating discourse and spread the right message, at the right time, on the right channels."
+                        "title": "Communication strategy",
+                        "desc": "Developing a distinctive narrative and delivering the right message at the right time through the most appropriate channels."
                     },
                     {
-                        "title": "Influence & PR",
-                        "desc": "Increase your visibility and strengthen your credibility through influential voices and relevant relays."
+                        "title": "Influencer marketing & public relations",
+                        "desc": "Boosting your visibility and credibility by leveraging influential voices and relevant channels."
                     },
                     {
-                        "title": "Activation & Events",
-                        "desc": "Design impactful events and manage the impact to create a link with your targets."
+                        "title": "Engagement and events",
+                        "desc": "Organising memorable events and maximising their impact to build connections with your target audience."
                     },
                     {
-                        "title": "Management & Impact Optimization",
-                        "desc": "Maximize the effectiveness of your actions and build lasting influence."
+                        "title": "Impact management and optimization",
+                        "desc": "Making your initiatives more effective and establishing lasting influence."
                     }
                 ],
                 "conclusion": "Build sustainable and measurable influence.",
-                "ctaText": "Do you want to develop your brand awareness, structure your discourse, or gain credibility? Contact us to amplify your brand's reach."
+                "ctaText": "Is your goal to enhance your visibility, refine your communication strategy or strengthen your reputation? Get in touch to see how we can help you reach more people."
             },
             {
                 "title": "Customer Relations & Loyalty",
                 "subtitle": "Satisfy & Retain",
-                "description": "Create an effective customer experience and build loyalty to turn them into true ambassadors.",
+                "description": "Effective customer relationship management increases the value of each customer and builds trust, engagement and word-of-mouth recommendations.",
                 "tags": [
                     "Loyalty",
                     "Customer Experience",
                     "Satisfaction",
                     "Customer Journey"
                 ],
-                "catchphrase": "Customer experience is a competitive advantage and customers are ambassadors.",
-                "intro": "A mastered customer relationship not only increases the value of each customer but also creates trust, engagement, and recommendation. We design customer relationship and loyalty strategies that strengthen the experience, taking into account every touchpoint.",
-                "mission": "At Bobenvy, we design customer relationship and loyalty strategies that strengthen the experience and relational excellence.",
-                "objectif": "Maximize retention and transform your customers into true ambassadors.",
-                "whyTitle": "Why customer relations are a strategic issue",
-                "whyText": "Today, customer experience is often the primary differentiating factor. We place experience and data at the heart of the relationship to create consistent, personalized, and high-performing journeys, analyzing feedback and customer reviews.",
+                "catchphrase": "The customer experience is a competitive advantage and customers become brand ambassadors.",
+                "intro": "Effective customer relationship management increases the value of each customer while building trust, engagement and word-of-mouth recommendations. We set up customer relationship and loyalty strategies that enhance the customer experience by taking every touchpoint into account.",
+                "mission": "We develop customer relationship and loyalty strategies that enhance the experience and foster excellent customer relations.",
+                "objectif": "To maximise customer retention and turn your customers into true brand ambassadors.",
+                "whyTitle": "Why customer relations are a strategic priority",
+                "whyText": "Today, the customer experience is often the key factor that sets businesses apart. We analyse customer feedback and reviews to put experience and data at the heart of the relationship, creating consistent, personalised and effective customer journeys.",
                 "benefits": [
-                    "Increase customer loyalty and retention",
-                    "Improve satisfaction and global experience",
-                    "Increase Customer Lifetime Value (CLV)",
-                    "Generate repeat purchases and recommendations",
-                    "Differentiate your brand through experience"
+                    "Increases customer loyalty and retention",
+                    "Improves satisfaction and the overall experience",
+                    "Increases customer lifetime value (CLV)",
+                    "Generates repeat purchases and recommendations",
+                    "Differentiates your brand"
                 ],
                 "steps": [
                     {
-                        "title": "Experience & Customer Relationship Audit",
-                        "desc": "Analyze the entire customer journey and precisely understand what your customers experience through segmentation and customer profiles."
+                        "title": "Customer experience and relationship audit",
+                        "desc": "Analysing the entire client experience to gain a clear understanding of your customers' experience, using segmentation and customer profiling."
                     },
                     {
-                        "title": "Customer Relationship Strategy",
-                        "desc": "Structure a strategy adapted to your activity and create a consistent, useful, and engaging relationship, including customer relations training if necessary."
+                        "title": "Customer relationship strategy",
+                        "desc": "Developing a strategy tailored to your business to build consistent, valuable and engaging relationships. This may include customer service training."
                     },
                     {
-                        "title": "Loyalty & Engagement Programs",
-                        "desc": "Design concrete systems like a loyalty program to strengthen the attachment to your brand and achieve relational excellence."
+                        "title": "Loyalty and engagement program",
+                        "desc": "Creating realistic plans for a loyalty program to build customer loyalty to your brand and ensure excellent customer service."
                     },
                     {
-                        "title": "Management & Continuous Optimization",
-                        "desc": "Measure the effectiveness of your actions to improve them over time and increase the value and lifetime of each customer."
+                        "title": "Monitoring and continuous optimization",
+                        "desc": "Measuring the effectiveness of your initiatives, improving them over time, and increasing the value and lifetime of each customer."
                     }
                 ],
-                "conclusion": "Ready to strengthen the relationship with your customers?",
-                "ctaText": "Do you want to improve your customer experience, increase loyalty, or create more engagement? Contact us for an initial discussion."
+                "conclusion": "Ready to get started?",
+                "ctaText": "Would you like to improve your customer experience, boost loyalty or increase engagement? Get in touch with our experts."
             }
         ]
     },
@@ -535,11 +493,11 @@
     },
     "footer": {
         "nav_title": "Navigation",
-        "nav_about": "The Agency",
-        "nav_services": "Our Expertise",
-        "nav_portfolio": "Our Work",
-        "nav_ressources": "News",
-        "services_title": "Our Services",
+        "nav_about": "About us",
+        "nav_services": "Expertises",
+        "nav_portfolio": "Portfolio",
+        "nav_ressources": "Resources",
+        "services_title": "Expertises",
         "services_list": {
             "strategy": "Strategy & Consulting",
             "branding": "Branding & Brand Image",
@@ -549,7 +507,7 @@
             "crm": "Customer Relations & Loyalty"
         },
         "contact_title": "Contact",
-        "contact_phrase": "Ready to reveal your uniqueness?",
+        "contact_phrase": "Ready to reveal your singularity?",
         "contact_subphrase": "Let's talk about your project.",
         "cta_contact": "Contact us",
         "cta_calendar": "Book a meeting",

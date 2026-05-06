@@ -17,6 +17,8 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+# macOS AppleDouble / resource fork sidecar files (e.g. ._file on external volumes)
+._*
 *.suo
 *.ntvs*
 *.njsproj
